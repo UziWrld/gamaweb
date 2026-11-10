@@ -1,0 +1,45 @@
+---
+import type { Material } from '../data/materials';
+import { waLink, quoteMessage } from '../lib/whatsapp';
+
+interface Props { material: Material; level?: 'h2' | 'h3' }
+const { material: m, level = 'h3' } = Astro.props;
+const Heading = level;
+const compact = m.symbol.length > 3;
+---
+
+<article class="flex h-full flex-col rounded-2xl border border-brand-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+  <div class="flex items-start gap-4">
+    <div class="tile" aria-hidden="true">
+      <span class="text-[10px] font-bold leading-none">{m.number}</span>
+      <span class:list={['font-display font-extrabold leading-none', compact ? 'text-xl' : 'text-4xl']}>{m.symbol}</span>
+    </div>
+    <div>
+      <Heading class="text-2xl text-brand-900">
+        <a href={`/materiales/${m.slug}/`} class="hover:text-brand-700">{m.name}</a>
+      </Heading>
+      <p class="mt-1 text-sm text-ink/80">{m.short}</p>
+    </div>
+  </div>
+
+  <ul class="mt-4 flex flex-wrap gap-2 text-xs">
+    {m.items.slice(0, 4).map((i) => <li class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-900">{i}</li>)}
+  </ul>
+
+  <div class="mt-auto grid gap-2 pt-5">
+    <a
+      class="btn btn-primary"
+      href={waLink(quoteMessage({ material: m.name }))}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Cotizar ${m.name} por WhatsApp (se abre en una pestaña nueva)`}
+    >Cotizar este material ahora</a>
+    <a
+      class="btn btn-outline !py-2 text-sm"
+      href={waLink(quoteMessage({ material: m.name, pickup: true }))}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Pedir recolección de ${m.name} por WhatsApp (se abre en una pestaña nueva)`}
+    >Necesito recolección ({'+'}300 kg)</a>
+  </div>
+</article>

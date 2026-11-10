@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MaterialCard from '../components/MaterialCard.astro';
+import FaqList from '../components/FaqList.astro';
+import { Image } from 'astro:assets';
+import { SITE } from '../data/site';
+import { PAGES } from '../data/seo';
+import { MATERIALS } from '../data/materials';
+import { HOME_FAQS } from '../data/faqs';
+import { REVIEWS } from '../data/reviews';
+import { GALLERY } from '../data/gallery';
+import { waLink, priceListMessage, generalMessage } from '../lib/whatsapp';
+import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
+
+const siteUrl = Astro.site!.origin;
+const ticker = ['Cobre', 'Bronce', 'Aluminio', 'Hierro', 'Acero', 'Plomo', 'Baterías', 'Radiadores', 'Neveras', 'Rines'];
+---
+
+<Layout {...PAGES.home} jsonLd={[websiteSchema(siteUrl), businessSchema(siteUrl), faqSchema(HOME_FAQS)]}>
+  <!-- HERO -->
+  <section class="hero-bg text-white">
+    <div class="container-x grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+      <div>
+        <p class="mb-4 inline-block rounded bg-copper-500 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-brand-950">
+          +{SITE.yearsOfExperience} años · {SITE.city}, {SITE.region}
+        </p>
+        <h1 class="text-5xl sm:text-7xl">
+          Chatarrería en Bucaramanga: <span class="text-copper-500">compramos tu chatarra y todo tipo de metales</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-white/85">
+          Cobre, aluminio, hierro, bronce, baterías y más. Escríbenos por WhatsApp, recibe el <strong>precio del día</strong> y vende hoy. Recolección desde {SITE.pickup.minKg} kg.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+          <a class="btn btn-ghost text-lg" href="/materiales/">Ver qué compramos</a>
+        </div>
+        <p class="mt-6 font-display text-xl font-bold uppercase tracking-wide text-copper-500">{SITE.slogan}</p>
+      </div>
+
+      <!-- Tarjeta "lista de precios del día" (diferenciador + conversión) -->
+      <aside class="rotate-1 rounded-2xl border-4 border-copper-500 bg-white p-6 text-ink shadow-2xl" aria-label="Lista de precios del día">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-brand-700">Se actualiza todos los días</p>
+        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-brand-900">Lista de precios de hoy</p>
+        <p class="mt-2 text-sm text-ink/80">Los precios por kilo cambian a diario. Pídela y te la enviamos por WhatsApp.</p>
+        <a class="btn btn-primary mt-4 w-full" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Pedir precios de hoy</a>
+      </aside>
+    </div>
+
+    <!-- Cinta de materiales (CSS puro) -->
+    <div class="overflow-hidden border-y border-white/10 bg-brand-900 py-3" aria-hidden="true">
+      <div class="ticker-track font-display text-2xl font-bold uppercase tracking-widest text-white/80">
+        {[0, 1].map(() => ticker.map((t) => <span class="px-6">{t} <span class="text-copper-500">◆</span></span>))}
+      </div>
+    </div>
+    <div class="hazard" aria-hidden="true"></div>
+  </section>
+
+  <!-- CONFIANZA -->
+  <section class="container-x grid gap-4 py-10 sm:grid-cols-3" aria-label="Por qué elegirnos">
+    {[
+      [`+${SITE.yearsOfExperience} años`, 'de experiencia comprando chatarra en Bucaramanga'],
+      ['Lun a sáb', 'Lunes a viernes 7:00 a. m. a 5:30 p. m. · sábados hasta 1:30 p. m.'],
+      [`Desde ${SITE.pickup.minKg} kg`, 'recolección a domicilio en Bucaramanga y zonas cercanas'],
+    ].map(([big, small]) => (
+      <div class="rounded-xl bg-white p-5 shadow-sm"><p class="font-display text-4xl font-extrabold uppercase text-brand-700">{big}</p><p class="text-sm text-ink/80">{small}</p></div>
+    ))}
+  </section>
+
+  <!-- MATERIALES -->
+  <section class="container-x py-12" aria-labelledby="materiales">
+    <h2 id="materiales" class="text-4xl text-brand-900 sm:text-5xl">Qué metales compramos en Bucaramanga</h2>
+    <p class="mt-3 max-w-2xl text-ink/80">Compramos todo tipo de metales y chatarra. Estas son las familias más frecuentes; si no ves el tuyo, escríbenos: lo más probable es que también lo recibamos.</p>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {MATERIALS.map((m) => <MaterialCard material={m} level="h3" />)}
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="bg-brand-900 py-14 text-white" aria-labelledby="como">
+    <div class="container-x">
+      <h2 id="como" class="text-4xl sm:text-5xl">Cómo vender tu chatarra en 3 pasos</h2>
+      <ol class="mt-8 grid gap-5 md:grid-cols-3">
+        {[
+          ['1', 'Escríbenos por WhatsApp', 'Cuéntanos el tipo de metal, el peso aproximado y envía una foto.'],
+          ['2', 'Recibe tu cotización', 'Te damos el precio del día según el material y su limpieza.'],
+          ['3', 'Llévalo o lo recogemos', `Tráelo a la bodega o coordinamos recolección desde ${SITE.pickup.minKg} kg.`],
+        ].map(([n, t, d]) => (
+          <li class="rounded-xl border border-white/15 bg-white/5 p-6"><p class="font-display text-6xl font-extrabold text-copper-500">{n}</p><h3 class="mt-1 text-2xl">{t}</h3><p class="mt-2 text-white/80">{d}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- EMPRESAS (temporada) -->
+  <section class="container-x py-14" aria-labelledby="empresas">
+    <div class="grid items-center gap-6 rounded-2xl bg-copper-500 p-8 text-brand-950 md:grid-cols-[1fr_auto]">
+      <div>
+        <h2 id="empresas" class="text-4xl sm:text-5xl">¿Tu empresa acumuló chatarra este año?</h2>
+        <p class="mt-3 max-w-2xl font-medium">Es el momento de despejar bodegas y convertir excedentes de metal en dinero. Atendemos empresas, talleres e industrias de Bucaramanga y el área metropolitana.</p>
+      </div>
+      <a class="btn bg-brand-950 text-white hover:bg-brand-900" href="/empresas/">Vender mis excedentes</a>
+    </div>
+  </section>
+
+  <!-- GALERÍA (solo si hay fotos) -->
+  {GALLERY.length > 0 && (
+    <section class="container-x pb-14" aria-labelledby="bodega">
+      <h2 id="bodega" class="text-4xl text-brand-900 sm:text-5xl">Nuestra bodega en Bucaramanga</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {GALLERY.map((g) => <Image src={g.src} alt={g.alt} widths={[400, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="aspect-[4/3] w-full rounded-xl object-cover" loading="lazy" />)}
+      </div>
+    </section>
+  )}
+
+  <!-- RESEÑAS (solo si hay reseñas reales) -->
+  {REVIEWS.length > 0 && (
+    <section class="bg-white py-14" aria-labelledby="resenas">
+      <div class="container-x">
+        <h2 id="resenas" class="text-4xl text-brand-900 sm:text-5xl">Lo que dicen nuestros clientes</h2>
+        <div class="mt-6 grid gap-5 md:grid-cols-3">
+          {REVIEWS.map((r) => (
+            <figure class="rounded-xl bg-brand-50 p-6"><blockquote class="text-ink/90">{r.text}</blockquote><figcaption class="mt-3 text-sm font-bold text-brand-700">{r.author}{r.date && ` · ${r.date}`}</figcaption></figure>
+          ))}
+        </div>
+        {SITE.gbpUrl && <a class="mt-6 inline-block font-bold text-brand-700 underline" href={SITE.gbpUrl} target="_blank" rel="noopener noreferrer">Ver todas las reseñas en Google</a>}
+      </div>
+    </section>
+  )}
+
+  <!-- UBICACIÓN + FAQ -->
+  <section class="container-x grid gap-10 py-14 lg:grid-cols-2" aria-labelledby="ubicacion">
+    <div>
+      <h2 id="ubicacion" class="text-4xl text-brand-900 sm:text-5xl">Dónde estamos en Bucaramanga</h2>
+      <address class="mt-4 not-italic text-lg">
+        <p><strong>{SITE.address.street}</strong>, {SITE.city}, {SITE.region}</p>
+        <p class="text-sm text-ink/70">Plus code: {SITE.address.plusCode}</p>
+        {SITE.hours.map((h) => <p class="mt-1">{h.label}: {h.display}</p>)}
+      </address>
+      <a class="btn btn-outline mt-5" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar en Google Maps</a>
+    </div>
+    <div>
+      <h2 class="text-4xl text-brand-900 sm:text-5xl">Preguntas frecuentes</h2>
+      <div class="mt-6"><FaqList faqs={HOME_FAQS} /></div>
+    </div>
+  </section>
+</Layout>

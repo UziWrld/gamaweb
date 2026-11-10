@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource/barlow-condensed/700.css";
+@import "@fontsource/barlow-condensed/800.css";
+
+@theme {
+  --color-brand-950: #1a0833;
+  --color-brand-900: #2a0f4d;
+  --color-brand-800: #3d1670;
+  --color-brand-700: #5b1b9a;
+  --color-brand-100: #efe6fa;
+  --color-brand-50: #f8f4fd;
+  --color-copper-400: #ffc83d;
+  --color-copper-500: #ffb400;
+  --color-ink: #17101f;
+  --color-wa: #25d366;
+  --font-display: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { @apply bg-brand-50 font-sans text-ink antialiased; }
+  h1, h2, h3 { @apply font-display font-extrabold uppercase leading-[0.95] tracking-tight; }
+  :focus-visible { outline: 3px solid var(--color-copper-500); outline-offset: 3px; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-bold transition; }
+  .btn-primary { @apply bg-copper-500 text-brand-950 hover:bg-copper-400; }
+  .btn-wa { @apply bg-wa text-ink hover:brightness-95; }
+  .btn-ghost { @apply border border-white/40 text-white hover:bg-white/10; }
+  .btn-outline { @apply border-2 border-brand-700 text-brand-700 hover:bg-brand-700 hover:text-white; }
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .tile { @apply relative flex h-20 w-20 flex-none flex-col justify-between rounded-md bg-brand-900 p-2 text-copper-500; }
+}
+
+/* Cinta de precaución industrial */
+.hazard {
+  height: 10px;
+  background: repeating-linear-gradient(-45deg, var(--color-copper-500) 0 14px, var(--color-brand-950) 14px 28px);
+}
+
+/* Cinta de materiales (CSS puro) */
+.ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Fondo del hero: sin imagen (cero peso). Sustituible por foto real. */
+.hero-bg {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgb(255 180 0 / 0.22), transparent 60%),
+    radial-gradient(40rem 25rem at 0% 110%, rgb(91 27 154 / 0.7), transparent 60%),
+    var(--color-brand-950);
+}

@@ -1,0 +1,62 @@
+---
+import { SITE } from '../data/site';
+import { ALLOW_INDEXING } from 'astro:env/server';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string; // ruta en /public o URL absoluta, 1200x630
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: object[];
+}
+
+const {
+  title,
+  description,
+  image = '/og/default.jpg',
+  imageAlt = `${SITE.name}: chatarrería y compra de metales en ${SITE.city}`,
+  type = 'website',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+// Canonical SIEMPRE sobre el dominio configurado en SITE_URL (nunca el host que sirva la petición).
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+const robots = ALLOW_INDEXING && !noindex ? 'index, follow, max-image-preview:large' : 'noindex, nofollow';
+const ld = (o: object) => JSON.stringify(o).replace(/</g, '\\u003c');
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={robots} />
+<meta name="theme-color" content="#1a0833" />
+
+<!-- Favicons (anti-error #14) -->
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Open Graph + Twitter (anti-error #7) -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Datos estructurados (anti-error #8) -->
+{jsonLd.map((obj) => <script is:inline type="application/ld+json" set:html={ld(obj)} />)}

@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FaqList from '../components/FaqList.astro';
+import { PAGES } from '../data/seo';
+import { SITE } from '../data/site';
+import { waLink, quoteMessage } from '../lib/whatsapp';
+import { breadcrumbSchema, faqSchema } from '../lib/schema';
+
+const siteUrl = Astro.site!.origin;
+const faqs = [
+  { q: '¿Desde cuántos kilos recogen la chatarra?', a: `Hacemos recolección a domicilio desde ${SITE.pickup.minKg} kg.` },
+  { q: '¿Qué zonas cubren?', a: `Atendemos ${SITE.pickup.zones.join(', ')}. Escríbenos tu ubicación y te confirmamos.` },
+  { q: '¿Cuánto cuesta la recolección?', a: 'Depende del material, el peso y la ubicación. Cuéntanos por WhatsApp y lo coordinamos junto con tu cotización.' },
+];
+---
+
+<Layout {...PAGES.recoleccion} jsonLd={[breadcrumbSchema(siteUrl, [{ name: 'Recolección de chatarra', path: '/recoleccion-de-chatarra/' }]), faqSchema(faqs)]}>
+  <section class="hero-bg text-white">
+    <div class="container-x py-14 sm:py-20">
+      <h1 class="max-w-4xl text-5xl sm:text-6xl">Recolección de chatarra a domicilio en <span class="text-copper-500">Bucaramanga</span></h1>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">¿Tienes {SITE.pickup.minKg} kg o más de chatarra? Vamos por ella. Cotizamos el material y coordinamos la visita por WhatsApp.</p>
+      <a class="btn btn-wa mt-7 text-lg" href={waLink(quoteMessage({ material: 'Chatarra (varios metales)', pickup: true }))} target="_blank" rel="noopener noreferrer">Solicitar recolección</a>
+    </div>
+    <div class="hazard" aria-hidden="true"></div>
+  </section>
+
+  <div class="container-x grid gap-12 py-12 lg:grid-cols-2">
+    <section aria-labelledby="como">
+      <h2 id="como" class="text-4xl text-brand-900">Cómo funciona la recolección</h2>
+      <ol class="mt-5 grid gap-3">
+        <li class="rounded-lg bg-white p-4 shadow-sm"><h3 class="text-xl text-brand-700">1. Escríbenos</h3><p>Material, peso aproximado, ubicación y una foto.</p></li>
+        <li class="rounded-lg bg-white p-4 shadow-sm"><h3 class="text-xl text-brand-700">2. Cotizamos</h3><p>Te damos el precio del día y confirmamos la cobertura.</p></li>
+        <li class="rounded-lg bg-white p-4 shadow-sm"><h3 class="text-xl text-brand-700">3. Recogemos</h3><p>Coordinamos día y hora, pesamos y liquidamos.</p></li>
+      </ol>
+    </section>
+    <section aria-labelledby="zonas">
+      <h2 id="zonas" class="text-4xl text-brand-900">Zonas de cobertura</h2>
+      <ul class="mt-5 flex flex-wrap gap-2">{SITE.pickup.zones.map((z) => <li class="rounded-full bg-brand-900 px-4 py-2 font-bold text-white">{z}</li>)}</ul>
+      <h2 class="mt-10 text-4xl text-brand-900">Qué enviar por WhatsApp</h2>
+      <ul class="mt-4 list-disc space-y-1 pl-5"><li>Tipo de metal</li><li>Peso aproximado</li><li>Dirección o barrio</li><li>Foto del material</li></ul>
+    </section>
+  </div>
+
+  <section class="container-x pb-14" aria-labelledby="faq">
+    <h2 id="faq" class="text-4xl text-brand-900">Preguntas frecuentes</h2>
+    <div class="mt-6 max-w-3xl"><FaqList faqs={faqs} /></div>
+  </section>
+</Layout>

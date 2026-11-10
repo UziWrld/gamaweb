@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { PAGES } from '../data/seo';
+import { SITE } from '../data/site';
+import { waLink, generalMessage } from '../lib/whatsapp';
+import { businessSchema, breadcrumbSchema } from '../lib/schema';
+const siteUrl = Astro.site!.origin;
+---
+
+<Layout {...PAGES.contacto} jsonLd={[businessSchema(siteUrl), breadcrumbSchema(siteUrl, [{ name: 'Contacto', path: '/contacto/' }])]}>
+  <section class="hero-bg text-white">
+    <div class="container-x py-14 sm:py-20">
+      <h1 class="max-w-4xl text-5xl sm:text-6xl">Chatarrería Gama Metales: ubicación, horarios y contacto en <span class="text-copper-500">Bucaramanga</span></h1>
+    </div>
+    <div class="hazard" aria-hidden="true"></div>
+  </section>
+
+  <div class="container-x grid gap-10 py-12 lg:grid-cols-2">
+    <div>
+      <h2 class="text-4xl text-brand-900">Dónde encontrarnos</h2>
+      <address class="mt-4 text-lg not-italic">
+        <p><strong>{SITE.address.street}</strong>, {SITE.city}, {SITE.region}</p>
+        <p class="text-sm text-ink/70">Plus code: {SITE.address.plusCode}</p>
+      </address>
+      <a class="btn btn-outline mt-4" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar en Google Maps</a>
+
+      <h2 class="mt-10 text-4xl text-brand-900">Horario de atención</h2>
+      <table class="mt-4 w-full max-w-md text-left">
+        <caption class="sr-only">Horario de atención de Gama Metales</caption>
+        <tbody>
+          {SITE.hours.map((h) => <tr class="border-b border-brand-100"><th scope="row" class="py-2 pr-4 font-semibold">{h.label}</th><td class="py-2">{h.display}</td></tr>)}
+        </tbody>
+      </table>
+      <p class="mt-2 text-sm text-ink/70">{SITE.closedNote}</p>
+
+      <h2 class="mt-10 text-4xl text-brand-900">WhatsApp y llamadas</h2>
+      <ul class="mt-4 grid gap-3">
+        {SITE.phones.map((p) => (
+          <li class="flex flex-wrap items-center gap-3">
+            <a class="btn btn-wa" href={waLink(generalMessage(), p.wa)} target="_blank" rel="noopener noreferrer">WhatsApp {p.display}</a>
+            <a class="font-bold text-brand-700 underline" href={`tel:${p.e164}`}>Llamar</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div><QuoteForm /></div>
+  </div>
+</Layout>

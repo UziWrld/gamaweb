@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PAGES } from '../data/seo';
+import { MATERIALS } from '../data/materials';
+import { waLink, generalMessage } from '../lib/whatsapp';
+---
+
+<Layout {...PAGES.notFound} noindex>
+  <section class="hero-bg text-white">
+    <div class="container-x py-20 text-center">
+      <p class="font-display text-8xl font-extrabold text-copper-500" aria-hidden="true">404</p>
+      <h1 class="text-4xl sm:text-6xl">Página no encontrada</h1>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">Esta página no existe o cambió de lugar. Mientras tanto, consulta los metales que compramos o cotiza directo por WhatsApp.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+        <a class="btn btn-ghost text-lg" href="/">Ir al inicio</a>
+      </div>
+    </div>
+    <div class="hazard" aria-hidden="true"></div>
+  </section>
+
+  <section class="container-x py-12" aria-labelledby="mats">
+    <h2 id="mats" class="text-3xl text-brand-900">Lo que más buscan nuestros clientes</h2>
+    <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {MATERIALS.map((m) => <li><a class="block rounded-lg bg-white p-4 font-bold text-brand-700 shadow-sm hover:shadow-md" href={`/materiales/${m.slug}/`}>{m.h1}</a></li>)}
+    </ul>
+  </section>
+</Layout>

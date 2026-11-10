@@ -1,0 +1,32 @@
+---
+import { SITE, NAV } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-950 text-white/80">
+  <div class="hazard" aria-hidden="true"></div>
+  <div class="container-x grid gap-10 py-12 md:grid-cols-3">
+    <div>
+      <p class="font-display text-3xl font-extrabold uppercase text-white">Gama<span class="text-copper-500">Metales</span></p>
+      <p class="mt-2 text-sm">{SITE.slogan}</p>
+      <p class="mt-4 text-sm">Chatarrería en {SITE.city} con más de {SITE.yearsOfExperience} años de servicio.</p>
+    </div>
+    <address class="text-sm not-italic">
+      <p class="font-bold text-white">Dirección</p>
+      <p>{SITE.address.street}{SITE.address.neighborhood && `, ${SITE.address.neighborhood}`}</p>
+      <p>{SITE.city}, {SITE.region}</p>
+      <a class="mt-1 inline-block text-copper-500 underline" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+      <p class="mt-4 font-bold text-white">Teléfonos / WhatsApp</p>
+      {SITE.phones.map((p) => <p><a class="hover:text-copper-500" href={`tel:${p.e164}`}>{p.display}</a></p>)}
+      <p class="mt-4 font-bold text-white">Horario</p>
+      {SITE.hours.map((h) => <p>{h.label}: {h.display}</p>)}
+    </address>
+    <nav aria-label="Pie de página" class="text-sm">
+      <p class="font-bold text-white">Explora</p>
+      <ul class="mt-2 space-y-2">
+        {NAV.map((i) => <li><a class="hover:text-copper-500" href={i.href}>{i.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+  <p class="border-t border-white/10 py-4 text-center text-xs">© {year} {SITE.name}. Compra de chatarra y reciclaje de metales en {SITE.city}.</p>
+</footer>

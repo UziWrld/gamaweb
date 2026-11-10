@@ -1,0 +1,48 @@
+---
+import { MATERIALS } from '../data/materials';
+import { SITE } from '../data/site';
+import { waLink, generalMessage } from '../lib/whatsapp';
+---
+
+<form id="quote-form" data-wa={SITE.phones[0].wa} data-brand={SITE.name} class="grid gap-4 rounded-2xl bg-white p-6 shadow-lg" aria-labelledby="quote-title" onsubmit="return false">
+  <p id="quote-title" class="font-display text-3xl font-extrabold uppercase text-brand-900">Cotiza en 30 segundos</p>
+  <label class="grid gap-1 text-sm font-semibold">Material
+    <select name="material" class="rounded-lg border border-brand-100 bg-white p-3 font-normal">
+      {MATERIALS.map((m) => <option value={m.name}>{m.name}</option>)}
+      <option value="Otro metal">Otro metal</option>
+    </select>
+  </label>
+  <label class="grid gap-1 text-sm font-semibold">Peso aproximado (kg)
+    <input name="kg" inputmode="numeric" placeholder="Ej. 150" class="rounded-lg border border-brand-100 p-3 font-normal" />
+  </label>
+  <label class="grid gap-1 text-sm font-semibold">Barrio o ubicación
+    <input name="zona" autocomplete="off" placeholder="Ej. Floridablanca" class="rounded-lg border border-brand-100 p-3 font-normal" />
+  </label>
+  <label class="flex items-center gap-3 text-sm font-semibold">
+    <input type="checkbox" name="pickup" class="h-5 w-5 accent-brand-700" /> Necesito recolección en mi sitio
+  </label>
+  <a id="quote-link" class="btn btn-wa" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Enviar cotización por WhatsApp</a>
+  <p class="text-xs text-ink/70">Después de abrir WhatsApp, adjunta una foto del material para cotizarte más rápido.</p>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#quote-form');
+  const link = document.querySelector<HTMLAnchorElement>('#quote-link');
+  if (form && link) {
+    const update = () => {
+      const d = new FormData(form);
+      const kg = String(d.get('kg') ?? '').trim();
+      const zona = String(d.get('zona') ?? '').trim();
+      const text = [
+        `Hola ${form.dataset.brand}, quiero cotizar: *${d.get('material')}*.`,
+        `- Peso aproximado: ${kg ? kg + ' kg' : '___ kg'}`,
+        `- ¿Necesita recolección?: ${d.get('pickup') ? 'Sí' : 'No, lo llevo a la bodega'}`,
+        `- Ubicación o barrio: ${zona || '___'}`,
+        `Te envío una foto del material en el siguiente mensaje.`,
+      ].join('\n');
+      link.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(text)}`;
+    };
+    form.addEventListener('input', update);
+    update();
+  }
+</script>

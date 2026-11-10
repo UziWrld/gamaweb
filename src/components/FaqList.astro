@@ -1,0 +1,16 @@
+---
+import type { Faq } from '../data/faqs';
+interface Props { faqs: Faq[] }
+const { faqs } = Astro.props;
+---
+
+<div class="divide-y divide-brand-100 overflow-hidden rounded-xl border border-brand-100 bg-white">
+  {faqs.map((f) => (
+    <details class="p-5 open:bg-brand-50">
+      <summary class="cursor-pointer font-bold text-brand-900">
+        <h3 class="inline font-sans text-lg font-bold normal-case leading-snug tracking-normal">{f.q}</h3>
+      </summary>
+      <p class="mt-3 text-ink/80">{f.a}</p>
+    </details>
+  ))}
+</div>
