@@ -14,7 +14,6 @@ export const businessSchema = (siteUrl: string) => ({
   logo: `${siteUrl}/logo.png`,
   image: [`${siteUrl}/og/default.jpg`],
   telephone: SITE.phones[0].e164,
-  email: SITE.email,
   address: {
     '@type': 'PostalAddress',
     streetAddress: SITE.address.street,

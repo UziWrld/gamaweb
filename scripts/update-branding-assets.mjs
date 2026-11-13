@@ -159,18 +159,20 @@ async function generateBranding() {
     📲 316 270 0257
   </text>
 
-  <!-- WhatsApp 2 -->
+  <!-- WhatsApp 2 / Llamadas -->
   <rect x="470" y="380" width="370" height="76" rx="14" fill="#1E293B" stroke="#334155" stroke-width="2"/>
   <text x="500" y="428" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="24" fill="#FFFFFF">
-    📞 315 567 9684
+    📞 317 645 9772
   </text>
 
-  <!-- Address and Email info -->
-  <text x="80" y="510" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="20" fill="#E2E8F0">
-    📍 Carrera 11 # 23-35, Bucaramanga · ✉️ gamametales2@gmail.com
+  <!-- Address info -->
+  <text x="80" y="525" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="22" fill="#E2E8F0">
+    📍 Carrera 11 # 23-35, Bucaramanga · Plus Code: 4VF9+J5
   </text>
-  <text x="80" y="545" font-family="'Segoe UI', Roboto, sans-serif" font-weight="bold" font-size="18" fill="#22C55E">
-    Atención personalizada: Andrea Ramírez
+
+  <!-- Slogan -->
+  <text x="80" y="565" font-family="'Segoe UI', Roboto, sans-serif" font-weight="bold" font-size="18" fill="#22C55E">
+    "Nunca pares, nunca te conformes, insiste."
   </text>
 
   <!-- Bottom hazard bar with green & carbon -->

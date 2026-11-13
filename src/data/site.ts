@@ -1,12 +1,8 @@
 export const SITE = {
-  name: 'Chatarrería Gama',
-  alternateName: 'Gama Metales',
-  slogan: 'Compra y venta de materiales reciclables',
-  valueProp: 'Compra y venta de materiales reciclables',
-  contactPerson: 'Andrea Ramírez',
-  email: 'gamametales2@gmail.com',
+  name: 'Gama Metales',
+  slogan: 'Nunca pares, nunca te conformes, insiste.',
   description:
-    'Chatarrería Gama en Bucaramanga con más de 20 años de experiencia. Compra y venta de materiales reciclables: cobre, aluminio, hierro, bronce y baterías.',
+    'Chatarrería y recicladora de metales en Bucaramanga con más de 20 años de experiencia. Compramos cobre, bronce, aluminio, hierro, acero, plomo, baterías y electrodomésticos.',
   lang: 'es-CO',
   locale: 'es_CO',
   city: 'Bucaramanga',
@@ -14,32 +10,32 @@ export const SITE = {
   country: 'CO',
 
   address: {
-    street: 'Carrera 11 No. 23-35',
-    neighborhood: '', // TODO: barrio/sector exacto si aplica
-    postalCode: '',
+    street: 'Carrera 11 # 23-35',
+    neighborhood: '', // TODO: barrio/sector exacto
+    postalCode: '', // TODO: opcional
     plusCode: '4VF9+J5 Bucaramanga',
   },
   geo: { lat: 7.1241, lng: -73.132 },
-  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Carrera 11 No. 23-35 Bucaramanga')}`,
-  gbpUrl: '',
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('4VF9+J5 Bucaramanga')}`,
+  gbpUrl: '', // TODO: enlace al perfil de Google Business cuando lo recuperes
 
   phones: [
-    { label: 'WhatsApp / Ventas', display: '316 270 0257', e164: '+573162700257', wa: '573162700257' },
-    { label: 'WhatsApp / Atención', display: '315 567 9684', e164: '+573155679684', wa: '573155679684' },
+    { label: 'WhatsApp principal', display: '316 270 0257', e164: '+573162700257', wa: '573162700257' },
+    { label: 'WhatsApp / llamadas', display: '317 645 9772', e164: '+573176459772', wa: '573176459772' },
   ],
 
   hours: [
     { label: 'Lunes a viernes', display: '7:00 a. m. a 5:30 p. m.', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '17:30' },
     { label: 'Sábados', display: '7:00 a. m. a 1:30 p. m.', days: ['Saturday'], opens: '07:00', closes: '13:30' },
   ],
-  closedNote: 'Domingos y festivos cerrado.',
+  closedNote: 'Domingos y festivos cerrado.', // TODO: confirmar
 
   pickup: {
     minKg: 300,
-    zones: ['Bucaramanga', 'Floridablanca', 'Girón', 'Piedecuesta'],
+    zones: ['Bucaramanga', 'Floridablanca', 'Girón', 'Piedecuesta'], // TODO: confirmar cobertura
   },
 
-  sameAs: [] as string[],
+  sameAs: [] as string[], // TODO: Facebook, Instagram, GBP, cuando existan
   yearsOfExperience: '20',
 } as const;
 

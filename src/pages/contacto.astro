@@ -34,16 +34,12 @@ const siteUrl = Astro.site!.origin;
       </table>
       <p class="mt-2 text-sm text-ink/70">{SITE.closedNote}</p>
 
-      <h2 class="mt-10 text-4xl text-brand-900">Contacto directo</h2>
-      <p class="mt-2 text-ink/80"><strong>Atención:</strong> {SITE.contactPerson}</p>
-      <p class="text-ink/80"><strong>Correo:</strong> <a class="text-brand-700 underline font-semibold" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
-
       <h2 class="mt-10 text-4xl text-brand-900">WhatsApp y llamadas</h2>
       <ul class="mt-4 grid gap-3">
         {SITE.phones.map((p) => (
           <li class="flex flex-wrap items-center gap-3">
             <a class="btn btn-wa" href={waLink(generalMessage(), p.wa)} target="_blank" rel="noopener noreferrer">WhatsApp {p.display}</a>
-            <a class="font-bold text-brand-700 underline" href={`tel:${p.e164}`}>Llamar ({p.label})</a>
+            <a class="font-bold text-brand-700 underline" href={`tel:${p.e164}`}>Llamar</a>
           </li>
         ))}
       </ul>
@@ -51,4 +47,3 @@ const siteUrl = Astro.site!.origin;
     <div><QuoteForm /></div>
   </div>
 </Layout>
-
