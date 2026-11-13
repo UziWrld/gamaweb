@@ -5,28 +5,27 @@ export interface Faq {
 
 export const HOME_FAQS: Faq[] = [
   {
-    q: '¿Cuánto pagan por kilo de chatarra hoy?',
-    a: 'Los precios cambian a diario según el mercado y la calidad del material. Escríbenos por WhatsApp con el tipo de metal, el peso aproximado y una foto, y te damos el precio del día.',
+    q: '¿Cómo garantizan el peso exacto de mi chatarra?',
+    a: 'Contamos con báscula a la vista en nuestra bodega de la Carrera 11 # 23-35. Todo el material se pesa frente a ti de forma transparente para que tengas total seguridad en los kilos que nos entregas.',
   },
   {
-    q: '¿Qué metales compran en Bucaramanga?',
-    a: 'Compramos todo tipo de metales: cobre, bronce, aluminio, hierro, acero, plomo, antimonio, radiadores, rines, baterías y electrodomésticos como neveras, lavadoras y televisores.',
+    q: '¿Cómo y cuándo me pagan el material?',
+    a: 'El pago es de contado e inmediato en el mismo momento del pesaje: en efectivo o por transferencia electrónica al instante (Nequi, Daviplata o Bancolombia), sin demoras ni retenciones.',
+  },
+  {
+    q: '¿A cómo pagan el kilo hoy?',
+    a: 'Los precios de los metales se actualizan diariamente según el mercado. Escríbenos por WhatsApp con el tipo de material, el peso estimado y una foto, y te damos el precio exacto de hoy en minutos.',
   },
   {
     q: '¿Hacen recolección de chatarra a domicilio?',
-    a: 'Sí, hacemos recolección desde 300 kg en Bucaramanga y municipios cercanos. Escríbenos por WhatsApp para coordinar.',
+    a: 'Sí, realizamos recolección a partir de 300 kg en Bucaramanga, Floridablanca, Girón y Piedecuesta. Coordinamos la fecha y hora que te convenga y llevamos transporte para cargarlo.',
   },
   {
-    q: '¿Cuál es el horario de la chatarrería?',
-    a: 'Atendemos de lunes a viernes de 7:00 a. m. a 5:30 p. m. y los sábados de 7:00 a. m. a 1:30 p. m.',
+    q: '¿Dónde queda la bodega y qué horario tienen?',
+    a: 'Estamos ubicados en la Carrera 11 # 23-35, Bucaramanga (Santander). Atendemos de lunes a viernes de 7:00 a. m. a 5:30 p. m. y sábados de 7:00 a. m. a 1:30 p. m.',
   },
   {
-    q: '¿Dónde queda Gama Metales?',
-    a: 'Estamos en la Carrera 11 # 23-35, Bucaramanga, Santander. Plus code: 4VF9+J5.',
-  },
-  {
-    q: '¿Compran material a empresas y talleres?',
-    a: 'Sí. Atendemos a público en general y también a empresas, talleres e industrias que quieren vender chatarra y excedentes de metal acumulados.',
+    q: '¿Compran a talleres mecánicos, plomeros, electricistas y empresas?',
+    a: 'Sí. Atendemos tanto a particulares con cantidades pequeñas como a profesionales y empresas que generan excedentes continuos de cobre, bronce, aluminio, baterías y chatarra ferrosa.',
   },
 ];
-

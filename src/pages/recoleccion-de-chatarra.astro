@@ -8,9 +8,10 @@ import { breadcrumbSchema, faqSchema } from '../lib/schema';
 
 const siteUrl = Astro.site!.origin;
 const faqs = [
-  { q: '¿Desde cuántos kilos recogen la chatarra?', a: `Hacemos recolección a domicilio desde ${SITE.pickup.minKg} kg.` },
-  { q: '¿Qué zonas cubren?', a: `Atendemos ${SITE.pickup.zones.join(', ')}. Escríbenos tu ubicación y te confirmamos.` },
-  { q: '¿Cuánto cuesta la recolección?', a: 'Depende del material, el peso y la ubicación. Cuéntanos por WhatsApp y lo coordinamos junto con tu cotización.' },
+  { q: '¿Desde cuántos kilos recogen la chatarra a domicilio?', a: `Realizamos recolección a domicilio a partir de ${SITE.pickup.minKg} kg en Bucaramanga y municipios cercanos.` },
+  { q: '¿Qué zonas cubren?', a: `Atendemos ${SITE.pickup.zones.join(', ')}. Escríbenos tu ubicación exacta y coordinamos la visita.` },
+  { q: '¿Cómo y cuándo me pagan en la recolección?', a: 'Pesamos el material directamente frente a ti en el punto de recogida y te pagamos de contado en el acto (en efectivo o transferencia por Nequi/Daviplata).' },
+  { q: '¿Cuánto cuesta la recolección?', a: 'El transporte se descuenta o se incluye dentro de la liquidación global del material dependiendo del volumen y ubicación. Todo queda acordado antes de salir.' },
 ];
 ---
 
@@ -18,7 +19,7 @@ const faqs = [
   <section class="hero-bg text-white">
     <div class="container-x py-14 sm:py-20">
       <h1 class="max-w-4xl text-5xl sm:text-6xl">Recolección de chatarra a domicilio en <span class="text-copper-500">Bucaramanga</span></h1>
-      <p class="mt-5 max-w-2xl text-lg text-white/85">¿Tienes {SITE.pickup.minKg} kg o más de chatarra? Vamos por ella. Cotizamos el material y coordinamos la visita por WhatsApp.</p>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">¿Tienes {SITE.pickup.minKg} kg o más de chatarra o metales? Vamos por ellos a tu casa, taller, obra o empresa. Pesaje exacto a la vista y pago de contado inmediato.</p>
       <a class="btn btn-wa mt-7 text-lg" href={waLink(quoteMessage({ material: 'Chatarra (varios metales)', pickup: true }))} target="_blank" rel="noopener noreferrer">Solicitar recolección</a>
     </div>
     <div class="hazard" aria-hidden="true"></div>
@@ -27,23 +28,40 @@ const faqs = [
   <div class="container-x grid gap-12 py-12 lg:grid-cols-2">
     <section aria-labelledby="como">
       <h2 id="como" class="text-4xl text-brand-900">Cómo funciona la recolección</h2>
-      <ol class="mt-5 grid gap-3">
-        <li class="rounded-lg bg-white p-4 shadow-sm"><h3 class="text-xl text-brand-700">1. Escríbenos</h3><p>Material, peso aproximado, ubicación y una foto.</p></li>
-        <li class="rounded-lg bg-white p-4 shadow-sm"><h3 class="text-xl text-brand-700">2. Cotizamos</h3><p>Te damos el precio del día y confirmamos la cobertura.</p></li>
-        <li class="rounded-lg bg-white p-4 shadow-sm"><h3 class="text-xl text-brand-700">3. Recogemos</h3><p>Coordinamos día y hora, pesamos y liquidamos.</p></li>
+      <ol class="mt-5 grid gap-4">
+        <li class="rounded-xl border border-brand-100 bg-white p-5 shadow-sm">
+          <h3 class="text-xl font-bold text-brand-700">1. Escríbenos por WhatsApp</h3>
+          <p class="mt-1 text-sm text-ink/80">Indícanos qué tipo de metal tienes, el peso estimado, tu barrio y envíanos una foto.</p>
+        </li>
+        <li class="rounded-xl border border-brand-100 bg-white p-5 shadow-sm">
+          <h3 class="text-xl font-bold text-brand-700">2. Te damos la cotización</h3>
+          <p class="mt-1 text-sm text-ink/80">Te confirmamos el valor por kilo actualizado y agendamos el día y hora de visita.</p>
+        </li>
+        <li class="rounded-xl border border-brand-100 bg-white p-5 shadow-sm">
+          <h3 class="text-xl font-bold text-brand-700">3. Pesamos y te pagamos en el acto</h3>
+          <p class="mt-1 text-sm text-ink/80">Cargamos, pesamos frente a ti y te transferimos o entregamos efectivo al momento.</p>
+        </li>
       </ol>
     </section>
+
     <section aria-labelledby="zonas">
       <h2 id="zonas" class="text-4xl text-brand-900">Zonas de cobertura</h2>
-      <ul class="mt-5 flex flex-wrap gap-2">{SITE.pickup.zones.map((z) => <li class="rounded-full bg-brand-900 px-4 py-2 font-bold text-white">{z}</li>)}</ul>
-      <h2 class="mt-10 text-4xl text-brand-900">Qué enviar por WhatsApp</h2>
-      <ul class="mt-4 list-disc space-y-1 pl-5"><li>Tipo de metal</li><li>Peso aproximado</li><li>Dirección o barrio</li><li>Foto del material</li></ul>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {SITE.pickup.zones.map((z) => <span class="rounded-full bg-brand-900 px-4 py-2 font-bold text-sm text-white">{z}</span>)}
+      </div>
+
+      <h2 class="mt-10 text-4xl text-brand-900">Qué enviar por WhatsApp para cotizar rápido</h2>
+      <ul class="mt-4 space-y-2 text-ink/85">
+        <li class="flex items-center gap-2"><span class="text-copper-500 font-bold">✓</span> <span>Tipo de metal (cobre, aluminio, hierro, baterías, etc.)</span></li>
+        <li class="flex items-center gap-2"><span class="text-copper-500 font-bold">✓</span> <span>Peso aproximado (mínimo 300 kg para recogida)</span></li>
+        <li class="flex items-center gap-2"><span class="text-copper-500 font-bold">✓</span> <span>Dirección, barrio o municipio</span></li>
+        <li class="flex items-center gap-2"><span class="text-copper-500 font-bold">✓</span> <span>Foto del material para valorar su estado y limpieza</span></li>
+      </ul>
     </section>
   </div>
 
   <section class="container-x pb-14" aria-labelledby="faq">
-    <h2 id="faq" class="text-4xl text-brand-900">Preguntas frecuentes</h2>
+    <h2 id="faq" class="text-4xl text-brand-900">Preguntas frecuentes sobre recolección</h2>
     <div class="mt-6 max-w-3xl"><FaqList faqs={faqs} /></div>
   </section>
 </Layout>
-

@@ -11,7 +11,7 @@ const siteUrl = Astro.site!.origin;
   <section class="hero-bg text-white">
     <div class="container-x py-14 sm:py-20">
       <h1 class="max-w-4xl text-5xl sm:text-6xl">Venta de chatarra y excedentes de metal para empresas en <span class="text-copper-500">Bucaramanga</span></h1>
-      <p class="mt-5 max-w-2xl text-lg text-white/85">¿Tu empresa, taller o fábrica guardó material durante el año? Cotizamos grandes volúmenes y coordinamos la recolección desde {SITE.pickup.minKg} kg.</p>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">Compramos excedentes metálicos, retales de obra, tubería y maquinaria fuera de servicio a constructoras, talleres e industrias. Pesaje exacto, pago de contado inmediato y recolección desde {SITE.pickup.minKg} kg.</p>
       <a class="btn btn-wa mt-7 text-lg" href={waLink(quoteMessage({ material: 'Excedentes de metal de mi empresa', pickup: true }))} target="_blank" rel="noopener noreferrer">Cotizar para mi empresa</a>
     </div>
     <div class="hazard" aria-hidden="true"></div>
@@ -21,15 +21,37 @@ const siteUrl = Astro.site!.origin;
     <section aria-labelledby="que">
       <h2 id="que" class="text-4xl text-brand-900">Qué materiales industriales compramos</h2>
       <ul class="mt-5 grid gap-2">
-        {['Chatarra de hierro y acero', 'Cobre, bronce y aluminio', 'Viruta de bronce, acero y aluminio', 'Radiadores, rines y baterías', 'Plomo y antimonio', 'Equipos y electrodomésticos en desuso'].map((i) => <li class="rounded-lg bg-white p-3 font-semibold shadow-sm">✓ {i}</li>)}
+        {[
+          'Chatarra de hierro, vigas y varilla de construcción',
+          'Cobre brillante, tuberías y cable encauchetado',
+          'Aluminio de perfilería, planchas y fundición',
+          'Viruta de bronce, acero y aluminio de tornos',
+          'Radiadores de maquinaria, rines y baterías industriales',
+          'Plomo, antimonio y tubería antigua',
+          'Equipos, motores y maquinaria dada de baja',
+        ].map((i) => <li class="rounded-lg bg-white p-3 font-semibold shadow-sm">✓ {i}</li>)}
       </ul>
     </section>
-    <section aria-labelledby="temporada">
-      <h2 id="temporada" class="text-4xl text-brand-900">Despeja tu bodega antes de cerrar el año</h2>
-      <p class="mt-4 text-ink/80">Muchas empresas acumulan metal durante meses. Venderlo a tiempo libera espacio y genera ingresos. Envíanos una lista o fotos del material y te respondemos con una cotización.</p>
-      <h3 class="mt-6 text-2xl text-brand-700">Cómo trabajamos con empresas</h3>
-      <ol class="mt-3 list-decimal space-y-1 pl-5"><li>Nos envías tipo de material y volumen estimado.</li><li>Cotizamos con el precio del día.</li><li>Coordinamos recolección o entrega en bodega.</li></ol>
+    
+    <section aria-labelledby="beneficios">
+      <h2 id="beneficios" class="text-4xl text-brand-900">Libera espacio y convierte excedentes en liquidez</h2>
+      <p class="mt-4 text-ink/80 leading-relaxed">
+        Muchas empresas acumulan chatarra que ocupa espacio valioso en bodegas y patios de maniobra. En Gama Metales te compramos tus excedentes con pesaje transparente frente a tu personal y liquidación al instante.
+      </p>
+
+      <h3 class="mt-6 text-2xl text-brand-700">Por qué las empresas nos eligen</h3>
+      <ul class="mt-3 space-y-2 text-ink/85">
+        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Báscula exacta y a la vista:</strong> pesaje transparente frente a tu encargado.</span></li>
+        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Pago inmediato:</strong> efectivo o transferencia al momento de cargar.</span></li>
+        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Logística incluida:</strong> camión y personal de cargue desde {SITE.pickup.minKg} kg.</span></li>
+      </ul>
+
+      <h3 class="mt-8 text-2xl text-brand-700">Proceso en 3 pasos</h3>
+      <ol class="mt-3 list-decimal space-y-1.5 pl-5 text-ink/80">
+        <li>Nos envías fotos y volumen estimado por WhatsApp.</li>
+        <li>Te damos la cotización actualizada del día.</li>
+        <li>Coordinamos día de recolección en tu planta o entrega en bodega.</li>
+      </ol>
     </section>
   </div>
 </Layout>
-

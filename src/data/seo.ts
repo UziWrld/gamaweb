@@ -1,7 +1,7 @@
 export const PAGES = {
   home: {
     title: 'Chatarrería en Bucaramanga | Compra de Chatarra y Metales',
-    description: 'Chatarrería en Bucaramanga con más de 20 años. Compramos cobre, aluminio, hierro, bronce y baterías. Cotiza por WhatsApp y recibe el precio del día.',
+    description: 'Chatarrería en Bucaramanga con más de 20 años. Pesaje exacto, pago de contado inmediato y el mejor precio del día en cobre, aluminio, hierro y baterías.',
   },
   materiales: {
     title: 'Compra de Metales en Bucaramanga: Cobre, Aluminio y Hierro',
@@ -13,7 +13,7 @@ export const PAGES = {
   },
   empresas: {
     title: 'Venta de Chatarra para Empresas en Bucaramanga',
-    description: 'Empresas en Bucaramanga: vende la chatarra y los excedentes de metal acumulados en el año. Cotización por WhatsApp y recolección desde 300 kg.',
+    description: 'Compramos chatarra y excedentes de metal a empresas y talleres en Bucaramanga. Pesaje transparente, pago de contado y recolección desde 300 kg.',
   },
   contacto: {
     title: 'Chatarrería Gama Metales Bucaramanga | Dirección y Horarios',

@@ -170,9 +170,9 @@ async function generateBranding() {
     📍 Carrera 11 # 23-35, Bucaramanga · Plus Code: 4VF9+J5
   </text>
 
-  <!-- Slogan -->
-  <text x="80" y="565" font-family="'Segoe UI', Roboto, sans-serif" font-weight="bold" font-size="18" fill="#22C55E">
-    "Nunca pares, nunca te conformes, insiste."
+  <!-- Slogan / Promesa -->
+  <text x="80" y="565" font-family="'Segoe UI', Roboto, sans-serif" font-weight="bold" font-size="20" fill="#22C55E">
+    ✓ PESAJE EXACTO A LA VISTA · PAGO INMEDIATO DE CONTADO
   </text>
 
   <!-- Bottom hazard bar with green & carbon -->

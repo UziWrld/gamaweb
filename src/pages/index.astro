@@ -13,7 +13,30 @@ import { waLink, priceListMessage, generalMessage } from '../lib/whatsapp';
 import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
 
 const siteUrl = Astro.site!.origin;
-const ticker = ['Cobre', 'Bronce', 'Aluminio', 'Hierro', 'Acero', 'Plomo', 'Baterías', 'Radiadores', 'Neveras', 'Rines'];
+const ticker = ['Cobre de primera', 'Aluminio perfil', 'Chatarra ferrosa', 'Baterías 4D/8D', 'Bronce y llaves', 'Radiadores', 'Acero inoxidable', 'Rines de aluminio', 'Neveras viejas', 'Varilla de obra'];
+
+const clientSegments = [
+  {
+    title: 'Hogares y particulares',
+    desc: 'Neveras, lavadoras, rejas, marcos y cualquier chatarra acumulada en el patio o garaje. Despeja espacio y recibe dinero de inmediato.',
+    icon: '🏠',
+  },
+  {
+    title: 'Plomeros y electricistas',
+    desc: 'Los mejores precios del kilo en tubería de cobre, cable pelado, cable encauchetado, grifería y llaves de bronce. Pago al instante.',
+    icon: '⚡',
+  },
+  {
+    title: 'Talleres mecánicos y montallantas',
+    desc: 'Baterías usadas de carro y camión (N40, 4D, 8D), rines de aluminio, radiadores, culatas y discos de freno.',
+    icon: '🔧',
+  },
+  {
+    title: 'Constructoras y empresas',
+    desc: 'Excedentes metálicos de obras, perfiles, vigas, varilla y maquinaria dada de baja con recolección y logística de cargue incluida.',
+    icon: '🏗️',
+  },
+];
 ---
 
 <Layout {...PAGES.home} jsonLd={[websiteSchema(siteUrl), businessSchema(siteUrl), faqSchema(HOME_FAQS)]}>
@@ -22,27 +45,34 @@ const ticker = ['Cobre', 'Bronce', 'Aluminio', 'Hierro', 'Acero', 'Plomo', 'Bate
     <div class="container-x grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.4fr_1fr] lg:items-center">
       <div>
         <p class="mb-4 inline-block rounded bg-copper-500 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-brand-950">
-          +{SITE.yearsOfExperience} años · {SITE.city}, {SITE.region}
+          +{SITE.yearsOfExperience} años de servicio · Pesaje exacto · Pago de contado
         </p>
         <h1 class="text-5xl sm:text-7xl">
-          Chatarrería en Bucaramanga: <span class="text-copper-500">compramos tu chatarra y todo tipo de metales</span>
+          Chatarrería en Bucaramanga: <span class="text-copper-500">compramos tu chatarra y metales al mejor precio</span>
         </h1>
-        <p class="mt-6 max-w-xl text-lg text-white/85">
-          Cobre, aluminio, hierro, bronce, baterías y más. Escríbenos por WhatsApp, recibe el <strong>precio del día</strong> y vende hoy. Recolección desde {SITE.pickup.minKg} kg.
+        <p class="mt-6 max-w-xl text-lg text-white/90 leading-relaxed">
+          Cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje transparente frente a ti</strong>, pago inmediato de contado y recolección a domicilio desde {SITE.pickup.minKg} kg.
         </p>
+        
         <div class="mt-8 flex flex-wrap gap-3">
           <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
           <a class="btn btn-ghost text-lg" href="/materiales/">Ver qué compramos</a>
         </div>
-        <p class="mt-6 font-display text-xl font-bold uppercase tracking-wide text-copper-500">{SITE.slogan}</p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm font-semibold text-white/80">
+          <span class="flex items-center gap-1.5"><span class="text-copper-500 font-bold">✓</span> Báscula a la vista</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-500 font-bold">✓</span> Efectivo o Nequi al instante</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-500 font-bold">✓</span> Precios actualizados del día</span>
+        </div>
       </div>
 
       <!-- Tarjeta "lista de precios del día" (diferenciador + conversión) -->
-      <aside class="rotate-1 rounded-2xl border-4 border-copper-500 bg-white p-6 text-ink shadow-2xl" aria-label="Lista de precios del día">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-brand-700">Se actualiza todos los días</p>
-        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-brand-900">Lista de precios de hoy</p>
-        <p class="mt-2 text-sm text-ink/80">Los precios por kilo cambian a diario. Pídela y te la enviamos por WhatsApp.</p>
-        <a class="btn btn-primary mt-4 w-full" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Pedir precios de hoy</a>
+      <aside class="rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-6 text-white shadow-2xl border-opacity-100" aria-label="Lista de precios del día">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Actualizada todos los días</p>
+        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-white">Lista de precios de hoy</p>
+        <p class="mt-2 text-sm text-white/80">El valor del kilo cambia a diario en el mercado. Pídela por WhatsApp y te damos el precio exacto en minutos.</p>
+        <a class="btn btn-primary mt-5 w-full text-base" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Pedir precios de hoy por WhatsApp</a>
+        <p class="mt-3 text-center text-xs text-white/60">Atención rápida · Lunes a sábado</p>
       </aside>
     </div>
 
@@ -55,50 +85,106 @@ const ticker = ['Cobre', 'Bronce', 'Aluminio', 'Hierro', 'Acero', 'Plomo', 'Bate
     <div class="hazard" aria-hidden="true"></div>
   </section>
 
-  <!-- CONFIANZA -->
-  <section class="container-x grid gap-4 py-10 sm:grid-cols-3" aria-label="Por qué elegirnos">
-    {[
-      [`+${SITE.yearsOfExperience} años`, 'de experiencia comprando chatarra en Bucaramanga'],
-      ['Lun a sáb', 'Lunes a viernes 7:00 a. m. a 5:30 p. m. · sábados hasta 1:30 p. m.'],
-      [`Desde ${SITE.pickup.minKg} kg`, 'recolección a domicilio en Bucaramanga y zonas cercanas'],
-    ].map(([big, small]) => (
-      <div class="rounded-xl bg-white p-5 shadow-sm"><p class="font-display text-4xl font-extrabold uppercase text-brand-700">{big}</p><p class="text-sm text-ink/80">{small}</p></div>
-    ))}
+  <!-- PILARES DE CONFIANZA -->
+  <section class="container-x py-12" aria-labelledby="garantias">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 id="garantias" class="text-3xl sm:text-4xl text-brand-900">Por qué vender tu material en Gama Metales</h2>
+      <p class="mt-2 text-ink/75">Cero enredos, peso justo y la plata en tu mano al instante.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
+        <div class="text-4xl mb-4" aria-hidden="true">⚖️</div>
+        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Báscula exacta y a la vista</h3>
+        <p class="mt-2 text-sm text-ink/80 leading-relaxed">
+          Pesamos cada kilo frente a ti de forma totalmente transparente en nuestra bodega o en el punto de recolección. Cero descuentos raros ni dudas sobre tu peso.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
+        <div class="text-4xl mb-4" aria-hidden="true">💵</div>
+        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Pago inmediato de contado</h3>
+        <p class="mt-2 text-sm text-ink/80 leading-relaxed">
+          Plata en mano en cuanto terminamos de pesar: te pagamos en efectivo o por transferencia electrónica inmediata (Nequi, Daviplata o Bancolombia), sin esperas.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
+        <div class="text-4xl mb-4" aria-hidden="true">🚚</div>
+        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Recolección a domicilio (+300 kg)</h3>
+        <p class="mt-2 text-sm text-ink/80 leading-relaxed">
+          No te compliques cargando material pesado. Si tienes 300 kg o más en tu casa, taller u obra en Bucaramanga y el área metropolitana, vamos por él.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTOS DE CLIENTE -->
+  <section class="bg-brand-900 py-14 text-white" aria-labelledby="clientes">
+    <div class="container-x">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 id="clientes" class="text-3xl sm:text-5xl">Soluciones a tu medida</h2>
+        <p class="mt-3 text-white/80">Atendemos desde pequeñas entregas de hogar hasta grandes volúmenes industriales.</p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {clientSegments.map((c) => (
+          <div class="rounded-xl border border-white/15 bg-white/5 p-6 transition hover:bg-white/10">
+            <span class="text-3xl" aria-hidden="true">{c.icon}</span>
+            <h3 class="mt-3 text-xl font-bold uppercase font-display text-copper-400">{c.title}</h3>
+            <p class="mt-2 text-sm text-white/80 leading-relaxed">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
 
   <!-- MATERIALES -->
-  <section class="container-x py-12" aria-labelledby="materiales">
-    <h2 id="materiales" class="text-4xl text-brand-900 sm:text-5xl">Qué metales compramos en Bucaramanga</h2>
-    <p class="mt-3 max-w-2xl text-ink/80">Compramos todo tipo de metales y chatarra. Estas son las familias más frecuentes; si no ves el tuyo, escríbenos: lo más probable es que también lo recibamos.</p>
+  <section class="container-x py-14" aria-labelledby="materiales">
+    <div class="max-w-2xl">
+      <h2 id="materiales" class="text-4xl text-brand-900 sm:text-5xl">Qué metales compramos en Bucaramanga</h2>
+      <p class="mt-3 text-ink/80">Compramos todo tipo de metales y chatarra. Si tienes dudas con algún material específico, envíanos una foto por WhatsApp y te lo confirmamos en minutos.</p>
+    </div>
     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {MATERIALS.map((m) => <MaterialCard material={m} level="h3" />)}
     </div>
   </section>
 
   <!-- CÓMO FUNCIONA -->
-  <section class="bg-brand-900 py-14 text-white" aria-labelledby="como">
+  <section class="bg-brand-50 border-y border-brand-100 py-14" aria-labelledby="como">
     <div class="container-x">
-      <h2 id="como" class="text-4xl sm:text-5xl">Cómo vender tu chatarra en 3 pasos</h2>
-      <ol class="mt-8 grid gap-5 md:grid-cols-3">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 id="como" class="text-4xl text-brand-900 sm:text-5xl">Cómo vender tu chatarra en 3 pasos sencillos</h2>
+        <p class="mt-2 text-ink/75">Rápido, transparente y sin complicaciones.</p>
+      </div>
+      <ol class="grid gap-5 md:grid-cols-3">
         {[
-          ['1', 'Escríbenos por WhatsApp', 'Cuéntanos el tipo de metal, el peso aproximado y envía una foto.'],
-          ['2', 'Recibe tu cotización', 'Te damos el precio del día según el material y su limpieza.'],
-          ['3', 'Llévalo o lo recogemos', `Tráelo a la bodega o coordinamos recolección desde ${SITE.pickup.minKg} kg.`],
+          ['1', 'Escríbenos por WhatsApp', 'Cuéntanos qué metal tienes, el peso estimado y envíanos una foto clara del material.'],
+          ['2', 'Recibe tu cotización del día', 'Te damos el valor por kilo actualizado y confirmamos si requieres recolección.'],
+          ['3', 'Pesamos y te pagamos', 'Llévalo a la bodega en la Cra 11 # 23-35 o lo recogemos. Te pagamos de contado al instante.'],
         ].map(([n, t, d]) => (
-          <li class="rounded-xl border border-white/15 bg-white/5 p-6"><p class="font-display text-6xl font-extrabold text-copper-500">{n}</p><h3 class="mt-1 text-2xl">{t}</h3><p class="mt-2 text-white/80">{d}</p></li>
+          <li class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <p class="font-display text-5xl font-extrabold text-copper-500">{n}</p>
+            <h3 class="mt-2 text-2xl text-brand-900">{t}</h3>
+            <p class="mt-2 text-sm text-ink/80 leading-relaxed">{d}</p>
+          </li>
         ))}
       </ol>
+      <div class="mt-10 text-center">
+        <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Iniciar cotización por WhatsApp</a>
+      </div>
     </div>
   </section>
 
-  <!-- EMPRESAS (temporada) -->
+  <!-- EMPRESAS (EVERGREEN) -->
   <section class="container-x py-14" aria-labelledby="empresas">
-    <div class="grid items-center gap-6 rounded-2xl bg-copper-500 p-8 text-brand-950 md:grid-cols-[1fr_auto]">
+    <div class="grid items-center gap-6 rounded-2xl bg-brand-900 p-8 sm:p-10 text-white border-2 border-copper-500/40 md:grid-cols-[1fr_auto]">
       <div>
-        <h2 id="empresas" class="text-4xl sm:text-5xl">¿Tu empresa acumuló chatarra este año?</h2>
-        <p class="mt-3 max-w-2xl font-medium">Es el momento de despejar bodegas y convertir excedentes de metal en dinero. Atendemos empresas, talleres e industrias de Bucaramanga y el área metropolitana.</p>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Atención B2B e Industrial</p>
+        <h2 id="empresas" class="mt-1 text-3xl sm:text-4xl">¿Tienes chatarra o maquinaria en tu empresa o taller?</h2>
+        <p class="mt-3 max-w-2xl text-white/85 text-base leading-relaxed">
+          Compramos excedentes metálicos, retales de obra, tubería y maquinaria en desuso a talleres, constructoras y fábricas en Bucaramanga y área metropolitana. Pago de contado inmediato y logística de transporte.
+        </p>
       </div>
-      <a class="btn bg-brand-950 text-white hover:bg-brand-900" href="/empresas/">Vender mis excedentes</a>
+      <a class="btn btn-primary text-base whitespace-nowrap" href="/empresas/">Cotizar para mi empresa</a>
     </div>
   </section>
 
@@ -132,9 +218,14 @@ const ticker = ['Cobre', 'Bronce', 'Aluminio', 'Hierro', 'Acero', 'Plomo', 'Bate
     <div>
       <h2 id="ubicacion" class="text-4xl text-brand-900 sm:text-5xl">Dónde estamos en Bucaramanga</h2>
       <address class="mt-4 not-italic text-lg">
-        <p><strong>{SITE.address.street}</strong>, {SITE.city}, {SITE.region}</p>
+        <p class="font-bold text-brand-900">{SITE.address.street}</p>
+        <p class="text-ink/80">{SITE.city}, {SITE.region}</p>
         <p class="text-sm text-ink/70">Plus code: {SITE.address.plusCode}</p>
-        {SITE.hours.map((h) => <p class="mt-1">{h.label}: {h.display}</p>)}
+        <div class="mt-4 border-t border-brand-100 pt-3 text-sm">
+          <p class="font-bold text-brand-900">Horario de atención:</p>
+          {SITE.hours.map((h) => <p class="mt-0.5 text-ink/80">{h.label}: {h.display}</p>)}
+          <p class="mt-1 text-xs text-ink/60">{SITE.closedNote}</p>
+        </div>
       </address>
       <a class="btn btn-outline mt-5" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar en Google Maps</a>
     </div>
@@ -144,4 +235,3 @@ const ticker = ['Cobre', 'Bronce', 'Aluminio', 'Hierro', 'Acero', 'Plomo', 'Bate
     </div>
   </section>
 </Layout>
-
