@@ -14,6 +14,8 @@ export const GET: APIRoute = ({ site }) => {
 ## Datos del negocio
 - Dirección: ${SITE.address.street}, ${SITE.city}, ${SITE.region}, Colombia (plus code ${SITE.address.plusCode})
 - WhatsApp y teléfonos: ${phones}
+- Correo: ${SITE.email}
+- Atención: ${SITE.contactPerson}
 - Horario: ${hours}. ${SITE.closedNote}
 - Cobertura de recolección: ${SITE.pickup.zones.join(', ')} (desde ${SITE.pickup.minKg} kg)
 - Mapa: ${SITE.mapsUrl}
@@ -45,3 +47,4 @@ ${MATERIALS.map((m) => `- [${m.name}](${o}/materiales/${m.slug}/): ${m.items.joi
 `;
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };
+

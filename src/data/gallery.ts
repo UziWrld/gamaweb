@@ -5,3 +5,4 @@ import type { ImageMetadata } from 'astro';
 export const GALLERY: { src: ImageMetadata; alt: string }[] = [
   // { src: bodega01, alt: 'Patio de la bodega de Gama Metales en Bucaramanga con metales clasificados' }, // TODO: describe lo que SÍ se ve
 ];
+

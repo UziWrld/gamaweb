@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2a0f4d"/>
-  <circle cx="32" cy="32" r="16" fill="none" stroke="#ffb400" stroke-width="8" stroke-dasharray="78 22.5"/>
-  <rect x="32" y="29" width="20" height="6" fill="#ffb400"/>
+  <rect width="64" height="64" rx="14" fill="#0B0F17"/>
+  <!-- Clean geometric recycling symbol -->
+  <g fill="#22C55E">
+    <path d="M32 10 L38 20 L26 20 Z" />
+    <path d="M48 38 L54 28 L42 28 Z" />
+    <path d="M16 38 L22 48 L10 48 Z" />
+    <path d="M26 18 C34 18 44 22 46 29 L42 31 C40 26 33 22 26 22 Z" />
+    <path d="M46 33 C48 41 42 50 34 52 L33 48 C39 46 44 39 42 33 Z" />
+    <path d="M28 50 C20 48 16 38 18 30 L22 32 C20 38 23 46 29 47 Z" />
+  </g>
 </svg>

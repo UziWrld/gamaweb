@@ -33,7 +33,7 @@ const ld = (o: object) => JSON.stringify(o).replace(/</g, '\\u003c');
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 <meta name="robots" content={robots} />
-<meta name="theme-color" content="#1a0833" />
+<meta name="theme-color" content="#0b0f17" />
 
 <!-- Favicons (anti-error #14) -->
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -60,3 +60,4 @@ const ld = (o: object) => JSON.stringify(o).replace(/</g, '\\u003c');
 
 <!-- Datos estructurados (anti-error #8) -->
 {jsonLd.map((obj) => <script is:inline type="application/ld+json" set:html={ld(obj)} />)}
+

@@ -25,3 +25,4 @@ export const generalMessage = () =>
     `- ¿Necesita recolección?: ___`,
     `- Ubicación o barrio: ___`,
   ].join('\n');
+

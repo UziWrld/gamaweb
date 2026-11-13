@@ -1,7 +1,7 @@
 export const PAGES = {
   home: {
-    title: 'Chatarrería en Bucaramanga | Compra de Chatarra y Metales',
-    description: 'Chatarrería en Bucaramanga con más de 20 años. Compramos cobre, aluminio, hierro, bronce y baterías. Cotiza por WhatsApp y recibe el precio del día.',
+    title: 'Chatarrería Gama Bucaramanga | Compra de Chatarra y Metales',
+    description: 'Chatarrería Gama en Bucaramanga con más de 20 años. Compramos cobre, aluminio, hierro, bronce y baterías. Cotiza por WhatsApp y recibe el precio del día.',
   },
   materiales: {
     title: 'Compra de Metales en Bucaramanga: Cobre, Aluminio y Hierro',
@@ -16,11 +16,11 @@ export const PAGES = {
     description: 'Empresas en Bucaramanga: vende la chatarra y los excedentes de metal acumulados en el año. Cotización por WhatsApp y recolección desde 300 kg.',
   },
   contacto: {
-    title: 'Chatarrería Gama Metales Bucaramanga | Dirección y Horarios',
-    description: 'Chatarrería Gama Metales en la Carrera 11 # 23-35, Bucaramanga. Lunes a viernes 7:00 a. m. a 5:30 p. m. y sábados hasta 1:30 p. m. Escríbenos por WhatsApp.',
+    title: 'Chatarrería Gama Bucaramanga | Dirección, Teléfonos y Horarios',
+    description: 'Chatarrería Gama en la Carrera 11 No. 23-35, Bucaramanga. Horario de lunes a sábado. Escríbenos a WhatsApp 316 270 0257 y 315 567 9684.',
   },
   notFound: {
-    title: 'Página no encontrada | Gama Metales',
+    title: 'Página no encontrada | Chatarrería Gama',
     description: 'La página que buscas no existe. Consulta los metales que compramos en Bucaramanga o escríbenos por WhatsApp para cotizar tu chatarra.',
   },
 } as const;

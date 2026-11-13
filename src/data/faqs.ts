@@ -29,3 +29,4 @@ export const HOME_FAQS: Faq[] = [
     a: 'Sí. Atendemos a público en general y también a empresas, talleres e industrias que quieren vender chatarra y excedentes de metal acumulados.',
   },
 ];
+

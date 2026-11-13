@@ -4,16 +4,18 @@
 @import "@fontsource/barlow-condensed/800.css";
 
 @theme {
-  --color-brand-950: #1a0833;
-  --color-brand-900: #2a0f4d;
-  --color-brand-800: #3d1670;
-  --color-brand-700: #5b1b9a;
-  --color-brand-100: #efe6fa;
-  --color-brand-50: #f8f4fd;
-  --color-copper-400: #ffc83d;
-  --color-copper-500: #ffb400;
-  --color-ink: #17101f;
-  --color-wa: #25d366;
+  --color-brand-950: #0b0f17; /* Carbon Black (base de la tarjeta) */
+  --color-brand-900: #111827; /* Superficie oscura */
+  --color-brand-800: #1e293b; /* Bordes y fichas oscuras */
+  --color-brand-700: #15803d; /* Verde esmeralda para títulos sobre claro */
+  --color-brand-600: #16a34a;
+  --color-brand-100: #dcfce7; /* Fondo suave de badges */
+  --color-brand-50: #f8fafc;  /* Fondo general limpio */
+  --color-copper-400: #4ade80; /* Hover verde brillante */
+  --color-copper-500: #22c55e; /* Verde Gama de la tarjeta (acción y acentos) */
+  --color-accent-blue: #0284c7; /* Azul corporativo del reverso de la tarjeta */
+  --color-ink: #0f172a;        /* Texto principal de alto contraste */
+  --color-wa: #25d366;         /* Verde WhatsApp oficial */
   --font-display: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 }
@@ -27,17 +29,17 @@
 
 @layer components {
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-bold transition; }
-  .btn-primary { @apply bg-copper-500 text-brand-950 hover:bg-copper-400; }
-  .btn-wa { @apply bg-wa text-ink hover:brightness-95; }
+  .btn-primary { @apply bg-copper-500 text-brand-950 hover:bg-copper-400 shadow-sm font-extrabold; }
+  .btn-wa { @apply bg-wa text-ink hover:brightness-95 font-extrabold; }
   .btn-ghost { @apply border border-white/40 text-white hover:bg-white/10; }
   .btn-outline { @apply border-2 border-brand-700 text-brand-700 hover:bg-brand-700 hover:text-white; }
   .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
-  .tile { @apply relative flex h-20 w-20 flex-none flex-col justify-between rounded-md bg-brand-900 p-2 text-copper-500; }
+  .tile { @apply relative flex h-20 w-20 flex-none flex-col justify-between rounded-md bg-brand-900 border border-brand-800 p-2 text-copper-500; }
 }
 
-/* Cinta de precaución industrial */
+/* Cinta de precaución industrial en Verde y Carbon */
 .hazard {
-  height: 10px;
+  height: 8px;
   background: repeating-linear-gradient(-45deg, var(--color-copper-500) 0 14px, var(--color-brand-950) 14px 28px);
 }
 
@@ -49,10 +51,10 @@
   html { scroll-behavior: auto; }
 }
 
-/* Fondo del hero: sin imagen (cero peso). Sustituible por foto real. */
+/* Fondo del hero: atmósfera oscura industrial con destellos en verde y azul de la tarjeta */
 .hero-bg {
   background:
-    radial-gradient(60rem 30rem at 85% -10%, rgb(255 180 0 / 0.22), transparent 60%),
-    radial-gradient(40rem 25rem at 0% 110%, rgb(91 27 154 / 0.7), transparent 60%),
+    radial-gradient(60rem 30rem at 85% -10%, rgb(34 197 94 / 0.20), transparent 60%),
+    radial-gradient(40rem 25rem at 0% 110%, rgb(2 132 199 / 0.18), transparent 60%),
     var(--color-brand-950);
 }

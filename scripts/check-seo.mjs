@@ -61,3 +61,4 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`✔ SEO check OK (${pages.length} páginas, modo ${prod ? 'PRODUCCIÓN' : 'vista previa'})`);
+

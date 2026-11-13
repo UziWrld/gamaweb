@@ -8,3 +8,4 @@ export interface Review {
 export const REVIEWS: Review[] = [
   // { author: 'Nombre del cliente', text: 'Texto exacto de la reseña…', date: '2026-05' },
 ];
+

@@ -23,10 +23,10 @@ export const MATERIALS: Material[] = [
     number: '29',
     priority: 1,
     short: 'Cobre brillante, 1B y mixto. El metal que mejor se paga: llévalo limpio y separado.',
-    metaTitle: 'Compra de Cobre en Bucaramanga | Gama Metales',
-    metaDescription: 'Compra de cobre en Bucaramanga: cobre brillante, 1B y mixto. Cotiza por WhatsApp con tu peso y fotos y vende hoy en Gama Metales.',
+    metaTitle: 'Compra de Cobre en Bucaramanga | Chatarrería Gama',
+    metaDescription: 'Compra de cobre en Bucaramanga: cobre brillante, 1B y mixto. Cotiza por WhatsApp con tu peso y fotos y vende hoy en Chatarrería Gama.',
     items: ['Cobre brillante', 'Cobre 1B (primera)', 'Cobre mixto', 'Cable y alambre de cobre (consulta por WhatsApp)'],
-    intro: 'En Gama Metales compramos cobre en todas sus calidades. El precio depende del tipo y de la limpieza del material, y cambia cada día, por eso lo cotizamos por WhatsApp con el peso aproximado y una foto.',
+    intro: 'En Chatarrería Gama compramos cobre en todas sus calidades. El precio depende del tipo y de la limpieza del material, y cambia cada día, por eso lo cotizamos por WhatsApp con el peso aproximado y una foto.',
     tips: [
       'Separa el cobre brillante del mixto: mezclados se cotizan al precio más bajo.',
       'Quita plásticos, soldaduras y partes de otros metales cuando sea posible.',
@@ -100,7 +100,7 @@ export const MATERIALS: Material[] = [
     number: '82',
     priority: 2,
     short: 'Baterías de carro, camión, moto y estacionarias. Cotiza por tipo y cantidad.',
-    metaTitle: 'Compra de Baterías Usadas en Bucaramanga | Gama Metales',
+    metaTitle: 'Compra de Baterías Usadas en Bucaramanga | Gama',
     metaDescription: 'Compra de baterías usadas en Bucaramanga: de carro, camión, moto y estacionarias. Cotiza por WhatsApp según el tipo de batería y la cantidad.',
     items: ['Baterías de carro (N40, N42, N48, N27)', 'Baterías 30H, 4D y 8D (camión y maquinaria)', 'Baterías de moto', 'Baterías estacionarias'],
     intro: 'Compramos baterías usadas de todos los tamaños. El valor depende del tipo (referencia) y de la cantidad, por eso pedimos que nos escribas la referencia que aparece en la batería.',
@@ -135,3 +135,4 @@ export const MATERIALS: Material[] = [
     tips: ['Envía foto y cantidad.', 'Si completas 300 kg o más, podemos recogerlos.'],
   },
 ];
+
