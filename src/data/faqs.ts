@@ -10,7 +10,7 @@ export const HOME_FAQS: Faq[] = [
   },
   {
     q: '¿Cómo y cuándo me pagan el material?',
-    a: 'El pago es de contado e inmediato en el mismo momento del pesaje: en efectivo o por transferencia electrónica al instante (Nequi, Daviplata o Bancolombia), sin demoras ni retenciones.',
+    a: 'El pago es 100% de contado en efectivo al instante en el mismo momento del pesaje, sin esperas, demoras ni retenciones.',
   },
   {
     q: '¿A cómo pagan el kilo hoy?',

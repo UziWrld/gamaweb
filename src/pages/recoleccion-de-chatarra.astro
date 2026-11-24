@@ -10,7 +10,7 @@ const siteUrl = Astro.site!.origin;
 const faqs = [
   { q: '¿Desde cuántos kilos recogen la chatarra a domicilio?', a: `Realizamos recolección a domicilio a partir de ${SITE.pickup.minKg} kg en Bucaramanga y municipios cercanos.` },
   { q: '¿Qué zonas cubren?', a: `Atendemos ${SITE.pickup.zones.join(', ')}. Escríbenos tu ubicación exacta y coordinamos la visita.` },
-  { q: '¿Cómo y cuándo me pagan en la recolección?', a: 'Pesamos el material directamente frente a ti en el punto de recogida y te pagamos de contado en el acto (en efectivo o transferencia por Nequi/Daviplata).' },
+  { q: '¿Cómo y cuándo me pagan en la recolección?', a: 'Pesamos el material directamente frente a ti en el punto de recogida y te pagamos en efectivo al instante en el acto, sin esperas ni demoras.' },
   { q: '¿Cuánto cuesta la recolección?', a: 'No cobramos flete por recoger el material (según el tipo de metal y el volumen a partir de 300 kg). Coordinamos vehículo propio y te pagamos de contado al terminar de pesar.' },
 ];
 ---
@@ -39,7 +39,7 @@ const faqs = [
         </li>
         <li class="rounded-xl border border-brand-100 bg-white p-5 shadow-sm">
           <h3 class="text-xl font-bold text-brand-700">3. Pesamos y te pagamos en el acto</h3>
-          <p class="mt-1 text-sm text-ink/80">Cargamos, pesamos frente a ti y te transferimos o entregamos efectivo al momento.</p>
+          <p class="mt-1 text-sm text-ink/80">Cargamos, pesamos frente a ti y te entregamos el dinero en efectivo al instante.</p>
         </li>
       </ol>
     </section>
