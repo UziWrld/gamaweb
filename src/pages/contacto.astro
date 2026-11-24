@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import QuoteForm from '../components/QuoteForm.astro';
+import { Image } from 'astro:assets';
+import fachadaGama from '../assets/bodega/fachada-gama.jpg';
 import { PAGES } from '../data/seo';
 import { SITE } from '../data/site';
 import { waLink, generalMessage } from '../lib/whatsapp';
@@ -20,10 +22,27 @@ const siteUrl = Astro.site!.origin;
     <div>
       <h2 class="text-4xl text-brand-900">Dónde encontrarnos</h2>
       <address class="mt-4 text-lg not-italic">
-        <p><strong>{SITE.address.street}</strong>, {SITE.city}, {SITE.region}</p>
+        <p class="font-bold text-brand-900">{SITE.address.street}</p>
+        <p class="text-ink/80">{SITE.city}, {SITE.region}</p>
         <p class="text-sm text-ink/70">Plus code: {SITE.address.plusCode}</p>
       </address>
       <a class="btn btn-outline mt-4" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar en Google Maps</a>
+
+      <!-- Fachada real del negocio -->
+      <div class="mt-6 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm">
+        <Image
+          src={fachadaGama}
+          alt={`Fachada exterior de Chatarrería Gama en ${SITE.address.street}, Bucaramanga`}
+          widths={[400, 800]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          class="aspect-[4/3] w-full object-cover"
+          loading="eager"
+        />
+        <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
+          <span>Fachada en Carrera 11 # 23-35</span>
+          <span class="text-copper-400">Portón de acceso vehicular</span>
+        </div>
+      </div>
 
       <h2 class="mt-10 text-4xl text-brand-900">Horario de atención</h2>
       <table class="mt-4 w-full max-w-md text-left">

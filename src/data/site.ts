@@ -16,8 +16,8 @@ export const SITE = {
     plusCode: '4VF9+J5 Bucaramanga',
   },
   geo: { lat: 7.1241, lng: -73.132 },
-  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Carrera 11 # 23-35 Bucaramanga')}`,
-  gbpUrl: '',
+  mapsUrl: 'https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9',
+  gbpUrl: 'https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9',
 
   phones: [
     { label: 'WhatsApp principal', display: '316 270 0257', e164: '+573162700257', wa: '573162700257' },
@@ -35,7 +35,7 @@ export const SITE = {
     zones: ['Bucaramanga', 'Floridablanca', 'Girón', 'Piedecuesta'],
   },
 
-  sameAs: [] as string[],
+  sameAs: ['https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9'],
   yearsOfExperience: '20',
 } as const;
 

@@ -1,3 +1,9 @@
+import type { ImageMetadata } from 'astro';
+import cobreImg from '../assets/materiales/cobre.jpg';
+import aluminioImg from '../assets/materiales/aluminio.jpg';
+import bronceImg from '../assets/materiales/bronce.jpg';
+import bateriasImg from '../assets/materiales/baterias.jpg';
+
 export interface Material {
   slug: string;
   name: string;
@@ -12,6 +18,8 @@ export interface Material {
   intro: string;
   tips: string[];
   faqs?: { q: string; a: string }[];
+  image?: ImageMetadata;
+  imageAlt?: string;
 }
 
 export const MATERIALS: Material[] = [
@@ -22,6 +30,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Cu',
     number: '29',
     priority: 1,
+    image: cobreImg,
+    imageAlt: 'Bobinas de cable de cobre limpio y brillante recibido en Gama Metales Bucaramanga',
     short: 'Tubería, cable pelado brillante, cable encauchetado y cobre mixto. Pesaje exacto y pago de contado.',
     metaTitle: 'Compra de Cobre en Bucaramanga | Gama Metales',
     metaDescription: 'Compra de cobre en Bucaramanga: cobre brillante, 1B y mixto. Cotiza por WhatsApp con tu peso y fotos y vende hoy en Gama Metales.',
@@ -44,6 +54,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Al',
     number: '13',
     priority: 1,
+    image: aluminioImg,
+    imageAlt: 'Perfiles de aluminio estructural limpio para reciclaje en Bucaramanga',
     short: 'Perfil de ventana, ollas, rines, culatas y guayas. Limpio paga mucho más que contaminado.',
     metaTitle: 'Compra de Aluminio en Bucaramanga | Gama Metales',
     metaDescription: 'Compra de aluminio en Bucaramanga: perfil, ollas, potes, guaya y rines. Mientras más limpio, mejor se cotiza. Pide el precio del día por WhatsApp.',
@@ -85,6 +97,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Cu·Sn',
     number: '29·50',
     priority: 2,
+    image: bronceImg,
+    imageAlt: 'Piezas, llaves y racores de bronce y latón para reciclaje en Bucaramanga',
     short: 'Grifería, llaves, válvulas, piezas de torno y radiadores de cobre, mixtos o aluminio.',
     metaTitle: 'Compra de Bronce y Radiadores en Bucaramanga',
     metaDescription: 'Compramos bronce y radiadores de cobre, mixtos y de aluminio en Bucaramanga. Envía fotos y peso por WhatsApp y recibe tu cotización del día.',
@@ -102,6 +116,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Pb',
     number: '82',
     priority: 2,
+    image: bateriasImg,
+    imageAlt: 'Baterías automotrices usadas de plomo-ácido para reciclaje en Bucaramanga',
     short: 'Baterías de auto, camión, moto y plantas eléctricas. Te pagamos según tamaño y referencia.',
     metaTitle: 'Compra de Baterías Usadas en Bucaramanga | Gama Metales',
     metaDescription: 'Compra de baterías usadas en Bucaramanga: de carro, camión, moto y estacionarias. Cotiza por WhatsApp según el tipo de batería y la cantidad.',

@@ -1,6 +1,7 @@
 ---
 import type { Material } from '../data/materials';
 import { waLink, quoteMessage } from '../lib/whatsapp';
+import { Image } from 'astro:assets';
 
 interface Props { material: Material; level?: 'h2' | 'h3' }
 const { material: m, level = 'h3' } = Astro.props;
@@ -89,13 +90,29 @@ const theme = METAL_THEMES[m.slug] ?? {
   theme.cardBorderHover
 ]}>
   <!-- Barra de acento metalúrgico superior -->
-  <div class:list={['absolute left-0 top-0 h-1.5 w-full', theme.accentBar]}></div>
+  <div class:list={['absolute left-0 top-0 h-1.5 w-full z-10', theme.accentBar]}></div>
 
-  <div class="flex items-start gap-4 pt-1">
-    <!-- Ficha con identidad metalúrgica -->
-    <div class:list={['relative flex h-20 w-20 flex-none flex-col justify-between rounded-lg border p-2 shadow-inner', theme.tileBg, theme.tileBorder, theme.tileText]} aria-hidden="true">
-      <span class="text-[10px] font-bold leading-none tracking-wider opacity-80">{m.number}</span>
-      <span class:list={['font-display font-extrabold leading-none', compact ? 'text-xl' : 'text-4xl']}>{m.symbol}</span>
+  {m.image ? (
+    <div class="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden bg-brand-950">
+      <Image
+        src={m.image}
+        alt={m.imageAlt || `Compra de ${m.name} en Bucaramanga`}
+        widths={[320, 480, 640]}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+      
+      <!-- Ficha metalúrgica flotante sobre la foto -->
+      <div class:list={['absolute bottom-3 left-3 flex h-12 w-14 flex-col justify-between rounded-lg border p-1.5 shadow-md backdrop-blur-sm', theme.tileBg, theme.tileBorder, theme.tileText]} aria-hidden="true">
+        <span class="text-[9px] font-bold leading-none tracking-wider opacity-80">{m.number}</span>
+        <span class:list={['font-display font-extrabold leading-none', compact ? 'text-sm' : 'text-xl']}>{m.symbol}</span>
+      </div>
+
+      <div class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-copper-300 backdrop-blur-sm border border-white/10">
+        Material real
+      </div>
     </div>
     <div>
       <Heading class="text-2xl text-brand-900">
@@ -103,7 +120,21 @@ const theme = METAL_THEMES[m.slug] ?? {
       </Heading>
       <p class="mt-1 text-sm text-ink/80 leading-snug">{m.short}</p>
     </div>
-  </div>
+  ) : (
+    <div class="flex items-start gap-4 pt-1">
+      <!-- Ficha con identidad metalúrgica -->
+      <div class:list={['relative flex h-20 w-20 flex-none flex-col justify-between rounded-lg border p-2 shadow-inner', theme.tileBg, theme.tileBorder, theme.tileText]} aria-hidden="true">
+        <span class="text-[10px] font-bold leading-none tracking-wider opacity-80">{m.number}</span>
+        <span class:list={['font-display font-extrabold leading-none', compact ? 'text-xl' : 'text-4xl']}>{m.symbol}</span>
+      </div>
+      <div>
+        <Heading class="text-2xl text-brand-900">
+          <a href={`/materiales/${m.slug}/`} class="hover:text-brand-700 transition">{m.name}</a>
+        </Heading>
+        <p class="mt-1 text-sm text-ink/80 leading-snug">{m.short}</p>
+      </div>
+    </div>
+  )}
 
   <ul class="mt-4 flex flex-wrap gap-1.5 text-xs">
     {m.items.slice(0, 4).map((i) => (

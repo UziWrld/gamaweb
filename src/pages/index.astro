@@ -238,9 +238,21 @@ const clientSegments = [
   <!-- GALERÍA (solo si hay fotos) -->
   {GALLERY.length > 0 && (
     <section class="container-x pb-14" aria-labelledby="bodega">
-      <h2 id="bodega" class="text-4xl text-brand-900 sm:text-5xl">Nuestra bodega en Bucaramanga</h2>
-      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {GALLERY.map((g) => <Image src={g.src} alt={g.alt} widths={[400, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="aspect-[4/3] w-full rounded-xl object-cover" loading="lazy" />)}
+      <h2 id="bodega" class="text-4xl text-brand-900 sm:text-5xl">Nuestra bodega y materiales en Bucaramanga</h2>
+      <p class="mt-2 text-ink/80 max-w-2xl">Instalaciones con pesaje a la vista, portón de acceso vehicular y compra de metales de alta cotización de contado.</p>
+      <div class:list={[
+        'mt-6 grid gap-5',
+        GALLERY.length === 1 ? 'max-w-2xl' : 'sm:grid-cols-2 lg:grid-cols-3'
+      ]}>
+        {GALLERY.map((g) => (
+          <div class="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:shadow-md">
+            <Image src={g.src} alt={g.alt} widths={[400, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+            <div class="p-3.5 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
+              <span class="truncate pr-2">{g.alt}</span>
+              <span class="text-copper-400 flex-none">{g.label}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   )}
