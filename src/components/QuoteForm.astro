@@ -34,11 +34,11 @@ import { waLink, generalMessage } from '../lib/whatsapp';
       const kg = String(d.get('kg') ?? '').trim();
       const zona = String(d.get('zona') ?? '').trim();
       const text = [
-        `Hola ${form.dataset.brand}, quiero cotizar: *${d.get('material')}*.`,
+        `Hola ${form.dataset.brand}, tengo *${d.get('material')}* para vender y quisiera cotizar el precio de hoy:`,
         `- Peso aproximado: ${kg ? kg + ' kg' : '___ kg'}`,
-        `- ¿Necesita recolección?: ${d.get('pickup') ? 'Sí' : 'No, lo llevo a la bodega'}`,
+        `- Entrega: ${d.get('pickup') ? 'Necesito recolección (+300 kg)' : 'Lo llevo a la bodega'}`,
         `- Ubicación o barrio: ${zona || '___'}`,
-        `Te envío una foto del material en el siguiente mensaje.`,
+        `Ya les comparto fotos del material.`,
       ].join('\n');
       link.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(text)}`;
     };
