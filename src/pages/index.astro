@@ -42,36 +42,41 @@ const clientSegments = [
 <Layout {...PAGES.home} jsonLd={[websiteSchema(siteUrl), businessSchema(siteUrl), faqSchema(HOME_FAQS)]}>
   <!-- HERO -->
   <section class="hero-bg text-white">
-    <div class="container-x grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+    <div class="container-x grid gap-10 py-10 sm:py-20 lg:grid-cols-[1.3fr_1fr] lg:items-center">
       <div>
-        <p class="mb-4 inline-block rounded bg-copper-500 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-brand-950">
-          +{SITE.yearsOfExperience} años de servicio · Pesaje exacto · Pago de contado
-        </p>
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl">
-          Chatarrería en Bucaramanga: <span class="text-copper-500">compramos tu chatarra y metales al mejor precio</span>
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-copper-500/30 bg-copper-500/10 px-3.5 py-1 text-xs font-bold text-copper-400 backdrop-blur-sm">
+          <span class="h-2 w-2 rounded-full bg-copper-400"></span>
+          <span>+{SITE.yearsOfExperience} años en Bucaramanga · Pesaje exacto</span>
+        </div>
+        <h1 class="font-display font-extrabold uppercase text-3xl sm:text-5xl lg:text-6xl leading-[1.05] sm:leading-[0.95] tracking-tight">
+          Chatarrería en Bucaramanga <span class="text-copper-400 block sm:inline sm:ml-2">al mejor precio</span>
         </h1>
-        <p class="mt-6 max-w-xl text-base sm:text-lg text-white/90 leading-relaxed">
-          Cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje transparente frente a ti</strong>, pago inmediato de contado y recolección a domicilio desde {SITE.pickup.minKg} kg.
+        <p class="mt-4 max-w-xl text-base sm:text-lg text-white/85 leading-relaxed">
+          Compramos cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje transparente a la vista</strong> y pago en efectivo al instante.
         </p>
         
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
-          <a class="btn btn-ghost w-full sm:w-auto text-base sm:text-lg text-center" href="/materiales/">Ver qué compramos</a>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg font-extrabold text-center py-3.5 px-6 shadow-md shadow-wa/20" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">
+            Cotizar por WhatsApp
+          </a>
+          <a class="btn btn-ghost w-full sm:w-auto text-base sm:text-lg text-center py-3.5 px-5 hover:bg-white/10" href="/materiales/">
+            Ver materiales
+          </a>
         </div>
 
-        <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm font-semibold text-white/80">
-          <span class="flex items-center gap-1.5"><span class="text-copper-500 font-bold">✓</span> Báscula a la vista</span>
-          <span class="flex items-center gap-1.5"><span class="text-copper-500 font-bold">✓</span> Efectivo al instante</span>
-          <span class="flex items-center gap-1.5"><span class="text-copper-500 font-bold">✓</span> Precios actualizados del día</span>
+        <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs sm:text-sm font-semibold text-white/75">
+          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Báscula a la vista</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Efectivo al instante</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Precios del día</span>
         </div>
       </div>
 
-      <!-- Tarjeta de cotización directa para vendedores (filtra curiosos y competencia) -->
-      <aside class="sm:rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-5 sm:p-6 text-white shadow-2xl border-opacity-100" aria-label="Cotización de material">
+      <!-- Tarjeta de cotización en columna derecha para pantallas grandes (en móvil se oculta para no saturar) -->
+      <aside class="hidden lg:block rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-6 text-white shadow-2xl" aria-label="Cotización de material">
         <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Venta directa de material</p>
-        <p class="mt-1 font-display text-3xl sm:text-4xl font-extrabold uppercase text-white">¿Tienes material para vender?</p>
+        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-white">¿Tienes material para vender?</p>
         <p class="mt-2 text-sm text-white/80">Indícanos qué metal tienes, peso estimado y fotos para darte la cotización exacta del kilo hoy.</p>
-        <a class="btn btn-primary mt-5 w-full text-sm sm:text-base font-extrabold text-center py-3" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Cotizar mi material por WhatsApp</a>
+        <a class="btn btn-primary mt-5 w-full text-base font-extrabold text-center py-3.5" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Cotizar mi material por WhatsApp</a>
         <p class="mt-3 text-center text-xs text-white/60">Pago en efectivo al instante · Lunes a sábado</p>
       </aside>
     </div>
