@@ -19,8 +19,8 @@ export const SITE = {
   gbpUrl: 'https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9',
 
   phones: [
-    { label: 'WhatsApp principal', display: '316 270 0257', e164: '+573162700257', wa: '573162700257' },
-    { label: 'WhatsApp / llamadas', display: '317 645 9772', e164: '+573176459772', wa: '573176459772' },
+    { label: 'WhatsApp principal', display: '317 645 9772', e164: '+573176459772', wa: '573176459772' },
+    { label: 'WhatsApp / llamadas', display: '316 270 0257', e164: '+573162700257', wa: '573162700257' },
   ],
 
   hours: [

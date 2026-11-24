@@ -66,13 +66,13 @@ const clientSegments = [
         </div>
       </div>
 
-      <!-- Tarjeta "lista de precios del día" (diferenciador + conversión) -->
-      <aside class="rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-6 text-white shadow-2xl border-opacity-100" aria-label="Lista de precios del día">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Actualizada todos los días</p>
-        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-white">Lista de precios de hoy</p>
-        <p class="mt-2 text-sm text-white/80">El valor del kilo cambia a diario en el mercado. Pídela por WhatsApp y te damos el precio exacto en minutos.</p>
-        <a class="btn btn-primary mt-5 w-full text-base" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Pedir precios de hoy por WhatsApp</a>
-        <p class="mt-3 text-center text-xs text-white/60">Atención rápida · Lunes a sábado</p>
+      <!-- Tarjeta de cotización directa para vendedores (filtra curiosos y competencia) -->
+      <aside class="rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-6 text-white shadow-2xl border-opacity-100" aria-label="Cotización de material">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Venta directa de material</p>
+        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-white">¿Tienes material para vender?</p>
+        <p class="mt-2 text-sm text-white/80">Indícanos qué metal tienes, peso estimado y fotos para darte la cotización exacta del kilo hoy.</p>
+        <a class="btn btn-primary mt-5 w-full text-base font-extrabold" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Cotizar mi material por WhatsApp</a>
+        <p class="mt-3 text-center text-xs text-white/60">Pago inmediato de contado · Lunes a sábado</p>
       </aside>
     </div>
 

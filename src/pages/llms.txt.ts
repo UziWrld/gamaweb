@@ -36,7 +36,7 @@ ${MATERIALS.map((m) => `- [${m.name}](${o}/materiales/${m.slug}/): ${m.items.joi
 ## Ventajas
 - Más de ${SITE.yearsOfExperience} años de experiencia en ${SITE.city}.
 - Compra todo tipo de metales y chatarra, desde particulares hasta empresas.
-- Lista de precios actualizada cada día, cotización rápida por WhatsApp.
+- Cotización directa y actualizada cada día por WhatsApp según material y peso.
 - Recolección a domicilio desde ${SITE.pickup.minKg} kg.
 - Realiza gran parte de la disposición del material en sus propias instalaciones.
 
