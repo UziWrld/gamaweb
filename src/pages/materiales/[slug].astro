@@ -35,11 +35,11 @@ const ld = [
           </div>
           <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold">{m.h1}</h1>
           <p class="mt-4 max-w-2xl text-lg text-white/85 leading-relaxed">{m.intro}</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="btn btn-wa text-base sm:text-lg" href={waLink(quoteMessage({ material: m.name }))} target="_blank" rel="noopener noreferrer">
-              Cotizar {m.name.toLowerCase()} ahora
+          <div class="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+            <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(quoteMessage({ material: m.name }))} target="_blank" rel="noopener noreferrer">
+              Cotizar {m.shortName?.toLowerCase() ?? m.name.toLowerCase()} ahora
             </a>
-            <a class="btn btn-ghost text-base sm:text-lg" href={waLink(quoteMessage({ material: m.name, pickup: true }))} target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-ghost w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(quoteMessage({ material: m.name, pickup: true }))} target="_blank" rel="noopener noreferrer">
               Pedir recolección (+300 kg)
             </a>
           </div>

@@ -47,16 +47,16 @@ const clientSegments = [
         <p class="mb-4 inline-block rounded bg-copper-500 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-brand-950">
           +{SITE.yearsOfExperience} años de servicio · Pesaje exacto · Pago de contado
         </p>
-        <h1 class="text-5xl sm:text-7xl">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl">
           Chatarrería en Bucaramanga: <span class="text-copper-500">compramos tu chatarra y metales al mejor precio</span>
         </h1>
-        <p class="mt-6 max-w-xl text-lg text-white/90 leading-relaxed">
+        <p class="mt-6 max-w-xl text-base sm:text-lg text-white/90 leading-relaxed">
           Cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje transparente frente a ti</strong>, pago inmediato de contado y recolección a domicilio desde {SITE.pickup.minKg} kg.
         </p>
         
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
-          <a class="btn btn-ghost text-lg" href="/materiales/">Ver qué compramos</a>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+          <a class="btn btn-ghost w-full sm:w-auto text-base sm:text-lg text-center" href="/materiales/">Ver qué compramos</a>
         </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm font-semibold text-white/80">
@@ -67,12 +67,12 @@ const clientSegments = [
       </div>
 
       <!-- Tarjeta de cotización directa para vendedores (filtra curiosos y competencia) -->
-      <aside class="rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-6 text-white shadow-2xl border-opacity-100" aria-label="Cotización de material">
+      <aside class="sm:rotate-1 rounded-2xl border-4 border-copper-500 bg-brand-900/95 p-5 sm:p-6 text-white shadow-2xl border-opacity-100" aria-label="Cotización de material">
         <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Venta directa de material</p>
-        <p class="mt-1 font-display text-4xl font-extrabold uppercase text-white">¿Tienes material para vender?</p>
+        <p class="mt-1 font-display text-3xl sm:text-4xl font-extrabold uppercase text-white">¿Tienes material para vender?</p>
         <p class="mt-2 text-sm text-white/80">Indícanos qué metal tienes, peso estimado y fotos para darte la cotización exacta del kilo hoy.</p>
-        <a class="btn btn-primary mt-5 w-full text-base font-extrabold" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Cotizar mi material por WhatsApp</a>
-        <p class="mt-3 text-center text-xs text-white/60">Pago inmediato de contado · Lunes a sábado</p>
+        <a class="btn btn-primary mt-5 w-full text-sm sm:text-base font-extrabold text-center py-3" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">Cotizar mi material por WhatsApp</a>
+        <p class="mt-3 text-center text-xs text-white/60">Pago en efectivo al instante · Lunes a sábado</p>
       </aside>
     </div>
 
@@ -216,14 +216,14 @@ const clientSegments = [
         ))}
       </ol>
       <div class="mt-10 text-center">
-        <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Iniciar cotización por WhatsApp</a>
+        <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Iniciar cotización por WhatsApp</a>
       </div>
     </div>
   </section>
 
   <!-- EMPRESAS (EVERGREEN) -->
   <section class="container-x py-14" aria-labelledby="empresas">
-    <div class="grid items-center gap-6 rounded-2xl bg-brand-900 p-8 sm:p-10 text-white border-2 border-copper-500/40 md:grid-cols-[1fr_auto]">
+    <div class="grid items-center gap-6 rounded-2xl bg-brand-900 p-6 sm:p-10 text-white border-2 border-copper-500/40 md:grid-cols-[1fr_auto]">
       <div>
         <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Atención B2B e Industrial</p>
         <h2 id="empresas" class="mt-1 text-3xl sm:text-4xl">¿Tienes chatarra o maquinaria en tu empresa o taller?</h2>
@@ -231,7 +231,7 @@ const clientSegments = [
           Compramos excedentes metálicos, retales de obra, tubería y maquinaria en desuso a talleres, constructoras y fábricas en Bucaramanga y área metropolitana. Pago de contado inmediato y logística de transporte.
         </p>
       </div>
-      <a class="btn btn-primary text-base whitespace-nowrap" href="/empresas/">Cotizar para mi empresa</a>
+      <a class="btn btn-primary w-full md:w-auto text-base text-center" href="/empresas/">Cotizar para mi empresa</a>
     </div>
   </section>
 
@@ -302,7 +302,7 @@ const clientSegments = [
 
       <!-- Un solo botón de cómo llegar -->
       <a
-        class="btn btn-primary mt-5 inline-flex items-center gap-2 text-base font-bold shadow-sm"
+        class="btn btn-primary mt-5 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm"
         href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
         id="btn-nav-home"
       >

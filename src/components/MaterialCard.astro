@@ -147,7 +147,7 @@ const theme = METAL_THEMES[m.slug] ?? {
   <!-- Bloque de conversión con llamada única y directa -->
   <div class="mt-auto pt-5">
     <a
-      class="btn btn-primary w-full text-base font-extrabold shadow-sm hover:shadow-md transition"
+      class="btn btn-primary w-full text-sm sm:text-base font-extrabold shadow-sm hover:shadow-md transition text-center py-2.5 sm:py-3 px-3 sm:px-4"
       href={waLink(quoteMessage({ material: m.name }))}
       target="_blank"
       rel="noopener noreferrer"
@@ -157,7 +157,7 @@ const theme = METAL_THEMES[m.slug] ?? {
         <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2z" />
         <path fill="#22c55e" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
       </svg>
-      <span>Cotizar {m.name}</span>
+      <span class="whitespace-nowrap">Cotizar {m.shortName ?? m.name}</span>
     </a>
   </div>
 </article>

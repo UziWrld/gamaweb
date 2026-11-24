@@ -10,6 +10,7 @@ import plomoImg from '../assets/materiales/plomo.jpg';
 export interface Material {
   slug: string;
   name: string;
+  shortName?: string;
   h1: string;
   symbol: string;
   number: string;
@@ -29,6 +30,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'cobre',
     name: 'Cobre',
+    shortName: 'Cobre',
     h1: 'Compra de cobre en Bucaramanga',
     symbol: 'Cu',
     number: '29',
@@ -53,6 +55,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'aluminio',
     name: 'Aluminio',
+    shortName: 'Aluminio',
     h1: 'Compra de aluminio en Bucaramanga',
     symbol: 'Al',
     number: '13',
@@ -76,6 +79,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'chatarra-hierro-acero',
     name: 'Chatarra de hierro y acero',
+    shortName: 'Hierro y Acero',
     h1: 'Compra de chatarra de hierro y acero en Bucaramanga',
     symbol: 'Fe',
     number: '26',
@@ -98,6 +102,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'bronce-y-radiadores',
     name: 'Bronce y radiadores',
+    shortName: 'Bronce',
     h1: 'Compra de bronce y radiadores en Bucaramanga',
     symbol: 'Cu·Sn',
     number: '29·50',
@@ -117,6 +122,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'baterias',
     name: 'Baterías usadas',
+    shortName: 'Baterías',
     h1: 'Compra de baterías usadas en Bucaramanga',
     symbol: 'Pb',
     number: '82',
@@ -136,6 +142,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'plomo-y-antimonio',
     name: 'Plomo y antimonio',
+    shortName: 'Plomo',
     h1: 'Compra de plomo y antimonio en Bucaramanga',
     symbol: 'Pb',
     number: '82',
@@ -154,6 +161,7 @@ export const MATERIALS: Material[] = [
   {
     slug: 'electrodomesticos',
     name: 'Neveras, lavadoras y televisores',
+    shortName: 'Electrodomésticos',
     h1: 'Compra de neveras, lavadoras y televisores usados en Bucaramanga',
     symbol: 'Cu·Al·Fe',
     number: '',

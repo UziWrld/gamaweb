@@ -11,9 +11,9 @@ import { waLink, generalMessage } from '../lib/whatsapp';
       <p class="font-display text-8xl font-extrabold text-copper-500" aria-hidden="true">404</p>
       <h1 class="text-4xl sm:text-6xl">Página no encontrada</h1>
       <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">Esta página no existe o cambió de lugar. Mientras tanto, consulta los metales que compramos o cotiza directo por WhatsApp.</p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a class="btn btn-wa text-lg" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
-        <a class="btn btn-ghost text-lg" href="/">Ir al inicio</a>
+      <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+        <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+        <a class="btn btn-ghost w-full sm:w-auto text-base sm:text-lg text-center" href="/">Ir al inicio</a>
       </div>
     </div>
     <div class="hazard" aria-hidden="true"></div>

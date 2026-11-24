@@ -28,7 +28,7 @@ const siteUrl = Astro.site!.origin;
 
       <!-- Un solo botón de cómo llegar -->
       <a
-        class="btn btn-primary mt-4 inline-flex items-center gap-2 text-base font-bold shadow-sm"
+        class="btn btn-primary mt-4 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm"
         href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
         id="btn-nav"
       >

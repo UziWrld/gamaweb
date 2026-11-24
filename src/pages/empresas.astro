@@ -12,7 +12,7 @@ const siteUrl = Astro.site!.origin;
     <div class="container-x py-14 sm:py-20">
       <h1 class="max-w-4xl text-5xl sm:text-6xl">Venta de chatarra y excedentes de metal para empresas en <span class="text-copper-500">Bucaramanga</span></h1>
       <p class="mt-5 max-w-2xl text-lg text-white/85">Compramos excedentes metálicos, retales de obra, tubería y maquinaria fuera de servicio a constructoras, talleres e industrias. Pesaje exacto, pago de contado inmediato y recolección desde {SITE.pickup.minKg} kg.</p>
-      <a class="btn btn-wa mt-7 text-lg" href={waLink(quoteMessage({ material: 'Excedentes de metal de mi empresa', pickup: true }))} target="_blank" rel="noopener noreferrer">Cotizar para mi empresa</a>
+      <a class="btn btn-wa mt-7 w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(quoteMessage({ material: 'Excedentes de metal de mi empresa', pickup: true }))} target="_blank" rel="noopener noreferrer">Cotizar para mi empresa</a>
     </div>
     <div class="hazard" aria-hidden="true"></div>
   </section>
