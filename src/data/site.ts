@@ -24,14 +24,15 @@ export const SITE = {
   ],
 
   hours: [
-    { label: 'Lunes a viernes', display: '7:00 a. m. a 5:30 p. m.', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '17:30' },
-    { label: 'Sábados', display: '7:00 a. m. a 1:30 p. m.', days: ['Saturday'], opens: '07:00', closes: '13:30' },
+    { label: 'Lunes a viernes', display: '7:00 a. m. a 5:30 p. m. (jornada continua)', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '17:30' },
+    { label: 'Sábados', display: '7:00 a. m. a 1:30 p. m. (jornada continua)', days: ['Saturday'], opens: '07:00', closes: '13:30' },
   ],
-  closedNote: 'Domingos y festivos cerrado.',
+  closedNote: 'Atención en jornada continua (abierto al mediodía). Domingos y festivos cerrado.',
 
   pickup: {
     minKg: 300,
     zones: ['Bucaramanga', 'Floridablanca', 'Girón', 'Piedecuesta'],
+    noFreightNote: 'Sin costo de flete según tipo y volumen de material.',
   },
 
   sameAs: ['https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9'],

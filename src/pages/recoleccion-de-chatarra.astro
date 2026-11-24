@@ -11,7 +11,7 @@ const faqs = [
   { q: '¿Desde cuántos kilos recogen la chatarra a domicilio?', a: `Realizamos recolección a domicilio a partir de ${SITE.pickup.minKg} kg en Bucaramanga y municipios cercanos.` },
   { q: '¿Qué zonas cubren?', a: `Atendemos ${SITE.pickup.zones.join(', ')}. Escríbenos tu ubicación exacta y coordinamos la visita.` },
   { q: '¿Cómo y cuándo me pagan en la recolección?', a: 'Pesamos el material directamente frente a ti en el punto de recogida y te pagamos de contado en el acto (en efectivo o transferencia por Nequi/Daviplata).' },
-  { q: '¿Cuánto cuesta la recolección?', a: 'El transporte se descuenta o se incluye dentro de la liquidación global del material dependiendo del volumen y ubicación. Todo queda acordado antes de salir.' },
+  { q: '¿Cuánto cuesta la recolección?', a: 'No cobramos flete por recoger el material (según el tipo de metal y el volumen a partir de 300 kg). Coordinamos vehículo propio y te pagamos de contado al terminar de pesar.' },
 ];
 ---
 
@@ -19,7 +19,7 @@ const faqs = [
   <section class="hero-bg text-white">
     <div class="container-x py-14 sm:py-20">
       <h1 class="max-w-4xl text-5xl sm:text-6xl">Recolección de chatarra a domicilio en <span class="text-copper-500">Bucaramanga</span></h1>
-      <p class="mt-5 max-w-2xl text-lg text-white/85">¿Tienes {SITE.pickup.minKg} kg o más de chatarra o metales? Vamos por ellos a tu casa, taller, obra o empresa. Pesaje exacto a la vista y pago de contado inmediato.</p>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">¿Tienes {SITE.pickup.minKg} kg o más de chatarra o metales? Vamos por ellos a tu casa, taller, obra o empresa sin costo de flete (según tipo y volumen). Pesaje exacto a la vista y pago de contado inmediato.</p>
       <a class="btn btn-wa mt-7 text-lg" href={waLink(quoteMessage({ material: 'Chatarra (varios metales)', pickup: true }))} target="_blank" rel="noopener noreferrer">Solicitar recolección</a>
     </div>
     <div class="hazard" aria-hidden="true"></div>
