@@ -5,6 +5,7 @@ import bronceImg from '../assets/materiales/bronce.jpg';
 import bateriasImg from '../assets/materiales/baterias.jpg';
 import hierroImg from '../assets/materiales/hierro.jpg';
 import electrodomesticosImg from '../assets/materiales/electrodomesticos.jpg';
+import plomoImg from '../assets/materiales/plomo.jpg';
 
 export interface Material {
   slug: string;
@@ -139,6 +140,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Pb',
     number: '82',
     priority: 3,
+    image: plomoImg,
+    imageAlt: 'Tubería y retales de plomo y antimonio para reciclaje en Bucaramanga',
     short: 'Plomo limpio, tubería antigua de plomo, balancines de llanta y antimonio.',
     metaTitle: 'Compra de Plomo y Antimonio en Bucaramanga',
     metaDescription: 'Compra de plomo y antimonio en Bucaramanga: plomo limpio y balancín. Envía el peso aproximado por WhatsApp y te damos la cotización del día.',

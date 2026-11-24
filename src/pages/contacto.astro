@@ -26,37 +26,17 @@ const siteUrl = Astro.site!.origin;
         <p class="text-ink/80">{SITE.city}, {SITE.region}</p>
       </address>
 
-      <!-- Selector de navegación para celular y computador -->
-      <div class="mt-4 flex flex-wrap items-center gap-2.5">
-        <a
-          class="btn btn-primary inline-flex items-center gap-2 text-sm font-bold shadow-sm"
-          href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
-          id="btn-nav-mobile"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="3 11 22 2 13 21 11 13 3 11" />
-          </svg>
-          <span>Cómo llegar (Abrir en tu app)</span>
-        </a>
-
-        <a
-          class="btn btn-outline inline-flex items-center gap-1.5 text-sm font-semibold"
-          href={SITE.mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>Google Maps</span>
-        </a>
-
-        <a
-          class="btn btn-outline inline-flex items-center gap-1.5 text-sm font-semibold"
-          href={`https://waze.com/ul?ll=${SITE.geo.lat},${SITE.geo.lng}&navigate=yes`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>Waze</span>
-        </a>
-      </div>
+      <!-- Un solo botón de cómo llegar -->
+      <a
+        class="btn btn-primary mt-4 inline-flex items-center gap-2 text-base font-bold shadow-sm"
+        href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
+        id="btn-nav"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="3 11 22 2 13 21 11 13 3 11" />
+        </svg>
+        <span>Cómo llegar</span>
+      </a>
 
       <!-- Tarjetas visuales: Fachada y Mapa de Google -->
       <div class="mt-6 grid gap-5 sm:grid-cols-2">
@@ -91,17 +71,15 @@ const siteUrl = Astro.site!.origin;
           ></iframe>
           <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
             <span>Mapa en Google</span>
-            <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer" class="text-copper-400 underline hover:text-copper-300">
-              Ampliar mapa &rarr;
-            </a>
+            <span class="text-copper-400">Cra 11 # 23-35</span>
           </div>
         </div>
       </div>
 
       <script is:inline>
-        const navBtn = document.getElementById('btn-nav-mobile');
-        if (navBtn) {
-          navBtn.addEventListener('click', function(e) {
+        const btn = document.getElementById('btn-nav');
+        if (btn) {
+          btn.addEventListener('click', function(e) {
             const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             if (!isMobile) {
               e.preventDefault();

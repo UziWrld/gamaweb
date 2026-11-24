@@ -285,23 +285,45 @@ const clientSegments = [
           <p class="mt-1 text-xs text-ink/60">{SITE.closedNote}</p>
         </div>
       </address>
-      <div class="mt-5 flex flex-wrap items-center gap-2.5">
-        <a
-          class="btn btn-primary inline-flex items-center gap-2 text-sm font-bold shadow-sm"
-          href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="3 11 22 2 13 21 11 13 3 11" />
-          </svg>
-          <span>Cómo llegar (Abrir en tu app)</span>
-        </a>
-        <a class="btn btn-outline inline-flex items-center gap-1.5 text-sm" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">
-          <span>Google Maps</span>
-        </a>
-        <a class="btn btn-outline inline-flex items-center gap-1.5 text-sm" href={`https://waze.com/ul?ll=${SITE.geo.lat},${SITE.geo.lng}&navigate=yes`} target="_blank" rel="noopener noreferrer">
-          <span>Waze</span>
-        </a>
+      <!-- Mapa embebido de Google Maps -->
+      <div class="mt-5 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm">
+        <iframe
+          src="https://www.google.com/maps?q=Carrera+11+%23+23-35,+Bucaramanga&output=embed"
+          width="100%"
+          height="220"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="w-full h-56"
+          title="Ubicación de Chatarrería Gama Metales en Google Maps"
+        ></iframe>
       </div>
+
+      <!-- Un solo botón de cómo llegar -->
+      <a
+        class="btn btn-primary mt-5 inline-flex items-center gap-2 text-base font-bold shadow-sm"
+        href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
+        id="btn-nav-home"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="3 11 22 2 13 21 11 13 3 11" />
+        </svg>
+        <span>Cómo llegar</span>
+      </a>
+
+      <script is:inline>
+        const btnHome = document.getElementById('btn-nav-home');
+        if (btnHome) {
+          btnHome.addEventListener('click', function(e) {
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            if (!isMobile) {
+              e.preventDefault();
+              window.open('https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9', '_blank', 'noopener,noreferrer');
+            }
+          });
+        }
+      </script>
     </div>
     <div>
       <h2 class="text-4xl text-brand-900 sm:text-5xl">Preguntas frecuentes</h2>

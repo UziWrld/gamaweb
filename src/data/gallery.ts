@@ -6,6 +6,7 @@ import bronceImg from '../assets/materiales/bronce.jpg';
 import bateriasImg from '../assets/materiales/baterias.jpg';
 import hierroImg from '../assets/materiales/hierro.jpg';
 import electrodomesticosImg from '../assets/materiales/electrodomesticos.jpg';
+import plomoImg from '../assets/materiales/plomo.jpg';
 
 export interface GalleryItem {
   src: ImageMetadata;
@@ -43,6 +44,11 @@ export const GALLERY: GalleryItem[] = [
     src: bateriasImg,
     alt: 'Baterías usadas de automotor para reciclaje de plomo',
     label: 'Baterías usadas',
+  },
+  {
+    src: plomoImg,
+    alt: 'Tubería y retales de plomo y antimonio para reciclaje',
+    label: 'Plomo y antimonio',
   },
   {
     src: electrodomesticosImg,
