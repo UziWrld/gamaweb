@@ -26,70 +26,62 @@ async function generateBranding() {
   }
   await sharp(rawData, { raw: rawObj.info }).png().toFile('public/logo-white.png');
 
-  // 2. Extract authentic icon (x: 0 to 611, y: 0 to 603)
-  const iconRaw = await sharp('public/logo.png')
-    .extract({ left: 0, top: 0, width: 611, height: 603 })
-    .trim()
-    .toBuffer();
-
-  // Create square icon with dark background (#0B0F17) for app icons
-  const createSquareAppIcon = async (size) => {
-    const padding = Math.round(size * 0.15);
-    const innerSize = size - padding * 2;
-    const resizedIcon = await sharp(iconRaw)
-      .resize(innerSize, innerSize, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
-      .toBuffer();
-
-    // Dark rounded rect background
-    const bgSvg = `
-      <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-        <rect width="${size}" height="${size}" rx="${Math.round(size * 0.22)}" fill="#0B0F17"/>
-      </svg>
-    `;
-
-    return sharp(Buffer.from(bgSvg))
-      .composite([{ input: resizedIcon, top: padding, left: padding }])
-      .png();
-  };
-
-  // 192x192 & 512x512 & apple-touch-icon (180x180)
-  await (await createSquareAppIcon(512)).toFile('public/icon-512.png');
-  await (await createSquareAppIcon(192)).toFile('public/icon-192.png');
-  await (await createSquareAppIcon(180)).toFile('public/apple-touch-icon.png');
-
-  // 32x32 for favicon.ico
-  const ico32Buffer = await (await createSquareAppIcon(32)).toBuffer();
-  const icoHeader = Buffer.alloc(6);
-  icoHeader.writeUInt16LE(0, 0);
-  icoHeader.writeUInt16LE(1, 2);
-  icoHeader.writeUInt16LE(1, 4);
-
-  const icoDirEntry = Buffer.alloc(16);
-  icoDirEntry.writeUInt8(32, 0);
-  icoDirEntry.writeUInt8(32, 1);
-  icoDirEntry.writeUInt8(0, 2);
-  icoDirEntry.writeUInt8(0, 3);
-  icoDirEntry.writeUInt8(1, 4);
-  icoDirEntry.writeUInt16LE(32, 6);
-  icoDirEntry.writeUInt32LE(ico32Buffer.length, 8);
-  icoDirEntry.writeUInt32LE(22, 12);
-
-  writeFileSync('public/favicon.ico', Buffer.concat([icoHeader, icoDirEntry, ico32Buffer]));
-
-  // SVG Favicon using clean recycling arrows
-  const svgFavicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0B0F17"/>
-  <!-- Clean geometric recycling symbol -->
-  <g fill="#22C55E">
-    <path d="M32 10 L38 20 L26 20 Z" />
-    <path d="M48 38 L54 28 L42 28 Z" />
-    <path d="M16 38 L22 48 L10 48 Z" />
-    <path d="M26 18 C34 18 44 22 46 29 L42 31 C40 26 33 22 26 22 Z" />
-    <path d="M46 33 C48 41 42 50 34 52 L33 48 C39 46 44 39 42 33 Z" />
-    <path d="M28 50 C20 48 16 38 18 30 L22 32 C20 38 23 46 29 47 Z" />
+  // 2. High-contrast Universal Recycling Symbol (ISO 7000-1135 Mobius loop)
+  const svgFavicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#0B0F17"/>
+  <g fill="#22C55E" transform="translate(50, 52) scale(0.85)">
+    <g id="arrow-band">
+      <path d="M -9,-38 L 9,-38 L 9,-30 L 22,-41.5 L 9,-53 L 9,-45 L -9,-45 C -21,-45 -31,-37 -36,-26 L -29,-22 C -25,-31 -18,-38 -9,-38 Z"/>
+    </g>
+    <use href="#arrow-band" transform="rotate(120)"/>
+    <use href="#arrow-band" transform="rotate(240)"/>
   </g>
 </svg>`;
   writeFileSync('public/favicon.svg', svgFavicon);
+
+  // App icons: 512, 192, 180 (apple touch)
+  const svgBuffer = Buffer.from(svgFavicon);
+  await sharp(svgBuffer).resize(512, 512).png().toFile('public/icon-512.png');
+  await sharp(svgBuffer).resize(192, 192).png().toFile('public/icon-192.png');
+  await sharp(svgBuffer).resize(180, 180).png().toFile('public/apple-touch-icon.png');
+
+  // Multi-resolution favicon.ico (16, 32, 48 px)
+  const p16 = await sharp(svgBuffer).resize(16, 16).png().toBuffer();
+  const p32 = await sharp(svgBuffer).resize(32, 32).png().toBuffer();
+  const p48 = await sharp(svgBuffer).resize(48, 48).png().toBuffer();
+
+  const icoImages = [
+    { width: 16, height: 16, buffer: p16 },
+    { width: 32, height: 32, buffer: p32 },
+    { width: 48, height: 48, buffer: p48 }
+  ];
+
+  const icoHeader = Buffer.alloc(6);
+  icoHeader.writeUInt16LE(0, 0);
+  icoHeader.writeUInt16LE(1, 2);
+  icoHeader.writeUInt16LE(icoImages.length, 4);
+
+  let offset = 6 + (16 * icoImages.length);
+  const dirEntries = [];
+  const dataBuffers = [];
+
+  for (const img of icoImages) {
+    const entry = Buffer.alloc(16);
+    entry.writeUInt8(img.width, 0);
+    entry.writeUInt8(img.height, 1);
+    entry.writeUInt8(0, 2);
+    entry.writeUInt8(0, 3);
+    entry.writeUInt16LE(1, 4);
+    entry.writeUInt16LE(32, 6);
+    entry.writeUInt32LE(img.buffer.length, 8);
+    entry.writeUInt32LE(offset, 12);
+
+    dirEntries.push(entry);
+    dataBuffers.push(img.buffer);
+    offset += img.buffer.length;
+  }
+
+  writeFileSync('public/favicon.ico', Buffer.concat([icoHeader, ...dirEntries, ...dataBuffers]));
 
   // 3. Generate OG image (1200x630) based on the business card
   // Convert logo-white to a resized buffer for compositing
