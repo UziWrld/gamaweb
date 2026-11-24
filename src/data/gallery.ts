@@ -4,6 +4,8 @@ import cobreImg from '../assets/materiales/cobre.jpg';
 import aluminioImg from '../assets/materiales/aluminio.jpg';
 import bronceImg from '../assets/materiales/bronce.jpg';
 import bateriasImg from '../assets/materiales/baterias.jpg';
+import hierroImg from '../assets/materiales/hierro.jpg';
+import electrodomesticosImg from '../assets/materiales/electrodomesticos.jpg';
 
 export interface GalleryItem {
   src: ImageMetadata;
@@ -28,6 +30,11 @@ export const GALLERY: GalleryItem[] = [
     label: 'Aluminio estructural',
   },
   {
+    src: hierroImg,
+    alt: 'Chatarra ferrosa pesada, vigas y perfiles de hierro',
+    label: 'Chatarra de hierro',
+  },
+  {
     src: bronceImg,
     alt: 'Piezas, llaves y accesorios de bronce y latón',
     label: 'Bronce y grifería',
@@ -37,5 +44,11 @@ export const GALLERY: GalleryItem[] = [
     alt: 'Baterías usadas de automotor para reciclaje de plomo',
     label: 'Baterías usadas',
   },
+  {
+    src: electrodomesticosImg,
+    alt: 'Aparatos electrodomésticos en desuso para reciclaje',
+    label: 'Electrodomésticos',
+  },
 ];
+
 

@@ -24,25 +24,92 @@ const siteUrl = Astro.site!.origin;
       <address class="mt-4 text-lg not-italic">
         <p class="font-bold text-brand-900">{SITE.address.street}</p>
         <p class="text-ink/80">{SITE.city}, {SITE.region}</p>
-        <p class="text-sm text-ink/70">Plus code: {SITE.address.plusCode}</p>
       </address>
-      <a class="btn btn-outline mt-4" href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar en Google Maps</a>
 
-      <!-- Fachada real del negocio -->
-      <div class="mt-6 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm">
-        <Image
-          src={fachadaGama}
-          alt={`Fachada exterior de Chatarrería Gama en ${SITE.address.street}, Bucaramanga`}
-          widths={[400, 800]}
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          class="aspect-[4/3] w-full object-cover"
-          loading="eager"
-        />
-        <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
-          <span>Fachada en Carrera 11 # 23-35</span>
-          <span class="text-copper-400">Portón de acceso vehicular</span>
+      <!-- Selector de navegación para celular y computador -->
+      <div class="mt-4 flex flex-wrap items-center gap-2.5">
+        <a
+          class="btn btn-primary inline-flex items-center gap-2 text-sm font-bold shadow-sm"
+          href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
+          id="btn-nav-mobile"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="3 11 22 2 13 21 11 13 3 11" />
+          </svg>
+          <span>Cómo llegar (Abrir en tu app)</span>
+        </a>
+
+        <a
+          class="btn btn-outline inline-flex items-center gap-1.5 text-sm font-semibold"
+          href={SITE.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Google Maps</span>
+        </a>
+
+        <a
+          class="btn btn-outline inline-flex items-center gap-1.5 text-sm font-semibold"
+          href={`https://waze.com/ul?ll=${SITE.geo.lat},${SITE.geo.lng}&navigate=yes`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Waze</span>
+        </a>
+      </div>
+
+      <!-- Tarjetas visuales: Fachada y Mapa de Google -->
+      <div class="mt-6 grid gap-5 sm:grid-cols-2">
+        <!-- Fachada real del negocio -->
+        <div class="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm flex flex-col">
+          <Image
+            src={fachadaGama}
+            alt={`Fachada exterior de Chatarrería Gama en ${SITE.address.street}, Bucaramanga`}
+            widths={[400, 800]}
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            class="aspect-[4/3] w-full object-cover flex-1"
+            loading="eager"
+          />
+          <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
+            <span>Fachada en Carrera 11 # 23-35</span>
+            <span class="text-copper-400">Acceso vehicular</span>
+          </div>
+        </div>
+
+        <!-- Mapa embebido de Google Maps -->
+        <div class="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm flex flex-col">
+          <iframe
+            src="https://www.google.com/maps?q=Carrera+11+%23+23-35,+Bucaramanga&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="aspect-[4/3] w-full flex-1 min-h-[220px]"
+            title="Ubicación de Chatarrería Gama Metales en Google Maps"
+          ></iframe>
+          <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
+            <span>Mapa en Google</span>
+            <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer" class="text-copper-400 underline hover:text-copper-300">
+              Ampliar mapa &rarr;
+            </a>
+          </div>
         </div>
       </div>
+
+      <script is:inline>
+        const navBtn = document.getElementById('btn-nav-mobile');
+        if (navBtn) {
+          navBtn.addEventListener('click', function(e) {
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            if (!isMobile) {
+              e.preventDefault();
+              window.open('https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9', '_blank', 'noopener,noreferrer');
+            }
+          });
+        }
+      </script>
 
       <h2 class="mt-10 text-4xl text-brand-900">Horario de atención</h2>
       <table class="mt-4 w-full max-w-md text-left">

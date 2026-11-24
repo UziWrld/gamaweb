@@ -3,6 +3,8 @@ import cobreImg from '../assets/materiales/cobre.jpg';
 import aluminioImg from '../assets/materiales/aluminio.jpg';
 import bronceImg from '../assets/materiales/bronce.jpg';
 import bateriasImg from '../assets/materiales/baterias.jpg';
+import hierroImg from '../assets/materiales/hierro.jpg';
+import electrodomesticosImg from '../assets/materiales/electrodomesticos.jpg';
 
 export interface Material {
   slug: string;
@@ -77,6 +79,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Fe',
     number: '26',
     priority: 1,
+    image: hierroImg,
+    imageAlt: 'Lote de chatarra ferrosa, vigas y perfiles de hierro y acero en Bucaramanga',
     short: 'Varilla, vigas, rejas, lámina, chatarra ferrosa y maquinaria pesada. Recolección desde 300 kg.',
     metaTitle: 'Compra de Chatarra de Hierro y Acero en Bucaramanga',
     metaDescription: 'Compra de chatarra de hierro y acero en Bucaramanga. Recibimos grandes volúmenes y recogemos desde 300 kg. Cotiza por WhatsApp hoy mismo.',
@@ -151,6 +155,8 @@ export const MATERIALS: Material[] = [
     symbol: 'Cu·Al·Fe',
     number: '',
     priority: 2,
+    image: electrodomesticosImg,
+    imageAlt: 'Neveras, lavadoras y aparatos electrodomésticos en desuso para reciclaje en Bucaramanga',
     short: 'Neveras, lavadoras, congeladores y calentadores viejos. Despeja espacio y recibe dinero hoy.',
     metaTitle: 'Compra de Neveras, Lavadoras y TV Usados en Bucaramanga',
     metaDescription: 'Compramos neveras, lavadoras y televisores usados en Bucaramanga. Cotiza por WhatsApp con una foto y consulta por recolección desde 300 kg.',

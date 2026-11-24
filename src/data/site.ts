@@ -11,9 +11,8 @@ export const SITE = {
 
   address: {
     street: 'Carrera 11 # 23-35',
-    neighborhood: '', // TODO: barrio/sector exacto si aplica
+    neighborhood: '',
     postalCode: '',
-    plusCode: '4VF9+J5 Bucaramanga',
   },
   geo: { lat: 7.1241, lng: -73.132 },
   mapsUrl: 'https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9',

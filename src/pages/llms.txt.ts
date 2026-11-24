@@ -12,7 +12,7 @@ export const GET: APIRoute = ({ site }) => {
 > ${SITE.name} es una chatarrería y recicladora de metales en ${SITE.city}, ${SITE.region} (Colombia) con más de ${SITE.yearsOfExperience} años de servicio. Compra cobre, bronce, aluminio, hierro, acero, plomo, baterías, radiadores, rines y electrodomésticos. Cotiza por WhatsApp y hace recolección a domicilio desde ${SITE.pickup.minKg} kg.
 
 ## Datos del negocio
-- Dirección: ${SITE.address.street}, ${SITE.city}, ${SITE.region}, Colombia (plus code ${SITE.address.plusCode})
+- Dirección: ${SITE.address.street}, ${SITE.city}, ${SITE.region}, Colombia
 - WhatsApp y teléfonos: ${phones}
 - Horario: ${hours}. ${SITE.closedNote}
 - Cobertura de recolección: ${SITE.pickup.zones.join(', ')} (desde ${SITE.pickup.minKg} kg)
