@@ -55,12 +55,16 @@ const clientSegments = [
           Compramos cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje transparente a la vista</strong> y pago en efectivo al instante.
         </p>
         
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg font-extrabold text-center py-3.5 px-6 shadow-md shadow-wa/20" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">
-            Cotizar por WhatsApp
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a class="btn btn-wa !rounded-full text-sm sm:text-base font-extrabold py-2.5 px-5 shadow-lg shadow-wa/20 transition hover:scale-[1.02] active:scale-[0.98]" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2z" />
+              <path fill="#22c55e" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
+            </svg>
+            <span>Cotizar por WhatsApp</span>
           </a>
-          <a class="btn btn-ghost w-full sm:w-auto text-base sm:text-lg text-center py-3.5 px-5 hover:bg-white/10" href="/materiales/">
-            Ver materiales
+          <a class="btn btn-ghost !rounded-full text-xs sm:text-sm font-bold py-2.5 px-4 border-white/20 bg-white/5 hover:bg-white/10 transition" href="/materiales/">
+            <span>Ver materiales &darr;</span>
           </a>
         </div>
 
@@ -81,13 +85,38 @@ const clientSegments = [
       </aside>
     </div>
 
-    <!-- Cinta de materiales (CSS puro) -->
-    <div class="overflow-hidden border-y border-white/10 bg-brand-900 py-3" aria-hidden="true">
-      <div class="ticker-track font-display text-2xl font-bold uppercase tracking-widest text-white/80">
-        {[0, 1].map(() => ticker.map((t) => <span class="px-6">{t} <span class="text-copper-500">◆</span></span>))}
+    <!-- Cinta de materiales animada continua -->
+    <div class="overflow-hidden border-y border-white/10 bg-brand-900 py-3.5 select-none" aria-hidden="true">
+      <div class="ticker-track">
+        {[0, 1].map(() => (
+          <div class="flex items-center shrink-0 font-display text-lg sm:text-2xl font-bold uppercase tracking-widest text-white/85">
+            {ticker.map((t) => (
+              <span class="inline-flex items-center px-4 sm:px-6">
+                <span>{t}</span>
+                <span class="text-copper-500 ml-4 sm:ml-6 text-sm">◆</span>
+              </span>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
     <div class="hazard" aria-hidden="true"></div>
+
+    <style is:inline>
+      @keyframes ticker-slide {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+      }
+      .ticker-track {
+        display: flex !important;
+        width: max-content !important;
+        will-change: transform;
+        animation: ticker-slide 26s linear infinite !important;
+      }
+      .ticker-track:hover {
+        animation-play-state: paused !important;
+      }
+    </style>
   </section>
 
   <!-- PILARES DE CONFIANZA -->

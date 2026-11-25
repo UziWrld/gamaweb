@@ -43,12 +43,28 @@
   background: repeating-linear-gradient(-45deg, var(--color-copper-500) 0 14px, var(--color-brand-950) 14px 28px);
 }
 
-/* Cinta de materiales (CSS puro) */
-.ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
-@keyframes ticker { to { transform: translateX(-50%); } }
+/* Cinta de materiales animada continua (Marquee infinito fluido) */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: ticker-slide 26s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker-slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track { animation: none; }
-  html { scroll-behavior: auto; }
+  .ticker-track {
+    animation: none;
+  }
 }
 
 /* Fondo del hero: atmósfera oscura industrial con destellos en verde y azul de la tarjeta */
