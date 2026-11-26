@@ -9,7 +9,7 @@ import { MATERIALS } from '../data/materials';
 import { HOME_FAQS } from '../data/faqs';
 import { REVIEWS } from '../data/reviews';
 import { GALLERY } from '../data/gallery';
-import { waLink, priceListMessage, generalMessage, arrivalMessage } from '../lib/whatsapp';
+import { waLink, generalMessage, arrivalMessage } from '../lib/whatsapp';
 import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
 
 const siteUrl = Astro.site!.origin;
@@ -79,30 +79,37 @@ const clientSegments = [
         </div>
       </div>
 
-      <!-- Tarjeta visual de la bodega en Hero (sustituye el cuadro genérico) -->
-      <aside class="hidden lg:block rounded-2xl border-2 border-copper-500/40 bg-brand-900 overflow-hidden text-white shadow-2xl transition hover:border-copper-500/70" aria-label="Sede física de Chatarrería Gama Metales">
+      <!-- Tarjeta visual de la bodega en Hero (visible en móvil y desktop) -->
+      <aside class="block mt-4 lg:mt-0 rounded-2xl border-2 border-copper-500/40 bg-brand-900/95 overflow-hidden text-white shadow-xl" aria-label="Sede física de Chatarrería Gama Metales">
         <div class="relative">
           <Image
             src={GALLERY[0].src}
             alt={GALLERY[0].alt}
             widths={[400, 700]}
-            sizes="35vw"
-            class="aspect-[16/10] w-full object-cover"
+            sizes="(min-width: 1024px) 35vw, 100vw"
+            class="aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] w-full object-cover"
             loading="eager"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/20 to-transparent"></div>
-          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-bold">
-            <span class="rounded-full bg-brand-950/85 backdrop-blur-md px-3 py-1 text-copper-400 border border-white/10 truncate mr-2">{SITE.address.street}</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/25 to-transparent"></div>
+          <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-950/85 backdrop-blur-md px-2.5 py-1 text-[11px] sm:text-xs font-bold text-copper-400 border border-copper-500/30">
+              <span class="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-copper-400 animate-pulse"></span>
+              <span>Sede física en Bucaramanga</span>
+            </span>
+          </div>
+          <div class="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 flex items-center justify-between text-[11px] sm:text-xs font-bold">
+            <span class="rounded-full bg-brand-950/90 backdrop-blur-md px-2.5 py-1 text-white border border-white/10 truncate mr-2">{SITE.address.street}</span>
             <span class="rounded-full bg-wa/90 backdrop-blur-md px-2.5 py-1 text-white flex-none">Jornada continua</span>
           </div>
         </div>
-        <div class="p-5">
-          <p class="text-xs font-extrabold uppercase tracking-wider text-copper-400">Sede física propia en Bucaramanga</p>
-          <p class="mt-1 font-display text-2xl font-extrabold uppercase text-white leading-tight">Bodega con pesaje transparente</p>
-          <p class="mt-1.5 text-xs text-white/80 leading-relaxed">Báscula electrónica a la vista y descargue bajo techo. Vende tu chatarra con pago en efectivo al instante.</p>
-          <a class="btn btn-primary mt-4 w-full text-sm font-extrabold text-center py-3" href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer">
-            Cotizar mi material por WhatsApp
-          </a>
+        <div class="p-4 sm:p-5">
+          <p class="text-xs font-extrabold uppercase tracking-wider text-copper-400">Pesaje transparente y descargue bajo techo</p>
+          <p class="mt-0.5 font-display text-xl sm:text-2xl font-extrabold uppercase text-white leading-tight">Bodega propia en Bucaramanga</p>
+          <p class="mt-1 text-xs sm:text-sm text-white/80 leading-relaxed">Báscula electrónica a la vista, portón para camiones y pago en efectivo al instante.</p>
+          <div class="mt-3 flex items-center justify-between gap-2 border-t border-white/10 pt-3 text-xs">
+            <span class="text-white/70 font-semibold truncate">Entrada por Carrera 11</span>
+            <a href="#bodega" class="text-copper-400 hover:underline font-extrabold flex-none flex items-center gap-1">Ver fotos de la bodega ↓</a>
+          </div>
         </div>
       </aside>
     </div>
