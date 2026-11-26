@@ -46,9 +46,9 @@ const faqs = [
 
     <section aria-labelledby="zonas">
       <h2 id="zonas" class="text-4xl text-brand-900">Zonas de cobertura</h2>
-      <div class="mt-5 flex flex-wrap gap-2">
-        {SITE.pickup.zones.map((z) => <span class="rounded-full bg-brand-900 px-4 py-2 font-bold text-sm text-white">{z}</span>)}
-      </div>
+      <ul class="mt-5 grid grid-cols-2 gap-2.5 sm:max-w-md">
+        {SITE.pickup.zones.map((z) => <li class="rounded-lg border border-brand-800 bg-brand-900 px-4 py-2.5 font-bold text-sm text-white text-center">{z}</li>)}
+      </ul>
 
       <h2 class="mt-10 text-4xl text-brand-900">Qué enviar por WhatsApp para cotizar rápido</h2>
       <ul class="mt-4 space-y-2 text-ink/85">

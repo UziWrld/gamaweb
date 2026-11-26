@@ -30,11 +30,10 @@ const materialLabel = m.shortName?.toLowerCase() ?? m.name.toLowerCase();
 
       <div class:list={[m.image ? 'grid gap-8 lg:grid-cols-12 lg:items-center' : '']}>
         <div class:list={[m.image ? 'lg:col-span-7' : '']}>
-          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wider text-copper-300">
-            <span class="uppercase">Símbolo:</span>
-            <strong class="font-bold text-white">{m.symbol}</strong>
-            {m.number && <span>• Ref. {m.number}</span>}
-          </div>
+          <p class="mb-3 border-l-2 border-copper-400 pl-3 text-xs font-semibold tracking-wider text-copper-300">
+            <span class="uppercase">Símbolo:</span> <strong class="font-bold text-white">{m.symbol}</strong>
+            {m.number && <span> · Ref. {m.number}</span>}
+          </p>
           <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold">{m.h1}</h1>
           <p class="mt-4 max-w-2xl text-lg text-white/85 leading-relaxed">{m.intro}</p>
           <div class="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
