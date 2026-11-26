@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MaterialCard from '../components/MaterialCard.astro';
-import OtherMaterialCard from '../components/OtherMaterialCard.astro';
 import FaqList from '../components/FaqList.astro';
 import { Image } from 'astro:assets';
 import { SITE } from '../data/site';
@@ -16,29 +15,8 @@ import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
 const siteUrl = Astro.site!.origin;
 const ticker = ['Cobre de primera', 'Aluminio perfil', 'Chatarra ferrosa', 'Baterías 4D/8D', 'Bronce y llaves', 'Radiadores', 'Acero inoxidable', 'Rines de aluminio', 'Neveras viejas', 'Varilla de obra'];
 const interiorPhoto = GALLERY[1];
-
-const clientSegments = [
-  {
-    title: 'Hogares y particulares',
-    desc: 'Neveras, lavadoras, rejas, marcos y chatarra acumulada en el patio o garaje. Despeja espacio en tu casa con atención rápida.',
-    iconKey: 'home',
-  },
-  {
-    title: 'Plomeros y electricistas',
-    desc: 'Precios competitivos por kilo en tubería de cobre, cable pelado, cable encauchetado, grifería y llaves de bronce.',
-    iconKey: 'tools',
-  },
-  {
-    title: 'Talleres mecánicos y montallantas',
-    desc: 'Baterías usadas de carro y camión (N40, 4D, 8D), rines de aluminio, radiadores, culatas y discos de freno.',
-    iconKey: 'workshop',
-  },
-  {
-    title: 'Constructoras y empresas',
-    desc: 'Excedentes metálicos de obras, perfiles, vigas, varilla y maquinaria dada de baja con recolección y logística de cargue incluida.',
-    iconKey: 'building',
-  },
-];
+const featuredMaterials = MATERIALS.filter((m) => m.priority === 1);
+const otherMaterials = MATERIALS.filter((m) => m.priority !== 1);
 ---
 
 <Layout {...PAGES.home} jsonLd={[websiteSchema(siteUrl), businessSchema(siteUrl), faqSchema(HOME_FAQS)]}>
@@ -127,16 +105,12 @@ const clientSegments = [
     </style>
   </section>
 
-  <!-- PILARES DE CONFIANZA -->
-  <section class="container-x py-12" aria-labelledby="garantias">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <h2 id="garantias" class="text-3xl sm:text-4xl text-brand-900">Por qué vender tu material en Gama Metales</h2>
-      <p class="mt-2 text-ink/75">Atención directa en bodega o recolección programada en el área metropolitana.</p>
-    </div>
-    <div class="grid gap-6 md:grid-cols-3">
-      <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-copper-500 mb-5">
-          <svg class="h-6 w-6 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- BANDA COMPACTA DE GARANTÍAS -->
+  <section class="border-b border-slate-200/80 bg-white py-8" aria-label="Garantías de servicio">
+    <div class="container-x grid gap-5 md:grid-cols-3">
+      <div class="flex items-start gap-3.5">
+        <div class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
             <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
             <path d="M7 21h10"/>
@@ -144,29 +118,29 @@ const clientSegments = [
             <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
           </svg>
         </div>
-        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Báscula electrónica a la vista</h3>
-        <p class="mt-2 text-sm text-ink/80 leading-relaxed">
-          Pesamos cada kilo frente a ti en nuestra bodega para que verifiques la lectura en pantalla durante toda la entrega.
-        </p>
+        <div>
+          <h2 class="text-lg font-extrabold text-brand-900">Báscula electrónica a la vista</h2>
+          <p class="mt-0.5 text-sm text-ink/75">Verificas cada kilo en pantalla durante el pesaje.</p>
+        </div>
       </div>
 
-      <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-copper-500 mb-5">
-          <svg class="h-6 w-6 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <div class="flex items-start gap-3.5">
+        <div class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect width="20" height="12" x="2" y="6" rx="2"/>
             <circle cx="12" cy="12" r="2"/>
             <path d="M6 12h.01M18 12h.01"/>
           </svg>
         </div>
-        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Pago en efectivo al momento</h3>
-        <p class="mt-2 text-sm text-ink/80 leading-relaxed">
-          Recibes tu dinero en efectivo apenas termina el pesaje, sin esperas ni trámites adicionales.
-        </p>
+        <div>
+          <h2 class="text-lg font-extrabold text-brand-900">Efectivo al instante</h2>
+          <p class="mt-0.5 text-sm text-ink/75">Liquidación en efectivo apenas termina el pesaje.</p>
+        </div>
       </div>
 
-      <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-copper-500 mb-5">
-          <svg class="h-6 w-6 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <div class="flex items-start gap-3.5">
+        <div class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
             <path d="M15 18H9"/>
             <path d="M19 18h2a1 1 0 0 0 1-1v-5l-3-4h-5v10"/>
@@ -174,114 +148,52 @@ const clientSegments = [
             <circle cx="17" cy="18" r="2"/>
           </svg>
         </div>
-        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Recolección a domicilio (+300 kg)</h3>
-        <p class="mt-2 text-sm text-ink/80 leading-relaxed">
-          No te compliques cargando material pesado. Si tienes 300 kg o más en tu casa, taller u obra en Bucaramanga y el área metropolitana, vamos por él sin costo de flete (según tipo y volumen de material).
-        </p>
+        <div>
+          <h2 class="text-lg font-extrabold text-brand-900">Recolección desde {SITE.pickup.minKg} kg</h2>
+          <p class="mt-0.5 text-sm text-ink/75">
+            Sin costo de flete según tipo y volumen. <a href="/recoleccion-de-chatarra/" class="font-semibold text-brand-700 hover:underline whitespace-nowrap">Ver cobertura →</a>
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SEGMENTOS DE CLIENTE -->
-  <section class="bg-brand-900 py-14 text-white" aria-labelledby="clientes">
-    <div class="container-x">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <h2 id="clientes" class="text-3xl sm:text-5xl">Soluciones a tu medida</h2>
-        <p class="mt-3 text-white/80">Atendemos desde pequeñas entregas de hogar hasta grandes volúmenes industriales.</p>
+  <!-- MATERIALES PRINCIPALES -->
+  <section class="container-x py-12" aria-labelledby="materiales">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div class="max-w-2xl">
+        <h2 id="materiales" class="text-4xl text-brand-900 sm:text-5xl">Qué metales compramos en Bucaramanga</h2>
+        <p class="mt-2 text-ink/80">Los materiales más buscados en bodega. Si tienes otro metal, envíanos una foto por WhatsApp.</p>
       </div>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {clientSegments.map((c) => (
-          <div class="rounded-xl border border-white/15 bg-white/5 p-6 transition hover:bg-white/10">
-            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-copper-400 mb-4">
-              {c.iconKey === 'home' && (
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              )}
-              {c.iconKey === 'tools' && (
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              )}
-              {c.iconKey === 'workshop' && (
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="3"/>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
-              )}
-              {c.iconKey === 'building' && (
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
-                  <path d="M9 22v-4h6v4"/>
-                  <path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/>
-                </svg>
-              )}
-            </div>
-            <h3 class="text-xl font-bold uppercase font-display text-copper-400">{c.title}</h3>
-            <p class="mt-2 text-sm text-white/80 leading-relaxed">{c.desc}</p>
-          </div>
+      <a class="btn btn-outline text-sm font-bold whitespace-nowrap" href="/materiales/">
+        Ver los {MATERIALS.length} materiales →
+      </a>
+    </div>
+
+    <div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredMaterials.map((m) => <MaterialCard material={m} level="h3" />)}
+    </div>
+
+    <!-- Acceso directo al resto del catálogo sin saturar la portada -->
+    <div class="mt-6 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+        <span class="font-bold text-brand-900">También compramos:</span>
+        {otherMaterials.map((m) => (
+          <a href={`/materiales/${m.slug}/`} class="font-semibold text-brand-700 hover:underline">
+            {m.shortName ?? m.name}
+          </a>
         ))}
       </div>
+      <a href="/materiales/" class="text-sm font-bold text-brand-900 hover:text-brand-700 whitespace-nowrap">
+        Explorar catálogo completo →
+      </a>
     </div>
   </section>
 
-  <!-- MATERIALES -->
-  <section class="container-x py-14" aria-labelledby="materiales">
-    <div class="max-w-2xl">
-      <h2 id="materiales" class="text-4xl text-brand-900 sm:text-5xl">Qué metales compramos en Bucaramanga</h2>
-      <p class="mt-3 text-ink/80">Compramos todo tipo de metales y chatarra. Si tienes dudas con algún material específico, envíanos una foto por WhatsApp y te lo confirmamos en minutos.</p>
-    </div>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {MATERIALS.map((m) => <MaterialCard material={m} level="h3" />)}
-      <OtherMaterialCard level="h3" />
-    </div>
-  </section>
-
-  <!-- CÓMO FUNCIONA -->
-  <section class="bg-brand-50 border-y border-brand-100 py-14" aria-labelledby="como">
-    <div class="container-x">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <h2 id="como" class="text-4xl text-brand-900 sm:text-5xl">Cómo vender tu chatarra en 3 pasos sencillos</h2>
-        <p class="mt-2 text-ink/75">Rápido, transparente y sin complicaciones.</p>
-      </div>
-      <ol class="grid gap-5 md:grid-cols-3">
-        {[
-          ['1', 'Escríbenos por WhatsApp', 'Cuéntanos qué metal tienes, el peso estimado y envíanos una foto clara del material.'],
-          ['2', 'Recibe tu cotización del día', 'Te damos el valor por kilo actualizado y confirmamos si requieres recolección.'],
-          ['3', 'Pesamos y liquidamos', 'Llévalo a nuestra bodega en la Cra 11 # 23-35 o coordinamos recogida. Verificamos el peso frente a ti y te pagamos.'],
-        ].map(([n, t, d]) => (
-          <li class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
-            <p class="font-display text-5xl font-extrabold text-copper-500">{n}</p>
-            <h3 class="mt-2 text-2xl text-brand-900">{t}</h3>
-            <p class="mt-2 text-sm text-ink/80 leading-relaxed">{d}</p>
-          </li>
-        ))}
-      </ol>
-      <div class="mt-10 text-center">
-        <a class="btn btn-wa w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">Iniciar cotización por WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EMPRESAS (EVERGREEN) -->
-  <section class="container-x py-14" aria-labelledby="empresas">
-    <div class="grid items-center gap-6 rounded-2xl bg-brand-900 p-6 sm:p-10 text-white border-2 border-copper-500/40 md:grid-cols-[1fr_auto]">
-      <div>
-        <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Atención B2B e Industrial</p>
-        <h2 id="empresas" class="mt-1 text-3xl sm:text-4xl">¿Tienes chatarra o maquinaria en tu empresa o taller?</h2>
-        <p class="mt-3 max-w-2xl text-white/85 text-base leading-relaxed">
-          Compramos excedentes metálicos, retales de obra, tubería y maquinaria en desuso a talleres, constructoras y fábricas en Bucaramanga y área metropolitana. Liquidación directa y logística de transporte.
-        </p>
-      </div>
-      <a class="btn btn-primary w-full md:w-auto text-base text-center" href="/empresas/">Cotizar para mi empresa</a>
-    </div>
-  </section>
-
-  <!-- BODEGA REAL (interior de instalaciones, sin duplicar la fachada del hero) -->
+  <!-- BODEGA REAL + ENLACE B2B -->
   {interiorPhoto && (
-    <section class="container-x pb-14" aria-labelledby="bodega">
-      <div class="rounded-3xl border border-brand-100 bg-white p-6 sm:p-8 shadow-sm">
+    <section class="container-x pb-12" aria-labelledby="bodega">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-center">
           <div class="lg:col-span-6">
             <div class="overflow-hidden rounded-2xl border border-brand-100 bg-brand-900 shadow-sm flex flex-col">
@@ -310,15 +222,15 @@ const clientSegments = [
             <ul class="mt-5 space-y-2.5 text-sm font-medium text-ink/90">
               <li class="flex items-start gap-2.5">
                 <span class="text-copper-500 font-bold text-base leading-none">✓</span>
-                <span><strong>Portón amplio para descargue bajo techo:</strong> Ingreso cómodo de camionetas, camiones y furgones para descargar protegidos de la lluvia.</span>
+                <span><strong>Portón amplio para descargue bajo techo:</strong> Ingreso cómodo de camionetas, camiones y furgones protegidos de la lluvia.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-copper-500 font-bold text-base leading-none">✓</span>
-                <span><strong>Báscula a la vista:</strong> Lectura directa en pantalla durante todo el pesaje frente a quien entrega el material.</span>
+                <span><strong>Atención en jornada continua:</strong> Lunes a viernes de 7:00 a. m. a 5:30 p. m. y sábados de 7:00 a. m. a 1:30 p. m.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-copper-500 font-bold text-base leading-none">✓</span>
-                <span><strong>Atención en jornada continua:</strong> Abierto al mediodía de lunes a viernes (7:00 a. m. a 5:30 p. m.) y sábados (7:00 a. m. a 1:30 p. m.).</span>
+                <span><strong>Atención a talleres y empresas:</strong> Excedentes de obra, maquinaria y retales. <a href="/empresas/" class="font-bold text-brand-700 hover:underline whitespace-nowrap">Ver servicio para empresas →</a></span>
               </li>
             </ul>
             <div class="mt-6 flex flex-wrap gap-3">
