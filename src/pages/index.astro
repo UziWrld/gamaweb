@@ -78,14 +78,14 @@ const clientSegments = [
         </div>
       </div>
 
-      <!-- Fotografía limpia y real de la bodega (sin cuadros, sin píldoras, sin textos encima) -->
-      <div class="mt-2 lg:mt-0">
+      <!-- Fotografía completa y real de la bodega sin recortar -->
+      <div class="mt-4 lg:mt-0 flex justify-center">
         <Image
           src={GALLERY[0].src}
           alt="Fachada e ingreso de Chatarrería Gama Metales en Carrera 11 # 23-35 Bucaramanga"
-          widths={[400, 750]}
-          sizes="(min-width: 1024px) 40vw, 100vw"
-          class="aspect-[4/3] sm:aspect-[16/10] w-full rounded-2xl object-cover shadow-2xl"
+          widths={[400, 750, 1000]}
+          sizes="(min-width: 1024px) 45vw, (min-width: 640px) 75vw, 100vw"
+          class="w-full h-auto max-w-[420px] lg:max-w-none rounded-2xl shadow-2xl"
           loading="eager"
         />
       </div>
@@ -280,7 +280,7 @@ const clientSegments = [
     <section class="container-x pb-14" aria-labelledby="bodega">
       <div class="rounded-3xl border border-brand-100 bg-white p-6 sm:p-8 shadow-sm">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-center">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:col-span-7">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:col-span-7 items-start">
             {GALLERY.map((item) => (
               <div class="overflow-hidden rounded-2xl border border-brand-100 bg-brand-900 shadow-sm flex flex-col">
                 <Image
@@ -288,7 +288,7 @@ const clientSegments = [
                   alt={item.alt}
                   widths={[400, 700]}
                   sizes="(min-width: 1024px) 30vw, 50vw"
-                  class="aspect-[4/3] w-full object-cover"
+                  class="w-full h-auto aspect-[4/5] object-cover"
                   loading="lazy"
                 />
                 <div class="p-3 bg-brand-900 text-white text-xs font-semibold flex items-center justify-between">
