@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'Gama Metales',
-  slogan: 'Pesaje justo y pago inmediato de contado en Bucaramanga.',
+  slogan: 'Compra de metales y chatarra en Bucaramanga con pesaje a la vista.',
   description:
-    'Chatarrería Gama Metales en Bucaramanga con más de 20 años de experiencia. Pesaje exacto a la vista, pago de contado inmediato y los mejores precios en cobre, aluminio, hierro y baterías.',
+    'Chatarrería Gama Metales en Bucaramanga con más de 20 años de trayectoria. Precios competitivos del día en cobre, aluminio, hierro, bronce y baterías.',
   lang: 'es-CO',
   locale: 'es_CO',
   city: 'Bucaramanga',

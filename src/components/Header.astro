@@ -16,8 +16,8 @@ const current = (href: string) => (path.startsWith(href) ? 'page' : undefined);
     </nav>
 
     <div class="flex items-center gap-2.5">
-      <a href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer" class="btn btn-primary !px-3.5 !py-2 text-sm font-extrabold whitespace-nowrap">
-        <span>Cotizar</span><span class="hidden sm:inline"> mi material</span>
+      <a href={waLink(priceListMessage())} target="_blank" rel="noopener noreferrer" class="btn btn-primary hidden md:inline-flex !px-4 !py-2 text-sm font-extrabold whitespace-nowrap">
+        <span>Cotizar mi material</span>
       </a>
       <details class="relative md:hidden">
         <summary class="cursor-pointer list-none rounded-lg border border-white/30 px-3 py-2 text-sm font-bold bg-white/5 hover:bg-white/10 transition">Menú</summary>

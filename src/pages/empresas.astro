@@ -11,7 +11,7 @@ const siteUrl = Astro.site!.origin;
   <section class="hero-bg text-white">
     <div class="container-x py-14 sm:py-20">
       <h1 class="max-w-4xl text-5xl sm:text-6xl">Venta de chatarra y excedentes de metal para empresas en <span class="text-copper-500">Bucaramanga</span></h1>
-      <p class="mt-5 max-w-2xl text-lg text-white/85">Compramos excedentes metálicos, retales de obra, tubería y maquinaria fuera de servicio a constructoras, talleres e industrias. Pesaje exacto, pago de contado inmediato y recolección desde {SITE.pickup.minKg} kg.</p>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">Compramos excedentes metálicos, retales de obra, tubería y maquinaria fuera de servicio a constructoras, talleres e industrias. Cotización del día, báscula a la vista y recolección desde {SITE.pickup.minKg} kg.</p>
       <a class="btn btn-wa mt-7 w-full sm:w-auto text-base sm:text-lg text-center" href={waLink(quoteMessage({ material: 'Excedentes de metal de mi empresa', pickup: true }))} target="_blank" rel="noopener noreferrer">Cotizar para mi empresa</a>
     </div>
     <div class="hazard" aria-hidden="true"></div>
@@ -41,8 +41,8 @@ const siteUrl = Astro.site!.origin;
 
       <h3 class="mt-6 text-2xl text-brand-700">Por qué las empresas nos eligen</h3>
       <ul class="mt-3 space-y-2 text-ink/85">
-        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Báscula exacta en bodega:</strong> pesaje transparente y certificado frente a tu encargado.</span></li>
-        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Pago inmediato:</strong> efectivo al instante al momento de cargar y pesar.</span></li>
+        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Báscula a la vista en bodega:</strong> pesaje transparente frente a tu encargado.</span></li>
+        <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Liquidación al instante:</strong> pago en efectivo al terminar el pesaje.</span></li>
         <li class="flex items-start gap-2"><span class="text-copper-500 font-bold">✓</span> <span><strong>Logística incluida:</strong> camión y personal de cargue desde {SITE.pickup.minKg} kg.</span></li>
       </ul>
 

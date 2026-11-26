@@ -50,12 +50,12 @@ const METAL_THEMES: Record<string, {
     accentBar: 'bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400',
   },
   baterias: {
-    tileBg: 'bg-[#062013]',
-    tileBorder: 'border-emerald-500/70',
-    tileText: 'text-emerald-400',
-    cardBorderHover: 'hover:border-emerald-500/50',
-    tagClass: 'bg-emerald-50/90 text-emerald-950 border border-emerald-200/80',
-    accentBar: 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400',
+    tileBg: 'bg-[#251305]',
+    tileBorder: 'border-orange-500/70',
+    tileText: 'text-orange-400',
+    cardBorderHover: 'hover:border-orange-500/50',
+    tagClass: 'bg-orange-50/90 text-orange-950 border border-orange-200/80',
+    accentBar: 'bg-gradient-to-r from-orange-600 via-orange-500 to-amber-400',
   },
   'plomo-y-antimonio': {
     tileBg: 'bg-cyan-950/40',
@@ -109,10 +109,6 @@ const theme = METAL_THEMES[m.slug] ?? {
         <span class="text-[9px] font-bold leading-none tracking-wider opacity-80">{m.number}</span>
         <span class:list={['font-display font-extrabold leading-none', compact ? 'text-sm' : 'text-xl']}>{m.symbol}</span>
       </div>
-
-      <div class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-copper-300 backdrop-blur-sm border border-white/10">
-        Material real
-      </div>
     </div>
     <div>
       <Heading class="text-2xl text-brand-900">
@@ -155,7 +151,7 @@ const theme = METAL_THEMES[m.slug] ?? {
     >
       <svg class="h-5 w-5 flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2z" />
-        <path fill="#22c55e" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
+        <path fill="var(--color-copper-500)" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
       </svg>
       <span class="whitespace-nowrap">Cotizar {m.shortName ?? m.name}</span>
     </a>

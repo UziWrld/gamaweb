@@ -14,16 +14,17 @@ import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
 
 const siteUrl = Astro.site!.origin;
 const ticker = ['Cobre de primera', 'Aluminio perfil', 'Chatarra ferrosa', 'Baterías 4D/8D', 'Bronce y llaves', 'Radiadores', 'Acero inoxidable', 'Rines de aluminio', 'Neveras viejas', 'Varilla de obra'];
+const interiorPhoto = GALLERY[1];
 
 const clientSegments = [
   {
     title: 'Hogares y particulares',
-    desc: 'Neveras, lavadoras, rejas, marcos y cualquier chatarra acumulada en el patio o garaje. Despeja espacio y recibe dinero de inmediato.',
+    desc: 'Neveras, lavadoras, rejas, marcos y chatarra acumulada en el patio o garaje. Despeja espacio en tu casa con atención rápida.',
     iconKey: 'home',
   },
   {
     title: 'Plomeros y electricistas',
-    desc: 'Los mejores precios del kilo en tubería de cobre, cable pelado, cable encauchetado, grifería y llaves de bronce. Pago al instante.',
+    desc: 'Precios competitivos por kilo en tubería de cobre, cable pelado, cable encauchetado, grifería y llaves de bronce.',
     iconKey: 'tools',
   },
   {
@@ -45,20 +46,20 @@ const clientSegments = [
     <div class="container-x grid gap-8 sm:gap-10 py-8 sm:py-16 lg:py-20 lg:grid-cols-[1.2fr_1fr] lg:items-center">
       <div>
         <p class="text-xs sm:text-sm font-bold uppercase tracking-widest text-copper-400 mb-3">
-          Carrera 11 # 23-35 · Bucaramanga · Jornada continua
+          Cra 11 # 23-35 · Bucaramanga
         </p>
         <h1 class="font-display font-extrabold uppercase text-3xl sm:text-5xl lg:text-6xl leading-[1.05] sm:leading-[0.95] tracking-tight">
-          Chatarrería en Bucaramanga <span class="text-copper-400 block sm:inline sm:ml-2">al mejor precio</span>
+          Chatarrería en Bucaramanga <span class="text-copper-400 block sm:inline sm:ml-2">a precio del día</span>
         </h1>
         <p class="mt-4 max-w-xl text-base sm:text-lg text-white/85 leading-relaxed">
-          Compramos cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje transparente a la vista</strong> y pago en efectivo al instante.
+          Compramos cobre, aluminio, hierro, bronce, baterías y electrodomésticos. <strong>Pesaje a la vista</strong> y pago 100 % en efectivo al instante.
         </p>
         
         <div class="mt-5 flex flex-wrap items-center gap-3">
           <a class="btn btn-wa !rounded-full text-sm sm:text-base font-extrabold py-2.5 px-5 shadow-lg shadow-wa/20 transition hover:scale-[1.02] active:scale-[0.98]" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">
             <svg class="h-4 w-4 sm:h-5 sm:w-5 flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2z" />
-              <path fill="#22c55e" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
+              <path fill="#25d366" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
             </svg>
             <span>Cotizar por WhatsApp</span>
           </a>
@@ -72,9 +73,9 @@ const clientSegments = [
         </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs sm:text-sm font-semibold text-white/75">
-          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Báscula en bodega</span>
-          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Efectivo al instante</span>
-          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Precios del día</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> +{SITE.yearsOfExperience} años en Bucaramanga</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Precios competitivos del día</span>
+          <span class="flex items-center gap-1.5"><span class="text-copper-400 font-bold">✓</span> Recolección desde {SITE.pickup.minKg} kg</span>
         </div>
       </div>
 
@@ -129,7 +130,7 @@ const clientSegments = [
   <section class="container-x py-12" aria-labelledby="garantias">
     <div class="text-center max-w-2xl mx-auto mb-10">
       <h2 id="garantias" class="text-3xl sm:text-4xl text-brand-900">Por qué vender tu material en Gama Metales</h2>
-      <p class="mt-2 text-ink/75">Cero enredos, peso justo y la plata en tu mano al instante.</p>
+      <p class="mt-2 text-ink/75">Atención directa en bodega o recolección programada en el área metropolitana.</p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
       <div class="rounded-2xl border border-brand-100 bg-white p-7 shadow-sm transition hover:shadow-md">
@@ -142,9 +143,9 @@ const clientSegments = [
             <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
           </svg>
         </div>
-        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Báscula exacta en bodega</h3>
+        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Báscula electrónica a la vista</h3>
         <p class="mt-2 text-sm text-ink/80 leading-relaxed">
-          Pesamos cada kilo frente a ti de forma totalmente transparente en la báscula de nuestra bodega. Cero descuentos raros ni dudas sobre tu peso.
+          Pesamos cada kilo frente a ti en nuestra bodega para que verifiques la lectura en pantalla durante toda la entrega.
         </p>
       </div>
 
@@ -156,9 +157,9 @@ const clientSegments = [
             <path d="M6 12h.01M18 12h.01"/>
           </svg>
         </div>
-        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Efectivo al instante</h3>
+        <h3 class="text-2xl text-brand-900 font-extrabold uppercase font-display">Pago en efectivo al momento</h3>
         <p class="mt-2 text-sm text-ink/80 leading-relaxed">
-          Plata en mano en cuanto terminamos de pesar: te pagamos en efectivo de inmediato en el acto, sin esperas ni demoras.
+          Recibes tu dinero en efectivo apenas termina el pesaje, sin esperas ni trámites adicionales.
         </p>
       </div>
 
@@ -246,7 +247,7 @@ const clientSegments = [
         {[
           ['1', 'Escríbenos por WhatsApp', 'Cuéntanos qué metal tienes, el peso estimado y envíanos una foto clara del material.'],
           ['2', 'Recibe tu cotización del día', 'Te damos el valor por kilo actualizado y confirmamos si requieres recolección.'],
-          ['3', 'Pesamos y te pagamos', 'Llévalo a la bodega en la Cra 11 # 23-35 o lo recogemos. Te pagamos de contado al instante.'],
+          ['3', 'Pesamos y liquidamos', 'Llévalo a nuestra bodega en la Cra 11 # 23-35 o coordinamos recogida. Verificamos el peso frente a ti y te pagamos.'],
         ].map(([n, t, d]) => (
           <li class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
             <p class="font-display text-5xl font-extrabold text-copper-500">{n}</p>
@@ -268,43 +269,41 @@ const clientSegments = [
         <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">Atención B2B e Industrial</p>
         <h2 id="empresas" class="mt-1 text-3xl sm:text-4xl">¿Tienes chatarra o maquinaria en tu empresa o taller?</h2>
         <p class="mt-3 max-w-2xl text-white/85 text-base leading-relaxed">
-          Compramos excedentes metálicos, retales de obra, tubería y maquinaria en desuso a talleres, constructoras y fábricas en Bucaramanga y área metropolitana. Pago de contado inmediato y logística de transporte.
+          Compramos excedentes metálicos, retales de obra, tubería y maquinaria en desuso a talleres, constructoras y fábricas en Bucaramanga y área metropolitana. Liquidación directa y logística de transporte.
         </p>
       </div>
       <a class="btn btn-primary w-full md:w-auto text-base text-center" href="/empresas/">Cotizar para mi empresa</a>
     </div>
   </section>
 
-  <!-- BODEGA REAL (solo fotos de instalaciones, sin repetir materiales) -->
-  {GALLERY.length > 0 && (
+  <!-- BODEGA REAL (interior de instalaciones, sin duplicar la fachada del hero) -->
+  {interiorPhoto && (
     <section class="container-x pb-14" aria-labelledby="bodega">
       <div class="rounded-3xl border border-brand-100 bg-white p-6 sm:p-8 shadow-sm">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-center">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:col-span-7 items-start">
-            {GALLERY.map((item) => (
-              <div class="overflow-hidden rounded-2xl border border-brand-100 bg-brand-900 shadow-sm flex flex-col">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  widths={[400, 700]}
-                  sizes="(min-width: 1024px) 30vw, 50vw"
-                  class="w-full h-auto aspect-[4/5] object-cover"
-                  loading="lazy"
-                />
-                <div class="p-3 bg-brand-900 text-white text-xs font-semibold flex items-center justify-between">
-                  <span class="text-copper-400 font-bold">{item.label}</span>
-                  <span class="text-white/60 text-[11px] truncate">{SITE.address.street}</span>
-                </div>
+          <div class="lg:col-span-6">
+            <div class="overflow-hidden rounded-2xl border border-brand-100 bg-brand-900 shadow-sm flex flex-col">
+              <Image
+                src={interiorPhoto.src}
+                alt={interiorPhoto.alt}
+                widths={[480, 800]}
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                class="w-full h-auto aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+              <div class="p-3 bg-brand-900 text-white text-xs font-semibold flex items-center justify-between">
+                <span class="text-copper-400 font-bold">{interiorPhoto.label}</span>
+                <span class="text-white/60 text-[11px] truncate">{SITE.address.street}</span>
               </div>
-            ))}
+            </div>
           </div>
-          <div class="lg:col-span-5">
+          <div class="lg:col-span-6">
             <span class="inline-flex items-center gap-2 rounded-full border border-copper-500/30 bg-brand-100 px-3 py-1 text-xs font-bold text-brand-700">
               Instalaciones en Bucaramanga
             </span>
             <h2 id="bodega" class="mt-3 text-3xl sm:text-4xl text-brand-900">Nuestra bodega en Carrera 11 # 23-35</h2>
             <p class="mt-3 text-sm sm:text-base text-ink/80 leading-relaxed">
-              Bodega amplia acondicionada para pesaje transparente y descargue ágil y seguro de metales, chatarra y baterías.
+              Patio amplio y cubierto para descargue cómodo de metales, chatarra y baterías sin congestión en la vía.
             </p>
             <ul class="mt-5 space-y-2.5 text-sm font-medium text-ink/90">
               <li class="flex items-start gap-2.5">
@@ -313,7 +312,7 @@ const clientSegments = [
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-copper-500 font-bold text-base leading-none">✓</span>
-                <span><strong>Báscula electrónica a la vista:</strong> Pesaje exacto verificado frente a ti, sin trucos ni descuentos sorpresa.</span>
+                <span><strong>Báscula a la vista:</strong> Lectura directa en pantalla durante todo el pesaje frente a quien entrega el material.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-copper-500 font-bold text-base leading-none">✓</span>
@@ -323,7 +322,7 @@ const clientSegments = [
             <div class="mt-6 flex flex-wrap gap-3">
               <a
                 class="btn btn-primary text-sm font-extrabold"
-                href="https://www.google.com/maps/dir/?api=1&destination=Carrera+11+%23+23-35,+Bucaramanga"
+                href={SITE.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -374,7 +373,7 @@ const clientSegments = [
           width="100%"
           height="220"
           style="border:0;"
-          allowfullscreen=""
+          allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           class="w-full h-56"
@@ -385,10 +384,10 @@ const clientSegments = [
       <!-- Botón directo de navegación -->
       <a
         class="btn btn-primary mt-5 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm"
-        href="https://www.google.com/maps/dir/?api=1&destination=Carrera+11+%23+23-35,+Bucaramanga"
+        href={SITE.mapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Abrir ruta hacia Chatarrería Gama Metales"
+        aria-label="Abrir ruta hacia Chatarrería Gama Metales en Google Maps"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="3 11 22 2 13 21 11 13 3 11" />

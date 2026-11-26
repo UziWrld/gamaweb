@@ -4,18 +4,21 @@
 @import "@fontsource/barlow-condensed/800.css";
 
 @theme {
-  --color-brand-950: #0b0f17; /* Carbon Black (base de la tarjeta) */
+  --color-brand-950: #0b0f17; /* Carbon Black */
   --color-brand-900: #111827; /* Superficie oscura */
   --color-brand-800: #1e293b; /* Bordes y fichas oscuras */
-  --color-brand-700: #15803d; /* Verde esmeralda para títulos sobre claro */
-  --color-brand-600: #16a34a;
-  --color-brand-100: #dcfce7; /* Fondo suave de badges */
+  --color-brand-700: #b45309; /* Ámbar cobre oscuro para títulos y enlaces sobre claro */
+  --color-brand-600: #d97706;
+  --color-brand-200: #fde68a; /* Borde suave ámbar */
+  --color-brand-100: #fef3c7; /* Fondo suave de badges y bordes */
   --color-brand-50: #f8fafc;  /* Fondo general limpio */
-  --color-copper-400: #4ade80; /* Hover verde brillante */
-  --color-copper-500: #22c55e; /* Verde Gama de la tarjeta (acción y acentos) */
-  --color-accent-blue: #0284c7; /* Azul corporativo del reverso de la tarjeta */
+  --color-copper-300: #fcd34d;
+  --color-copper-400: #fbbf24; /* Ámbar brillante para resaltes sobre oscuro y hover */
+  --color-copper-500: #f59e0b; /* Ámbar / cobre industrial (acciones y acentos) */
+  --color-copper-600: #d97706;
+  --color-accent-blue: #0284c7; /* Azul corporativo */
   --color-ink: #0f172a;        /* Texto principal de alto contraste */
-  --color-wa: #25d366;         /* Verde WhatsApp oficial */
+  --color-wa: #25d366;         /* Verde WhatsApp oficial (exclusivo botones WhatsApp) */
   --font-display: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 }
@@ -37,7 +40,7 @@
   .tile { @apply relative flex h-20 w-20 flex-none flex-col justify-between rounded-md bg-brand-900 border border-brand-800 p-2 text-copper-500; }
 }
 
-/* Cinta de precaución industrial en Verde y Carbon */
+/* Cinta de precaución industrial en Ámbar/Amarillo y Carbón */
 .hazard {
   height: 8px;
   background: repeating-linear-gradient(-45deg, var(--color-copper-500) 0 14px, var(--color-brand-950) 14px 28px);
@@ -67,10 +70,10 @@
   }
 }
 
-/* Fondo del hero: atmósfera oscura industrial con destellos en verde y azul de la tarjeta */
+/* Fondo del hero: atmósfera oscura industrial con destellos ámbar/cobre y azul */
 .hero-bg {
   background:
-    radial-gradient(60rem 30rem at 85% -10%, rgb(34 197 94 / 0.20), transparent 60%),
-    radial-gradient(40rem 25rem at 0% 110%, rgb(2 132 199 / 0.18), transparent 60%),
+    radial-gradient(60rem 30rem at 85% -10%, rgb(245 158 11 / 0.18), transparent 60%),
+    radial-gradient(40rem 25rem at 0% 110%, rgb(2 132 199 / 0.16), transparent 60%),
     var(--color-brand-950);
 }
