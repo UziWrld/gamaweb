@@ -48,7 +48,7 @@
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: ticker-slide 26s linear infinite;
+  animation: ticker-slide 42s linear infinite;
 }
 .ticker-track:hover {
   animation-play-state: paused;
