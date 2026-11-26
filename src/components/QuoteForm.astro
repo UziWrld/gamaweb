@@ -31,15 +31,19 @@ import { waLink, generalMessage } from '../lib/whatsapp';
   if (form && link) {
     const update = () => {
       const d = new FormData(form);
+      const mat = d.get('material') || 'material';
       const kg = String(d.get('kg') ?? '').trim();
       const zona = String(d.get('zona') ?? '').trim();
-      const text = [
-        `Hola ${form.dataset.brand}, tengo *${d.get('material')}* para vender y quisiera cotizar el precio de hoy:`,
-        `- Peso aproximado: ${kg ? kg + ' kg' : '___ kg'}`,
-        `- Entrega: ${d.get('pickup') ? 'Necesito recolección (+300 kg)' : 'Lo llevo a la bodega'}`,
-        `- Ubicación o barrio: ${zona || '___'}`,
-        `Ya les comparto fotos del material.`,
-      ].join('\n');
+      const pickup = Boolean(d.get('pickup'));
+
+      let text = `Hola ${form.dataset.brand}, tengo ${mat} para vender y quisiera saber el precio de hoy.`;
+      if (kg || zona || pickup) {
+        const parts = [];
+        if (kg) parts.push(`aprox ${kg} kg`);
+        if (zona) parts.push(`en ${zona}`);
+        if (pickup) parts.push('con recolección');
+        text = `Hola ${form.dataset.brand}, tengo ${mat} (${parts.join(', ')}) para vender y quisiera saber el precio de hoy.`;
+      }
       link.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(text)}`;
     };
     form.addEventListener('input', update);

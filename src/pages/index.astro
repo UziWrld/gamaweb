@@ -9,7 +9,7 @@ import { MATERIALS } from '../data/materials';
 import { HOME_FAQS } from '../data/faqs';
 import { REVIEWS } from '../data/reviews';
 import { GALLERY } from '../data/gallery';
-import { waLink, priceListMessage, generalMessage } from '../lib/whatsapp';
+import { waLink, priceListMessage, generalMessage, arrivalMessage } from '../lib/whatsapp';
 import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
 
 const siteUrl = Astro.site!.origin;
@@ -318,7 +318,7 @@ const clientSegments = [
               <button type="button" class="btn btn-primary text-sm font-extrabold cursor-pointer" data-open-route>
                 <span>Cómo llegar a la bodega</span>
               </button>
-              <a class="btn btn-outline text-sm font-bold" href={waLink(generalMessage())} target="_blank" rel="noopener noreferrer">
+              <a class="btn btn-outline text-sm font-bold" href={waLink(arrivalMessage())} target="_blank" rel="noopener noreferrer">
                 <span>Avisar llegada por WhatsApp</span>
               </a>
             </div>
