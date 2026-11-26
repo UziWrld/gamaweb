@@ -26,16 +26,18 @@ const siteUrl = Astro.site!.origin;
         <p class="text-ink/80">{SITE.city}, {SITE.region}</p>
       </address>
 
-      <!-- Un solo botón de cómo llegar -->
+      <!-- Botón directo de navegación Google Maps -->
       <a
         class="btn btn-primary mt-4 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm"
-        href={`geo:${SITE.geo.lat},${SITE.geo.lng}?q=${encodeURIComponent(SITE.address.street + ', ' + SITE.city)}`}
-        id="btn-nav"
+        href="https://www.google.com/maps/dir/?api=1&destination=Carrera+11+%23+23-35,+Bucaramanga"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir ruta hacia Chatarrería Gama Metales en Google Maps"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="3 11 22 2 13 21 11 13 3 11" />
         </svg>
-        <span>Cómo llegar</span>
+        <span>Cómo llegar en Google Maps</span>
       </a>
 
       <!-- Tarjetas visuales: Fachada y Mapa de Google -->
@@ -91,18 +93,7 @@ const siteUrl = Astro.site!.origin;
         </div>
       </div>
 
-      <script is:inline>
-        const btn = document.getElementById('btn-nav');
-        if (btn) {
-          btn.addEventListener('click', function(e) {
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            if (!isMobile) {
-              e.preventDefault();
-              window.open('https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9', '_blank', 'noopener,noreferrer');
-            }
-          });
-        }
-      </script>
+
 
       <h2 class="mt-10 text-4xl text-brand-900">Horario de atención</h2>
       <table class="mt-4 w-full max-w-md text-left">
