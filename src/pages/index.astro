@@ -315,9 +315,15 @@ const clientSegments = [
               </li>
             </ul>
             <div class="mt-6 flex flex-wrap gap-3">
-              <button type="button" class="btn btn-primary text-sm font-extrabold cursor-pointer" data-open-route>
+              <a
+                class="btn btn-primary text-sm font-extrabold"
+                href="https://www.google.com/maps/dir/?api=1&destination=Carrera+11+%23+23-35,+Bucaramanga"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-route-link
+              >
                 <span>Cómo llegar a la bodega</span>
-              </button>
+              </a>
               <a class="btn btn-outline text-sm font-bold" href={waLink(arrivalMessage())} target="_blank" rel="noopener noreferrer">
                 <span>Avisar llegada por WhatsApp</span>
               </a>
@@ -371,18 +377,20 @@ const clientSegments = [
         ></iframe>
       </div>
 
-      <!-- Botón para elegir app de navegación -->
-      <button
-        type="button"
-        class="btn btn-primary mt-5 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm cursor-pointer"
-        data-open-route
-        aria-label="Elegir aplicación para abrir ruta hacia Chatarrería Gama Metales"
+      <!-- Botón directo de navegación -->
+      <a
+        class="btn btn-primary mt-5 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm"
+        href="https://www.google.com/maps/dir/?api=1&destination=Carrera+11+%23+23-35,+Bucaramanga"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-route-link
+        aria-label="Abrir ruta hacia Chatarrería Gama Metales"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="3 11 22 2 13 21 11 13 3 11" />
         </svg>
         <span>Abrir ruta</span>
-      </button>
+      </a>
     </div>
     <div>
       <h2 class="text-4xl text-brand-900 sm:text-5xl">Preguntas frecuentes</h2>
