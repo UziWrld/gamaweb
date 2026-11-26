@@ -42,12 +42,11 @@ const clientSegments = [
 <Layout {...PAGES.home} jsonLd={[websiteSchema(siteUrl), businessSchema(siteUrl), faqSchema(HOME_FAQS)]}>
   <!-- HERO -->
   <section class="hero-bg text-white">
-    <div class="container-x grid gap-10 py-10 sm:py-20 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+    <div class="container-x grid gap-8 sm:gap-10 py-8 sm:py-16 lg:py-20 lg:grid-cols-[1.2fr_1fr] lg:items-center">
       <div>
-        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-copper-500/30 bg-copper-500/10 px-3.5 py-1 text-xs font-bold text-copper-400 backdrop-blur-sm">
-          <span class="h-2 w-2 rounded-full bg-copper-400"></span>
-          <span>Carrera 11 # 23-35 · Atención en jornada continua</span>
-        </div>
+        <p class="text-xs sm:text-sm font-bold uppercase tracking-widest text-copper-400 mb-3">
+          Carrera 11 # 23-35 · Bucaramanga · Jornada continua
+        </p>
         <h1 class="font-display font-extrabold uppercase text-3xl sm:text-5xl lg:text-6xl leading-[1.05] sm:leading-[0.95] tracking-tight">
           Chatarrería en Bucaramanga <span class="text-copper-400 block sm:inline sm:ml-2">al mejor precio</span>
         </h1>
@@ -79,39 +78,17 @@ const clientSegments = [
         </div>
       </div>
 
-      <!-- Tarjeta visual de la bodega en Hero (visible en móvil y desktop) -->
-      <aside class="block mt-4 lg:mt-0 rounded-2xl border-2 border-copper-500/40 bg-brand-900/95 overflow-hidden text-white shadow-xl" aria-label="Sede física de Chatarrería Gama Metales">
-        <div class="relative">
-          <Image
-            src={GALLERY[0].src}
-            alt={GALLERY[0].alt}
-            widths={[400, 700]}
-            sizes="(min-width: 1024px) 35vw, 100vw"
-            class="aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] w-full object-cover"
-            loading="eager"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/25 to-transparent"></div>
-          <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3">
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-950/85 backdrop-blur-md px-2.5 py-1 text-[11px] sm:text-xs font-bold text-copper-400 border border-copper-500/30">
-              <span class="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-copper-400 animate-pulse"></span>
-              <span>Sede física en Bucaramanga</span>
-            </span>
-          </div>
-          <div class="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 flex items-center justify-between text-[11px] sm:text-xs font-bold">
-            <span class="rounded-full bg-brand-950/90 backdrop-blur-md px-2.5 py-1 text-white border border-white/10 truncate mr-2">{SITE.address.street}</span>
-            <span class="rounded-full bg-wa/90 backdrop-blur-md px-2.5 py-1 text-white flex-none">Jornada continua</span>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5">
-          <p class="text-xs font-extrabold uppercase tracking-wider text-copper-400">Pesaje transparente y descargue bajo techo</p>
-          <p class="mt-0.5 font-display text-xl sm:text-2xl font-extrabold uppercase text-white leading-tight">Bodega propia en Bucaramanga</p>
-          <p class="mt-1 text-xs sm:text-sm text-white/80 leading-relaxed">Báscula electrónica a la vista, portón para camiones y pago en efectivo al instante.</p>
-          <div class="mt-3 flex items-center justify-between gap-2 border-t border-white/10 pt-3 text-xs">
-            <span class="text-white/70 font-semibold truncate">Entrada por Carrera 11</span>
-            <a href="#bodega" class="text-copper-400 hover:underline font-extrabold flex-none flex items-center gap-1">Ver fotos de la bodega ↓</a>
-          </div>
-        </div>
-      </aside>
+      <!-- Fotografía limpia y real de la bodega (sin cuadros, sin píldoras, sin textos encima) -->
+      <div class="mt-2 lg:mt-0">
+        <Image
+          src={GALLERY[0].src}
+          alt="Fachada e ingreso de Chatarrería Gama Metales en Carrera 11 # 23-35 Bucaramanga"
+          widths={[400, 750]}
+          sizes="(min-width: 1024px) 40vw, 100vw"
+          class="aspect-[4/3] sm:aspect-[16/10] w-full rounded-2xl object-cover shadow-2xl"
+          loading="eager"
+        />
+      </div>
     </div>
 
     <!-- Cinta de materiales animada continua -->
