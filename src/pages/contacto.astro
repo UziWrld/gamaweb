@@ -26,19 +26,18 @@ const siteUrl = Astro.site!.origin;
         <p class="text-ink/80">{SITE.city}, {SITE.region}</p>
       </address>
 
-      <!-- Botón directo de navegación Google Maps -->
-      <a
-        class="btn btn-primary mt-4 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm"
-        href="https://www.google.com/maps/dir/?api=1&destination=Carrera+11+%23+23-35,+Bucaramanga"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Abrir ruta hacia Chatarrería Gama Metales en Google Maps"
+      <!-- Botón para elegir app de navegación -->
+      <button
+        type="button"
+        class="btn btn-primary mt-4 flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 text-base font-bold shadow-sm cursor-pointer"
+        data-open-route
+        aria-label="Elegir aplicación para abrir ruta hacia Chatarrería Gama Metales"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="3 11 22 2 13 21 11 13 3 11" />
         </svg>
-        <span>Cómo llegar en Google Maps</span>
-      </a>
+        <span>Abrir ruta</span>
+      </button>
 
       <!-- Tarjetas visuales: Fachada y Mapa de Google -->
       <div class="mt-6 grid gap-5 sm:grid-cols-2">
