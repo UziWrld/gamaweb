@@ -3,10 +3,11 @@ import type { Material } from '../data/materials';
 import { waLink, quoteMessage } from '../lib/whatsapp';
 import { Image } from 'astro:assets';
 
-interface Props { material: Material; level?: 'h2' | 'h3' }
-const { material: m, level = 'h3' } = Astro.props;
+interface Props { material: Material; level?: 'h2' | 'h3'; variant?: 'full' | 'compact' }
+const { material: m, level = 'h3', variant = 'full' } = Astro.props;
 const Heading = level;
-const compact = m.symbol.length > 3;
+const compactSymbol = m.symbol.length > 3;
+const isCompact = variant === 'compact';
 
 // Personalización metalúrgica por familia de material
 const METAL_THEMES: Record<string, {
@@ -86,42 +87,50 @@ const theme = METAL_THEMES[m.slug] ?? {
 ---
 
 <article class:list={[
-  'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg',
+  'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg',
+  isCompact ? 'p-3.5 sm:p-4' : 'p-5',
   theme.cardBorderHover
 ]}>
   <!-- Barra de acento metalúrgico superior -->
   <div class:list={['absolute left-0 top-0 h-1.5 w-full z-10', theme.accentBar]}></div>
 
   {m.image ? (
-    <div class="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden bg-brand-950">
+    <a href={`/materiales/${m.slug}/`} class:list={[
+      'relative block overflow-hidden bg-brand-950',
+      isCompact ? '-mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 mb-3 aspect-[4/3]' : '-mx-5 -mt-5 mb-4 aspect-[16/10]'
+    ]}>
       <Image
         src={m.image}
         alt={m.imageAlt || `Compra de ${m.name} en Bucaramanga`}
         widths={[320, 480, 640]}
-        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        sizes={isCompact ? '(min-width: 1024px) 25vw, 50vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'}
         class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         loading="lazy"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
       
       <!-- Ficha metalúrgica flotante sobre la foto -->
-      <div class:list={['absolute bottom-3 left-3 flex h-12 w-14 flex-col justify-between rounded-lg border p-1.5 shadow-md backdrop-blur-sm', theme.tileBg, theme.tileBorder, theme.tileText]} aria-hidden="true">
+      <div class:list={[
+        'absolute flex flex-col justify-between rounded-lg border shadow-md backdrop-blur-sm',
+        isCompact ? 'bottom-2 left-2 h-10 w-12 p-1' : 'bottom-3 left-3 h-12 w-14 p-1.5',
+        theme.tileBg, theme.tileBorder, theme.tileText
+      ]} aria-hidden="true">
         <span class="text-[9px] font-bold leading-none tracking-wider opacity-80">{m.number}</span>
-        <span class:list={['font-display font-extrabold leading-none', compact ? 'text-sm' : 'text-xl']}>{m.symbol}</span>
+        <span class:list={['font-display font-extrabold leading-none', compactSymbol ? 'text-xs sm:text-sm' : isCompact ? 'text-lg' : 'text-xl']}>{m.symbol}</span>
       </div>
-    </div>
+    </a>
     <div>
-      <Heading class="text-2xl text-brand-900">
-        <a href={`/materiales/${m.slug}/`} class="hover:text-brand-700 transition">{m.name}</a>
+      <Heading class:list={[isCompact ? 'text-lg sm:text-xl leading-tight' : 'text-2xl', 'text-brand-900']}>
+        <a href={`/materiales/${m.slug}/`} class="hover:text-brand-700 transition">{isCompact ? (m.shortName ?? m.name) : m.name}</a>
       </Heading>
-      <p class="mt-1 text-sm text-ink/80 leading-snug">{m.short}</p>
+      <p class:list={['mt-1 text-ink/80 leading-snug', isCompact ? 'text-xs sm:text-sm line-clamp-2' : 'text-sm']}>{m.short}</p>
     </div>
   ) : (
     <div class="flex items-start gap-4 pt-1">
       <!-- Ficha con identidad metalúrgica -->
       <div class:list={['relative flex h-20 w-20 flex-none flex-col justify-between rounded-lg border p-2 shadow-inner', theme.tileBg, theme.tileBorder, theme.tileText]} aria-hidden="true">
         <span class="text-[10px] font-bold leading-none tracking-wider opacity-80">{m.number}</span>
-        <span class:list={['font-display font-extrabold leading-none', compact ? 'text-xl' : 'text-4xl']}>{m.symbol}</span>
+        <span class:list={['font-display font-extrabold leading-none', compactSymbol ? 'text-xl' : 'text-4xl']}>{m.symbol}</span>
       </div>
       <div>
         <Heading class="text-2xl text-brand-900">
@@ -132,28 +141,33 @@ const theme = METAL_THEMES[m.slug] ?? {
     </div>
   )}
 
-  <ul class="mt-4 flex flex-wrap gap-1.5 text-xs">
-    {m.items.slice(0, 4).map((i) => (
-      <li class:list={['rounded-md px-2.5 py-1 font-medium', theme.tagClass]}>
-        {i}
-      </li>
-    ))}
-  </ul>
+  {!isCompact && (
+    <ul class="mt-4 flex flex-wrap gap-1.5 text-xs">
+      {m.items.slice(0, 4).map((i) => (
+        <li class:list={['rounded-md px-2.5 py-1 font-medium', theme.tagClass]}>
+          {i}
+        </li>
+      ))}
+    </ul>
+  )}
 
   <!-- Bloque de conversión con llamada única y directa -->
-  <div class="mt-auto pt-5">
+  <div class:list={['mt-auto', isCompact ? 'pt-3' : 'pt-5']}>
     <a
-      class="btn btn-primary w-full text-base font-extrabold shadow-sm hover:shadow-md transition text-center py-3 px-4"
+      class:list={[
+        'btn btn-primary w-full font-extrabold shadow-sm hover:shadow-md transition text-center',
+        isCompact ? 'py-2 px-3 text-xs sm:text-sm' : 'py-3 px-4 text-base'
+      ]}
       href={waLink(quoteMessage({ material: m.name }))}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Cotizar ${m.name} por WhatsApp (se abre en una pestaña nueva)`}
     >
-      <svg class="h-5 w-5 flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <svg class:list={['flex-none', isCompact ? 'h-4 w-4' : 'h-5 w-5']} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2z" />
         <path fill="var(--color-copper-500)" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
       </svg>
-      <span class="whitespace-nowrap">Cotizar {m.shortName ?? m.name}</span>
+      <span class="whitespace-nowrap">{isCompact ? 'Cotizar' : `Cotizar ${m.shortName ?? m.name}`}</span>
     </a>
   </div>
 </article>
