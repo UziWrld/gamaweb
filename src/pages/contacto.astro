@@ -52,9 +52,9 @@ const siteUrl = Astro.site!.origin;
             class="w-full h-auto aspect-[4/5] object-cover flex-1"
             loading="eager"
           />
-          <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
-            <span>Fachada en Carrera 11 # 23-35</span>
-            <span class="text-copper-400">Descargue interior</span>
+          <div class="p-3 bg-brand-900 text-white flex items-center justify-between gap-2 text-xs font-semibold min-h-[44px]">
+            <span>Ingreso bodega</span>
+            <span class="text-copper-400 whitespace-nowrap">Descargue interior</span>
           </div>
         </div>
 
@@ -71,9 +71,9 @@ const siteUrl = Astro.site!.origin;
             class="aspect-[4/3] w-full flex-1 min-h-[220px]"
             title="Ubicación de Chatarrería Gama Metales en Google Maps"
           ></iframe>
-          <div class="p-3 bg-brand-900 text-white flex items-center justify-between text-xs font-semibold">
+          <div class="p-3 bg-brand-900 text-white flex items-center justify-between gap-2 text-xs font-semibold min-h-[44px]">
             <span>Mapa en Google</span>
-            <span class="text-copper-400">Cra 11 # 23-35</span>
+            <span class="text-copper-400 whitespace-nowrap">Cra 11 # 23-35</span>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@ const siteUrl = Astro.site!.origin;
       <table class="mt-4 w-full max-w-md text-left">
         <caption class="sr-only">Horario de atención de Gama Metales</caption>
         <tbody>
-          {SITE.hours.map((h) => <tr class="border-b border-brand-100"><th scope="row" class="py-2 pr-4 font-semibold">{h.label}</th><td class="py-2">{h.display}</td></tr>)}
+          {SITE.hours.map((h) => <tr class="border-b border-brand-100"><th scope="row" class="py-2 pr-4 font-semibold whitespace-nowrap">{h.label}</th><td class="py-2">{h.display}</td></tr>)}
         </tbody>
       </table>
       <p class="mt-2 text-sm text-ink/70">{SITE.closedNote}</p>
@@ -114,6 +114,6 @@ const siteUrl = Astro.site!.origin;
         ))}
       </ul>
     </div>
-    <div><QuoteForm /></div>
+    <div class="lg:sticky lg:top-24 lg:self-start"><QuoteForm /></div>
   </div>
 </Layout>

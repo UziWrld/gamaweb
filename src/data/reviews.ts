@@ -2,10 +2,26 @@
 export interface Review {
   author: string;
   text: string;
+  rating: number;
   date?: string;
 }
 
-export const REVIEWS: Review[] = [
-  // { author: 'Nombre del cliente', text: 'Texto exacto de la reseña…', date: '2026-05' },
-];
+export const GOOGLE_RATING = {
+  score: '5,0',
+  totalCount: 5,
+} as const;
 
+export const REVIEWS: Review[] = [
+  {
+    author: 'Valeria',
+    text: 'Muy buena atención y buenos precios.',
+    rating: 5,
+    date: 'Reseña en Google',
+  },
+  {
+    author: 'Kevin Torres',
+    text: 'Buena atención, pesaje correcto.',
+    rating: 5,
+    date: 'Reseña en Google',
+  },
+];

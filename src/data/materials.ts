@@ -448,7 +448,7 @@ export const MATERIALS: Material[] = [
     shortName: 'Electrodomésticos',
     h1: 'Compra de neveras, lavadoras y televisores usados en Bucaramanga',
     symbol: 'Cu·Al·Fe',
-    number: '',
+    number: 'Hogar',
     priority: 2,
     image: electrodomesticosImg,
     imageAlt: 'Neveras, lavadoras y aparatos electrodomésticos en desuso para reciclaje en Bucaramanga',

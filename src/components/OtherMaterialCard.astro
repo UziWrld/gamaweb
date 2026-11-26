@@ -1,0 +1,49 @@
+---
+import { waLink, generalMessage } from '../lib/whatsapp';
+import { SITE } from '../data/site';
+
+interface Props {
+  level?: 'h2' | 'h3';
+}
+const { level = 'h3' } = Astro.props;
+const Heading = level;
+---
+
+<article class="flex h-full flex-col justify-between rounded-2xl border border-brand-800 bg-brand-900 p-6 text-white shadow-sm sm:col-span-1 lg:col-span-2">
+  <div>
+    <span class="inline-flex items-center rounded-full border border-copper-400/30 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-copper-400">
+      Otros metales y lotes mixtos
+    </span>
+    <Heading class="mt-4 text-3xl text-white">¿No ves tu material en la lista?</Heading>
+    <p class="mt-3 max-w-xl text-sm sm:text-base text-white/80 leading-relaxed">
+      Compramos lotes especiales, aleaciones y excedentes de taller u obra. Envíanos una foto por WhatsApp con el peso estimado y te confirmamos recepción y tarifa del día.
+    </p>
+    <ul class="mt-5 flex flex-wrap gap-2 text-xs">
+      {['Motores eléctricos', 'Acero inoxidable', 'Cableado especial', 'Viruta de torno', 'Retales industriales', 'Chatarra mixta'].map((tag) => (
+        <li class="rounded-md border border-white/15 bg-white/5 px-3 py-1.5 font-medium text-white/90">
+          {tag}
+        </li>
+      ))}
+    </ul>
+    <div class="mt-5 grid gap-2 text-xs text-white/75 sm:grid-cols-2">
+      <p class="flex items-center gap-2"><span class="text-copper-400 font-bold">✓</span> Respuesta rápida con foto por WhatsApp</p>
+      <p class="flex items-center gap-2"><span class="text-copper-400 font-bold">✓</span> Recolección sin costo de flete desde {SITE.pickup.minKg} kg</p>
+    </div>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+    <a
+      class="btn btn-wa text-sm sm:text-base font-extrabold"
+      href={waLink(generalMessage())}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg class="h-5 w-5 flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2z" />
+        <path fill="#25d366" d="M9 7.6c-.3 0-.6.1-.8.4-.5.6-.9 1.3-.5 2.4.6 1.7 2.2 3.5 4 4.4 1.3.6 2 .5 2.7.1.3-.2.7-.6.8-1 .1-.3 0-.5-.2-.6l-1.5-.8c-.2-.1-.4 0-.5.1l-.6.7c-.1.1-.3.2-.5.1-.9-.4-1.9-1.3-2.4-2.2-.1-.2-.1-.4 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.7-1.6c-.1-.2-.3-.3-.5-.3z" />
+      </svg>
+      <span>Enviar foto por WhatsApp</span>
+    </a>
+    <span class="text-xs text-white/65">O visítanos en {SITE.address.street}</span>
+  </div>
+</article>
