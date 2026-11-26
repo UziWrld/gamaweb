@@ -7,7 +7,7 @@ export const businessSchema = (siteUrl: string) => ({
   '@type': ['RecyclingCenter', 'LocalBusiness'],
   '@id': `${siteUrl}/#negocio`,
   name: SITE.name,
-  alternateName: `Chatarrería ${SITE.name}`,
+  alternateName: ['Chatarrería Gama', `Chatarrería ${SITE.name}`],
   description: SITE.description,
   slogan: SITE.slogan,
   url: `${siteUrl}/`,
@@ -43,16 +43,29 @@ export const businessSchema = (siteUrl: string) => ({
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Compra de chatarra y metales',
-    itemListElement: MATERIALS.map((m) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: `Compra de ${m.name.toLowerCase()}`,
-        serviceType: 'Compra de chatarra y reciclaje de metales',
-        areaServed: SITE.city,
-        url: `${siteUrl}/materiales/${m.slug}/`,
+    itemListElement: [
+      ...MATERIALS.map((m) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: `Compra de ${m.name.toLowerCase()}`,
+          serviceType: 'Compra de chatarra y reciclaje de metales',
+          areaServed: SITE.city,
+          url: `${siteUrl}/materiales/${m.slug}/`,
+        },
+      })),
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: `Recolección de chatarra a domicilio desde ${SITE.pickup.minKg} kg`,
+          description: `${SITE.pickup.noFreightNote} Cobertura en ${SITE.pickup.zones.join(', ')}.`,
+          serviceType: 'Recolección de chatarra y metales a domicilio',
+          areaServed: SITE.pickup.zones,
+          url: `${siteUrl}/recoleccion-de-chatarra/`,
+        },
       },
-    })),
+    ],
   },
 });
 

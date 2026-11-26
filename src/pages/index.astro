@@ -7,7 +7,7 @@ import { SITE } from '../data/site';
 import { PAGES } from '../data/seo';
 import { MATERIALS } from '../data/materials';
 import { HOME_FAQS } from '../data/faqs';
-import { REVIEWS, GOOGLE_RATING } from '../data/reviews';
+import { REVIEWS } from '../data/reviews';
 import { GALLERY } from '../data/gallery';
 import { waLink, generalMessage, arrivalMessage } from '../lib/whatsapp';
 import { businessSchema, websiteSchema, faqSchema } from '../lib/schema';
@@ -65,6 +65,7 @@ const interiorPhoto = GALLERY[1];
           sizes="(min-width: 1024px) 45vw, (min-width: 640px) 75vw, 100vw"
           class="w-full max-w-[420px] lg:max-w-none aspect-[5/4] object-cover object-[50%_80%] rounded-2xl shadow-2xl"
           loading="eager"
+          fetchpriority="high"
         />
       </div>
     </div>
@@ -100,6 +101,11 @@ const interiorPhoto = GALLERY[1];
       .ticker-track:hover {
         animation-play-state: paused !important;
       }
+      @media (prefers-reduced-motion: reduce) {
+        .ticker-track {
+          animation: none !important;
+        }
+      }
     </style>
   </section>
 
@@ -117,7 +123,7 @@ const interiorPhoto = GALLERY[1];
           </svg>
         </div>
         <div>
-          <h2 class="text-lg font-extrabold text-brand-900">Báscula electrónica a la vista</h2>
+          <p class="font-display text-lg font-extrabold uppercase leading-[0.95] tracking-tight text-brand-900">Báscula electrónica a la vista</p>
           <p class="mt-0.5 text-sm text-ink/75">Verificas cada kilo en pantalla durante el pesaje.</p>
         </div>
       </div>
@@ -131,8 +137,8 @@ const interiorPhoto = GALLERY[1];
           </svg>
         </div>
         <div>
-          <h2 class="text-lg font-extrabold text-brand-900">Efectivo al instante</h2>
-          <p class="mt-0.5 text-sm text-ink/75">Liquidación en efectivo apenas termina el pesaje.</p>
+          <p class="font-display text-lg font-extrabold uppercase leading-[0.95] tracking-tight text-brand-900">Efectivo al instante</p>
+          <p class="mt-0.5 text-sm text-ink/75">Liquidación en efectivo al terminar el pesaje (empresas: consulta formas de pago).</p>
         </div>
       </div>
 
@@ -147,9 +153,9 @@ const interiorPhoto = GALLERY[1];
           </svg>
         </div>
         <div>
-          <h2 class="text-lg font-extrabold text-brand-900">Recolección desde {SITE.pickup.minKg} kg</h2>
+          <p class="font-display text-lg font-extrabold uppercase leading-[0.95] tracking-tight text-brand-900">Recolección desde {SITE.pickup.minKg} kg</p>
           <p class="mt-0.5 text-sm text-ink/75">
-            Sin costo de flete según tipo y volumen. <a href="/recoleccion-de-chatarra/" class="font-semibold text-brand-700 hover:underline whitespace-nowrap">Ver cobertura →</a>
+            {SITE.pickup.noFreightNote} <a href="/recoleccion-de-chatarra/" class="font-semibold text-brand-700 hover:underline whitespace-nowrap">Ver cobertura →</a>
           </p>
         </div>
       </div>
@@ -269,36 +275,24 @@ const interiorPhoto = GALLERY[1];
     <section class="bg-brand-50 border-y border-slate-200/80 py-14" aria-labelledby="resenas">
       <div class="container-x">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-stretch">
-          <!-- Marcador oficial de Google Maps -->
+          <!-- Enlace a reseñas en Google sin usar logo de marca ni cifras fijas que caducan -->
           <div class="lg:col-span-4 flex flex-col justify-between rounded-2xl bg-brand-950 p-7 text-white border-t-4 border-t-copper-500 shadow-lg">
             <div>
-              <div class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-copper-400">
-                <svg class="h-4 w-4 flex-none" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/>
-                  <path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.2 0-5.8-2.1-6.8-5H1.2v3.1C3.2 21.4 7.3 24 12 24z"/>
-                  <path fill="#FBBC05" d="M5.2 14.3c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3V6.6H1.2C.4 8.2 0 10.1 0 12s.4 3.8 1.2 5.4l4-3.1z"/>
-                  <path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.2 2.6 1.2 6.6l4 3.1c1-2.9 3.6-4.9 6.8-4.9z"/>
-                </svg>
-                <span>Google Maps · Verificado</span>
-              </div>
+              <p class="text-xs font-extrabold uppercase tracking-widest text-copper-400">
+                Reseñas en Google
+              </p>
               <h2 id="resenas" class="mt-3 text-3xl sm:text-4xl text-white">Opiniones de quienes ya vendieron aquí</h2>
-
-              <div class="mt-6 flex items-baseline gap-3 border-y border-white/10 py-5">
-                <span class="font-display text-6xl font-extrabold leading-none text-copper-400">{GOOGLE_RATING.score}</span>
-                <div>
-                  <p class="text-lg tracking-wider text-copper-400 leading-none" aria-label="Calificación promedio 5 de 5 estrellas">★★★★★</p>
-                  <p class="mt-1.5 text-xs font-semibold text-white/75">Basado en {GOOGLE_RATING.totalCount} calificaciones en Google</p>
-                </div>
-              </div>
-
-              <p class="mt-4 text-xs text-white/65 leading-relaxed">
+              <p class="mt-4 text-sm text-white/75 leading-relaxed">
+                Lee todas las reseñas actualizadas en nuestra ficha de Google Maps o comparte tu experiencia después de visitarnos.
+              </p>
+              <p class="mt-4 border-t border-white/10 pt-4 text-xs text-white/65">
                 {SITE.name} · {SITE.address.street}, {SITE.city}
               </p>
             </div>
 
             {SITE.gbpUrl && (
               <a class="btn btn-primary mt-6 w-full text-sm font-extrabold" href={SITE.gbpUrl} target="_blank" rel="noopener noreferrer">
-                Ver reseñas o calificar en Google
+                Ver reseñas en Google
               </a>
             )}
           </div>
@@ -339,7 +333,7 @@ const interiorPhoto = GALLERY[1];
 
             <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-slate-200 bg-white px-5 py-4 text-sm">
               <p class="text-ink/80">
-                Otros <strong class="text-brand-950">{GOOGLE_RATING.totalCount - REVIEWS.length} clientes también calificaron con 5 estrellas</strong> en Google Maps.
+                ¿Ya vendiste material con nosotros? Consulta más opiniones o deja tu calificación en nuestra ficha.
               </p>
               {SITE.gbpUrl && (
                 <a class="font-bold text-brand-700 hover:underline whitespace-nowrap" href={SITE.gbpUrl} target="_blank" rel="noopener noreferrer">

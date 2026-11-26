@@ -11,10 +11,10 @@ export const SITE = {
 
   address: {
     street: 'Carrera 11 # 23-35',
-    neighborhood: '',
+    neighborhood: 'Girardot',
     postalCode: '',
   },
-  geo: { lat: 7.1241, lng: -73.132 },
+  geo: { lat: 7.1240752, lng: -73.1321211 },
   mapsUrl: 'https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9',
   gbpUrl: 'https://maps.app.goo.gl/nxWr6wCvxXAxR6mE9',
 

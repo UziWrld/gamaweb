@@ -6,11 +6,6 @@ export interface Review {
   date?: string;
 }
 
-export const GOOGLE_RATING = {
-  score: '5,0',
-  totalCount: 5,
-} as const;
-
 export const REVIEWS: Review[] = [
   {
     author: 'Valeria',

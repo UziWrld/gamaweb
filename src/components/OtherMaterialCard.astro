@@ -23,7 +23,7 @@ const Heading = level;
         'Motores eléctricos y cableado especial',
         'Acero inoxidable y viruta de torno',
         'Retales industriales y chatarra mixta',
-        `Recolección sin costo de flete desde ${SITE.pickup.minKg} kg`,
+        `Recolección desde ${SITE.pickup.minKg} kg (${SITE.pickup.noFreightNote.replace(/\.$/, '').toLowerCase()})`,
       ].map((item) => (
         <li class="flex items-start gap-2">
           <span class="text-copper-400 font-bold" aria-hidden="true">✓</span>
