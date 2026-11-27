@@ -9,7 +9,7 @@ const walk = (d) =>
   });
 
 const all = walk(DIST);
-const pages = all.filter((f) => f.endsWith('.html'));
+const pages = all.filter((f) => f.endsWith('.html') && !/google[a-z0-9]+\.html/i.test(f));
 const errors = [];
 const titles = new Map();
 
