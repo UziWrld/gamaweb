@@ -22,13 +22,61 @@ const props = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO {...props} />
+    <!-- Google Tag (gtag.js) y Google Tag Manager -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-HMGW9R9YL2"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtm.js?id=GTM-MQ5CSF2Q"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HMGW9R9YL2');
+    </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ5CSF2Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-copper-500 focus:px-4 focus:py-2 focus:font-bold focus:text-brand-950">Saltar al contenido</a>
     <Header />
     <main id="contenido"><slot /></main>
     <Footer />
     <WhatsAppFloat />
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var target = e.target;
+        if (!target || typeof target.closest !== 'function') return;
+        var link = target.closest('a');
+        if (!link || !link.href) return;
+
+        if (typeof window.gtag !== 'function') return;
+
+        if (link.href.indexOf('wa.me') !== -1 || link.href.indexOf('whatsapp.com') !== -1) {
+          var isQuoteForm = link.id === 'quote-link' || !!link.closest('#quote-form');
+          var label = (link.textContent || '').trim();
+          window.gtag('event', 'generate_lead', {
+            event_category: 'conversion',
+            event_label: isQuoteForm ? 'formulario_cotizacion' : label,
+            transport_type: 'beacon'
+          });
+          window.gtag('event', 'click_whatsapp', {
+            link_text: label,
+            is_quote_form: isQuoteForm,
+            transport_type: 'beacon'
+          });
+        } else if (link.href.indexOf('google.com/maps') !== -1 || link.href.indexOf('maps.app.goo.gl') !== -1) {
+          window.gtag('event', 'click_como_llegar', {
+            event_category: 'engagement',
+            event_label: (link.textContent || '').trim(),
+            transport_type: 'beacon'
+          });
+        } else if (link.href.indexOf('tel:') === 0) {
+          window.gtag('event', 'click_llamada', {
+            event_category: 'contact',
+            event_label: link.href.replace('tel:', ''),
+            transport_type: 'beacon'
+          });
+        }
+      }, { passive: true });
+    </script>
   </body>
 </html>
 
