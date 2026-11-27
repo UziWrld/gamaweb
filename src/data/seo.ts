@@ -1,7 +1,7 @@
 export const PAGES = {
   home: {
-    title: 'Chatarrería en Bucaramanga | Compra de Chatarra y Metales',
-    description: 'Chatarrería en Bucaramanga con más de 20 años. Pesaje a la vista, pago en efectivo y precio del día en cobre, aluminio, hierro y baterías.',
+    title: 'Chatarrería Gama en Bucaramanga | Compra de Chatarra y Metales',
+    description: 'Chatarrería Gama en Bucaramanga con más de 20 años. Pesaje a la vista, pago en efectivo y precio del día en cobre, aluminio, hierro y baterías.',
   },
   materiales: {
     title: 'Compra de Metales en Bucaramanga: Cobre, Aluminio y Hierro',
